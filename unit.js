@@ -38,7 +38,8 @@ class Unit {
     }
     getImageFolder() {
         var noSpaceTitle = this.title.replace(/ /g, '');
-        return this.name.concat('-', noSpaceTitle);
+        var noSpaceName = this.name.replace(/ /g, '');
+        return noSpaceName.concat('-', noSpaceTitle);
     }
     getRarity() {
         return this.rarity;
