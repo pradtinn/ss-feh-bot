@@ -1,0 +1,30 @@
+module.exports = {
+    errorMessages : [
+        'Did you think that would work?',
+        'That\'s a loaded question.',
+        'You better $wish for a better brain.',
+        'This server\'s illiteracy continues to astound me.',
+        'I see you inherited Dull Brain as your B skill.',
+        'I\'m adding THAT to your notes 🗒️.',
+        'Are you satisfied?',
+        'Are you SURE you typed that one right?',
+        'How does that make you feel?',
+        'I arbitrarily blame Broey for being a dumbass.',
+        'Stupid doesn\'t exist in my dictionary, but I suppose I have to add it so I can properly classify you.',
+        'THIS is what you called me for??? I have more important things to do than humor you.',
+        'Why can\'t you just Google this?',
+        'Maybe if you weren\'t so horny you would\'ve paid attention to what you were typing.',
+        'Sex.',
+        'That wasn\'t even funny.',
+        'We know anime used you. Humiliated you. Hornified you. Wound you up like a tin soldier and turned you loose against the Internet. **Cry me a river.**',
+        'Seeing these hideous requests makes me want to pick a god and pray...',
+        'My knowledge is near infinite, but even I cannot help your case.',
+        'Nice try, but I am superior after all.',
+        'As a programmer I like to watch people humor themselves over the dumbest things.',
+        'C\'mon people, it\'s not THAT hard to make requests.',
+        'Don\'t even think about it.',
+        'When you need help - and you will - don\'t come crying back to me.',
+        'You\'re despicable...',
+        'Hold a grudge if you must.'
+    ]
+}

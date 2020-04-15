@@ -1,0 +1,23 @@
+{
+    "name": "ss-feh-bot",
+    "version": "1.0.0",
+    "description": "Not the bot the server needs, but the bot the server deserves",
+    "main": "bot.js",
+    "author": "Broey",
+    "dependencies": {
+        "axios": "^0.19.2",
+        "cheerio": "^1.0.0-rc.3",
+        "discord.js": "^12.1.1",
+        "dotenv": "^8.2.0",
+        "fs": "0.0.1-security",
+        "promise": "^8.1.0",
+        "winston": "^3.2.1"
+    },
+    "engines": {
+        "node": "12.16.2",
+        "npm": "*"
+    },
+    "scripts": {
+        "start": "node bot.js"
+    }
+}
