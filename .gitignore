@@ -1,1 +1,8 @@
 node_modules/
+Art/
+.env
+Aliases_copy.json
+Aliases_copy2.json
+package-lock.json
+package.json
+Procfile
