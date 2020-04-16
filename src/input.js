@@ -77,7 +77,7 @@ class Input {
             if (sections[i].indexOf('*') != -1) {
                 this.rarity = parseInt(sections[i].replace('*', ''), 10);
             }
-            if (/^[A-Z:\\!\)\(]$/i.test(sections[i].charAt(0))) {
+            if (/^[A-Z:\\!\)\(<]$/i.test(sections[i].charAt(0))) {
                 if (this.name.length > 0)
                     this.name += ' ';
                 this.name += sections[i];
