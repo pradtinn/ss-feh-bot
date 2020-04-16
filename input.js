@@ -29,8 +29,11 @@ class Input {
             case 'a': {
                 var numSections = this.determineA();
                 if (numSections == 2) {
-                    if (this.name.indexOf('$') != -1 || !this.addAlias())
+                    var aliasAdded = this.addAlias();
+                    console.log(aliasAdded); 
+                    if (this.name.indexOf('$') != -1 || !aliasAdded) {
                         this.name == 'ERROR';
+                    }
                     else
                         this.react = true;
                 } else if (numSections == 1)
