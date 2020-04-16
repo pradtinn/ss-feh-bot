@@ -253,6 +253,8 @@ class Unit {
                 capacity = capacity.toLowerCase();
                 capacity = capacity.replace(/^./, capacity[0].toUpperCase());
                 out[i] = 'Unit1 has the same '+capacity+' as Unit2';
+                if (capacity == 'Total')
+                    out[i] = '**'+out[i]+'**';
             }
             else
                 out[i] = out[i].replace('X', diff);
