@@ -42,7 +42,7 @@ class Input {
                 var sections = this.inputString.split('$');
                 if (sections.length == 1) {
                     this.name = sections[0].slice(1);
-                    if (ah.removeAlias())
+                    if (ah.removeAlias(this.name))
                         this.react = true;
                     else
                         this.name = 'ERROR';
@@ -151,20 +151,12 @@ class Input {
             this.alias = this.alias.slice(0, this.alias.length-1);
         }
     }
-    addAlias() {
-        return ah.addAlias(this.name, this.alias);
-    }
     getAliases() {
         var aliases = ah.getAliases(this.name);
         this.output = aliases.output;
         this.name = aliases.name;
         if (this.name == '')
             this.name = 'ERROR';
-    }
-
-    //!ra functions
-    removeAlias() {
-        return ah.removeAlias(this.name);
     }
 
     //print function
