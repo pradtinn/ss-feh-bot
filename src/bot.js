@@ -16,7 +16,7 @@ bot.on('ready', () => {
     console.info('Logged in as '+bot.user.tag+'!');
 });
 
-var getUnitData = async(input, callback) => {
+var getUnitData = async(input, pfp, callback) => {
     var website = 'https://feheroes.gamepedia.com/'+input.getName();
     var unitData = await webScraper.parseSite(website, input.getRarity(), input.getBoon(), input.getBane(), 
         input.getMerges(), input.getDragonflowers());
@@ -33,16 +33,20 @@ var getUnitData = async(input, callback) => {
         .setDescription(rarityString)
         .addFields(
             { name: 'Stats', value: unitData.print() }
-            //{ name: 'Total', value: unitData.getTotal() }
         );
-    fs.access(imagePath, fs.constants.F_OK, (err) => {
-        if (!err) {
-            unitEmbed
-                .attachFiles(imagePath)
-                .setThumbnail('attachment://Face_FC.png');
-        }
-        callback(unitEmbed);
-    });
+    if (unitData.getName() != 'Bramimond' || pfp == null) {
+        fs.access(imagePath, fs.constants.F_OK, (err) => {
+            if (!err) {
+                unitEmbed
+                    .attachFiles(imagePath)
+                    .setThumbnail('attachment://Face_FC.png');
+            }
+            callback(unitEmbed);
+        });
+    } else {
+        unitEmbed
+            .setThumbnail(pfp);
+    }
 };
 
 var getUnitsData = async(inputs, callback) => {
@@ -98,7 +102,7 @@ bot.on('message', msg => {
         if (i.getName() != 'ERROR') {
             switch(i.getCmd()) {
                 case 'h': {
-                    getUnitData(i, (unitEmbed) => {
+                    getUnitData(i, msg.author.avatarURL, (unitEmbed) => {
                         channel.send(unitEmbed);
                     });
                 }
