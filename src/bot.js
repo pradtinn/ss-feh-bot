@@ -10,6 +10,8 @@ const errors = require('./error_messages.js');
 
 const TOKEN = process.env.TOKEN;
 
+console.log(TOKEN);
+
 bot.login(TOKEN);
 
 bot.on('ready', () => {
