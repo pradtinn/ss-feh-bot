@@ -250,8 +250,10 @@ class Unit {
                 diff = diff*-1;
             if (diff == 0) {
                 var capacity = this.lvl40Stats[i].getName();
-                capacity = capacity.toLowerCase();
-                capacity = capacity.replace(/^./, capacity[0].toUpperCase());
+                if (capacity != 'HP') {
+                    capacity = capacity.toLowerCase();
+                    capacity = capacity.replace(/^./, capacity[0].toUpperCase());
+                }
                 out[i] = 'Unit1 has the same '+capacity+' as Unit2';
                 if (capacity == 'Total')
                     out[i] = '**'+out[i]+'**';
