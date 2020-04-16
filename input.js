@@ -29,12 +29,8 @@ class Input {
             case 'a': {
                 var numSections = this.determineA();
                 if (numSections == 2) {
-                    var aliasAdded = this.addAlias();
-                    console.log(aliasAdded); 
-                    if (this.name.indexOf('$') != -1 || !aliasAdded) {
-                        console.log('error detected');
+                    if (this.name.indexOf('$') != -1 || !ah.addAlias(this.name, this.alias)) {
                         this.name = 'ERROR';
-                        console.log(this.name)
                     }
                     else
                         this.react = true;
@@ -46,7 +42,7 @@ class Input {
                 var sections = this.inputString.split('$');
                 if (sections.length == 1) {
                     this.name = sections[0].slice(1);
-                    if (this.removeAlias())
+                    if (ah.removeAlias())
                         this.react = true;
                     else
                         this.name = 'ERROR';

@@ -95,7 +95,6 @@ bot.on('message', msg => {
             });
         }
         var i = new Input(message.substring(1));
-        console.log(i.getName());
         if (i.getName() != 'ERROR') {
             switch(i.getCmd()) {
                 case 'h': {
