@@ -2,7 +2,7 @@
     "name": "ss-feh-bot",
     "version": "1.0.0",
     "description": "Not the bot the server needs, but the bot the server deserves",
-    "main": "bot.js",
+    "main": "src/bot.js",
     "author": "Broey",
     "dependencies": {
         "axios": "^0.19.2",
@@ -18,6 +18,6 @@
         "npm": "*"
     },
     "scripts": {
-        "start": "node bot.js"
+        "start": "node src/bot.js"
     }
 }
