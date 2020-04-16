@@ -82,9 +82,6 @@ bot.on('message', msg => {
     var message = msg.content;
     var channel = msg.channel;
     if (message.substring(0, 1) == '!') {
-        if (message.substring(1) == 'roll') {
-            channel.send('$w');
-        }
         if (message.substring(1) == 'heelp') {
             msg.member.createDM().then((dmchannel) => {
                 dmchannel.send('`!h <rarity> <unit name> +<merges> /<boon initial><bane initial> |<dragonflowers>` to search for a hero\'s statline\n'+
