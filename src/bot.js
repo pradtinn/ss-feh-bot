@@ -104,7 +104,7 @@ bot.on('message', msg => {
         if (i.getName() != 'ERROR') {
             switch(i.getCmd()) {
                 case 'h': {
-                    getUnitData(i, msg.author.avatarURL, (unitEmbed) => {
+                    getUnitData(i, msg.author.avatarURL(), (unitEmbed) => {
                         channel.send(unitEmbed);
                     });
                 }
