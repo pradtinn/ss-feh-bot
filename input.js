@@ -32,6 +32,7 @@ class Input {
                     var aliasAdded = this.addAlias();
                     console.log(aliasAdded); 
                     if (this.name.indexOf('$') != -1 || !aliasAdded) {
+                        console.log('error detected');
                         this.name == 'ERROR';
                     }
                     else
@@ -52,6 +53,7 @@ class Input {
             }
             break;
         }
+        console.log(this.name);
     }
 
     //!h functions
