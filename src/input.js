@@ -50,7 +50,6 @@ class Input {
             }
             break;
         }
-        console.log(this.name);
     }
 
     //!h functions

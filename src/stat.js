@@ -27,8 +27,6 @@ class Stat {
         this.value += modifier;
     }
     increase(growthRate, rarity) {
-        //console.log(growthRate);
-        //console.log( Math.floor( 39 * ( Math.floor( growthRate * ( 0.79 + ( 0.07 * rarity ) ) )/100 ) ) );
         return this.value + Math.floor( 39 * ( Math.floor( growthRate * ( 0.79 + ( 0.07 * rarity ) ) )/100 ) );
     }
 }
