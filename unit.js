@@ -248,8 +248,12 @@ class Unit {
             var unit2 = unit1 == name1 ? name2 : name1;
             if (diff < 0)
                 diff = diff*-1;
-            if (diff == 0)
-                out[i] = 'Unit1 has the same '+this.lvl40Stats[i].getName()+' as Unit2';
+            if (diff == 0) {
+                var stat = this.lvl40Stats[i].getName();
+                stat = stat.toLowerCase();
+                stat.replace(/^./, stat[0].toUpperCase());
+                out[i] = 'Unit1 has the same '+stat+' as Unit2';
+            }
             else
                 out[i] = out[i].replace('X', diff);
             out[i] = out[i].replace('Unit1', unit1);
