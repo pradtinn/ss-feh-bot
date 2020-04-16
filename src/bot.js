@@ -46,6 +46,7 @@ var getUnitData = async(input, pfp, callback) => {
     } else {
         unitEmbed
             .setThumbnail(pfp);
+        callback(unitEmbed);
     }
 };
 
