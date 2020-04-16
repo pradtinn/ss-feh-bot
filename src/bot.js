@@ -20,7 +20,7 @@ var getUnitData = async(input, callback) => {
     var website = 'https://feheroes.gamepedia.com/'+input.getName();
     var unitData = await webScraper.parseSite(website, input.getRarity(), input.getBoon(), input.getBane(), 
         input.getMerges(), input.getDragonflowers());
-    var imagePath = 'Art/'+unitData.getImageFolder()+'/Face_FC.png';
+    var imagePath = '../Art/'+unitData.getImageFolder()+'/Face_FC.png';
     var rarityString = '';
     for (var i = 0; i < unitData.getRarity(); i++) { 
         rarityString += emotes.rarityEmotes[unitData.getRarity()]; 

@@ -37,7 +37,7 @@ function filterAlias(alias) {
 }
 
 function refresh() {
-    rawData = fs.readFileSync('Aliases.json');
+    rawData = fs.readFileSync('../Aliases.json');
     data = JSON.parse(rawData);
     keys = Object.keys(data);
 }
