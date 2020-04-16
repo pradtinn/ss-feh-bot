@@ -251,7 +251,7 @@ class Unit {
             if (diff == 0) {
                 var capacity = this.lvl40Stats[i].getName();
                 capacity = capacity.toLowerCase();
-                capacity.replace(/^./, capacity[0].toUpperCase());
+                capacity = capacity.replace(/^./, capacity[0].toUpperCase());
                 out[i] = 'Unit1 has the same '+capacity+' as Unit2';
             }
             else
