@@ -33,7 +33,8 @@ class Input {
                     console.log(aliasAdded); 
                     if (this.name.indexOf('$') != -1 || !aliasAdded) {
                         console.log('error detected');
-                        this.name == 'ERROR';
+                        this.name = 'ERROR';
+                        console.log(this.name)
                     }
                     else
                         this.react = true;
