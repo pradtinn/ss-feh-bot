@@ -13,7 +13,7 @@ var filter = [
     'mom', 'bara', 'garbage', 'trash', 'awful', 'great', 'amazing', 'excellent', 'perfect',
     'horrible', 'hate', 'love', 'like', 'tit', 'abs', 'cute', 'hot', 'ugly', 'fanservice',
     'armpit', 'thigh', 'cheek', 'crotch', 'snatch', 'taint', 'slut', 'whore', 'prostitute',
-    'hoe', 'thot', 'virgin', 'perv', 'hentai', 'mina'
+    'hoe', 'thot', 'virgin', 'perv', 'hentai', 'mina', 'horn', 'thirst', 'chest'
 ];
 
 function loopThroughKeys(callback) {
