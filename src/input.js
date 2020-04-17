@@ -67,15 +67,23 @@ class Input {
         var sections = this.inputString.split(' ');
 
         var i;
+        var found = [false, false, false, false];
         for (i = 0; i < sections.length; i++) {
-            if (sections[i].indexOf('|') != -1)
+            if (sections[i].indexOf('|') != -1 && !found[0]) {
                 this.dragonflowers = parseInt(sections[i].replace('|', ''), 10);
-            if (sections[i].indexOf('/') != -1)
+                found[0] = true;
+            }
+            if (sections[i].indexOf('/') != -1 && !found[1]) {
                 this.ivs = sections[i].replace('/', '');
-            if (sections[i].indexOf('+') != -1)
+                found[1] = true;
+            }
+            if (sections[i].indexOf('+') != -1 && !found[2]) {
                 this.merge = parseInt(sections[i].replace('+', ''), 10);
-            if (sections[i].indexOf('*') != -1) {
+                found[2] = true;
+            }
+            if (sections[i].indexOf('*') != -1 && !found[3]) {
                 this.rarity = parseInt(sections[i].replace('*', ''), 10);
+                found[3] = true;
             }
             if (/^[A-Z:\\!\)\(]$/i.test(sections[i].charAt(0))) {
                 if (this.name.length > 0)
