@@ -102,6 +102,7 @@ module.exports = {
     },
     parseSkill: async function(name) {
         var desc = 'Skill not found';
+        name = name.toLowerCase();
         var result = await axios.get('https://feheroes.gamepedia.com/Passives');
         var websiteData = cheerio.load(result.data);
         var tables = websiteData('table.cargoTable');
@@ -115,9 +116,9 @@ module.exports = {
                 var tableCol = rowData('td');
                 tableCol.each( function(colCount=0) {
                     if (colCount == 1) {
-                        var skillName = rowData(this).text();
-                        console.log(skillName.toLowerCase(), name.toLowerCase());
-                        if (skillName.toLowerCase() == name.toLowerCase()) {
+                        var skillName = rowData(this).text().toLowerCase();
+                        console.log(skillName, name, name.localeCompare(skillName));
+                        if (name.localeCompare(skillName) == 0) {
                             console.log('found match!');
                             found = true;
                         }
