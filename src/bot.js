@@ -151,7 +151,7 @@ bot.on('message', msg => {
                     }
                 } 
                 break;
-                case 's': {
+                case 'sd': {
                     getSkillData(i.getInputString(), (embed) => {
                         channel.send(embed);
                     });
