@@ -172,8 +172,8 @@ class Input {
     }
 
     //!s functions
-    isLetter(str) {
-        return (str.toLowerCase() != str.toUpperCase());
+    isLetter(character) {
+        return ((character >= 65 && character <= 90) || (character >= 97 && character <= 122));
     }
     properUpperCase() {
         var i;
@@ -188,6 +188,7 @@ class Input {
             if (!this.isLetter(this.inputString[i])) {
                 makeUpperCase = true;
             }
+            console.log(this.inputString);
         }
         console.log(this.inputString);
     }
