@@ -184,7 +184,6 @@ class Input {
                 this.inputString = this.inputString.substr(0, i) + this.inputString[i].toUpperCase()
                                  + this.inputString.substr(i+1);
                 makeUpperCase = false;
-                i -= 1;
             }
             if (!this.isLetter(this.inputString[i])) {
                 makeUpperCase = true;
