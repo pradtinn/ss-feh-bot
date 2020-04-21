@@ -52,6 +52,7 @@ class Input {
             case 's': {
                 var sections = this.inputString.split(' ');
                 this.inputString = sections.join(' ');
+                this.inputString = this.removeBeginEndSpace(this.inputString);
                 //this.properUpperCase();
             }
         }
@@ -148,20 +149,21 @@ class Input {
         var sections = this.inputString.split('$');
         if (sections.length == 2) {
             this.alias = sections[1];
-            this.removeBeginEndSpace();
+            this.alias = this.removeBeginEndSpace(this.alias);
             this.name = sections[0].slice(1);
         } else if (sections.length == 1) {
             this.name = sections[0].slice(1);
         }
         return sections.length;
     }
-    removeBeginEndSpace() {
-        while (this.alias[0] == ' ') {
-            this.alias = this.alias.slice(1);
+    removeBeginEndSpace(str) {
+        while (str[0] == ' ') {
+            str = str.slice(1);
         }
-        while (this.alias[this.alias.length-1] == ' ') {
-            this.alias = this.alias.slice(0, this.alias.length-1);
+        while (str[str.length-1] == ' ') {
+            str = str.slice(0, str.length-1);
         }
+        return str;
     }
     getAliases() {
         var aliases = ah.getAliases(this.name);
