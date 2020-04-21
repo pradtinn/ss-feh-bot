@@ -109,6 +109,7 @@ bot.on('message', msg => {
                 '`!a <unit name>` for hero\'s aliases\n'+
                 '`!ra <alias>` to remove alias\n'+
                 '`!c <unit 1 name>.<unit 2 name>` to compare units\n'+
+                '`!sd <passive skill name>` to look up passive skill description'+
                 '`!heelp` to have commands DM\'d to you\n'+
                 'Now that you know the commands you have no excuse for slipping up, got it?');
             });

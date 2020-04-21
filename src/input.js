@@ -49,7 +49,7 @@ class Input {
                 }
             }
             break;
-            case 's': {
+            case 'sd': {
                 var sections = this.inputString.split(' ');
                 this.inputString = sections.join(' ');
                 this.inputString = this.removeBeginEndSpace(this.inputString);
