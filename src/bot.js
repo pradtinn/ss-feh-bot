@@ -77,9 +77,15 @@ var getUnitsData = async(inputs, callback) => {
     callback(embed);
 }
 
-var getSkillData = async(name) => {
+var getSkillData = async(name, callback) => {
     var desc = await webScraper.parseSkill(name);
-    console.log(desc);
+    var skillEmbed = new Discord.MessageEmbed()
+        .setColor('#04c2ac')
+        .setTitle(name)
+        .addFields(
+            { name: 'Desc', value: desc }
+        );
+    callback(skillEmbed);
 }
 
 function handleError(msg) {
@@ -145,7 +151,9 @@ bot.on('message', msg => {
                 } 
                 break;
                 case 's': {
-                    getSkillData(i.getInputString());
+                    getSkillData(i.getInputString(), (embed) => {
+                        channel.send(embed);
+                    });
                 }
                 break;
             }
