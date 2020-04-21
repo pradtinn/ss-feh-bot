@@ -116,16 +116,19 @@ module.exports = {
                 tableCol.each( function(colCount=0) {
                     if (colCount == 1) {
                         var skillName = rowData(this).text();
+                        console.log(skillName, name);
                         if (skillName.toLowerCase() == name.toLowerCase())
                             found = true;
                     }
-                    if (colCount == 2 && found)
+                    if (colCount == 2 && found) {
                         return rowData(this).text();
+                    }
                     colCount += 1;
                 });
                 rowCount += 1;
             });
             count += 1;
         });
+        return 'Skill not found';
     }
 }
