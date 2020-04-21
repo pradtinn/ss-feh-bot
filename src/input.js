@@ -52,7 +52,7 @@ class Input {
             case 's': {
                 var sections = this.inputString.split(' ');
                 this.inputString = sections.join(' ');
-                this.properUpperCase();
+                //this.properUpperCase();
             }
         }
     }
@@ -172,10 +172,10 @@ class Input {
     }
 
     //!s functions
-    isLetter(character) {
+    /*isLetter(character) {
         return ((character >= 'A' && character <= 'Z') || (character >= 'a' && character <= 'z'));
-    }
-    properUpperCase() {
+    }*/
+    /*properUpperCase() {
         var i;
         var makeUpperCase = true;
         for (i = 0; i < this.inputString.length; i++) {
@@ -191,7 +191,7 @@ class Input {
             console.log(this.inputString);
         }
         console.log(this.inputString);
-    }
+    }*/
 
     //print function
     toString() {

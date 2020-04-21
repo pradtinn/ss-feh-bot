@@ -101,6 +101,31 @@ module.exports = {
         return u;
     },
     parseSkill: async function(name) {
-        
+        var desc;
+        var result = await axios.get('https://feheroes.gamepedia.com/Passives');
+        var websiteData = cheerio.load(result.data);
+        var tables = websiteData('table.cargoTable');
+        var skillType = ['A', 'B', 'C'];
+        var found = false;
+        tables.each( function(count=0) {
+            var tableData = cheerio.load(this);
+            var tableRow = tableData('tr');
+            tableRow.each( function(rowCount=0) {
+                var rowData = cheerio.load(this);
+                var tableCol = rowData('td');
+                tableCol.each( function(colCount=0) {
+                    if (colCount == 1) {
+                        var skillName = tableCol(this).text();
+                        if (skillName == name)
+                            found = true;
+                    }
+                    if (colCount == 2 && found)
+                        return tableCol(this).text();
+                    colCount += 1;
+                });
+                rowCount += 1;
+            });
+            count += 1;
+        });
     }
 }

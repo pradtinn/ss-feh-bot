@@ -139,6 +139,11 @@ bot.on('message', msg => {
                     }
                 } 
                 break;
+                case 's': {
+                    var desc = web_scraper.parseSkill(i.getInputString());
+                    
+                }
+                break;
             }
             if (i.getReact())
                 msg.react('✅');
