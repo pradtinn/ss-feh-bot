@@ -117,22 +117,23 @@ module.exports = {
                     if (colCount == 1) {
                         var skillName = rowData(this).text();
                         console.log(skillName, name);
-                        if (skillName.toLowerCase() == name.toLowerCase())
+                        if (skillName.toLowerCase() == name.toLowerCase()) {
+                            console.log('found match!');
                             found = true;
-                        console.log('found match!');
+                        }
                     }
                     if (colCount == 2 && found) {
                         desc = rowData(this).text();
-                        return;
+                        return false;
                     }
                     colCount += 1;
                 });
                 if (found)
-                    return;
+                    return false;
                 rowCount += 1;
             });
             if (found)
-                return;
+                return false;
             count += 1;
         });
         return desc;
