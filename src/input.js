@@ -173,7 +173,7 @@ class Input {
 
     //!s functions
     isLetter(character) {
-        return ((character >= 65 && character <= 90) || (character >= 97 && character <= 122));
+        return ((character >= 'A' && character <= 'Z') || (character >= 'a' && character <= 'z'));
     }
     properUpperCase() {
         var i;
