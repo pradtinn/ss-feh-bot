@@ -141,7 +141,7 @@ bot.on('message', msg => {
                 break;
                 case 's': {
                     var desc = web_scraper.parseSkill(i.getInputString());
-                    
+                    console.log(desc);
                 }
                 break;
             }
