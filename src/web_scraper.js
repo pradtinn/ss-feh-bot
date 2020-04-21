@@ -101,7 +101,7 @@ module.exports = {
         return u;
     },
     parseSkill: async function(name) {
-        var desc;
+        var desc = 'Skill not found';
         var result = await axios.get('https://feheroes.gamepedia.com/Passives');
         var websiteData = cheerio.load(result.data);
         var tables = websiteData('table.cargoTable');
@@ -119,16 +119,22 @@ module.exports = {
                         console.log(skillName, name);
                         if (skillName.toLowerCase() == name.toLowerCase())
                             found = true;
+                        console.log('found match!');
                     }
                     if (colCount == 2 && found) {
-                        return rowData(this).text();
+                        desc = rowData(this).text();
+                        return;
                     }
                     colCount += 1;
                 });
+                if (found)
+                    return;
                 rowCount += 1;
             });
+            if (found)
+                return;
             count += 1;
         });
-        return 'Skill not found';
+        return desc;
     }
 }
