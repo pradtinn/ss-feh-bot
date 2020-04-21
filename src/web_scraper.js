@@ -99,5 +99,8 @@ module.exports = {
         });
         u.setLvl40Stats();
         return u;
+    },
+    parseSkill: async function(name) {
+        
     }
 }

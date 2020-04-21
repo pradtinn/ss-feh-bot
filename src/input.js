@@ -49,6 +49,11 @@ class Input {
                 }
             }
             break;
+            case 's': {
+                var sections = this.inputString.split(' ');
+                this.inputString = sections.join(' ');
+                this.properUpperCase();
+            }
         }
     }
 
@@ -164,6 +169,25 @@ class Input {
         this.name = aliases.name;
         if (this.name == '')
             this.name = 'ERROR';
+    }
+
+    //!s functions
+    isLetter(str) {
+        return (str.toLowerCase() != str.toUpperCase());
+    }
+    properUpperCase() {
+        var i;
+        var makeUpperCase = true;
+        for (i = 0; i < this.inputString.length; i++) {
+            if (makeUpperCase && this.isLetter(this.inputString[i])) {
+                this.inputString = this.inputString[i].toUpperCase() + this.inputString.slice(1);
+                makeUpperCase = false;
+            }
+            if (!this.isLetter(this.inputString[i])) {
+                makeUpperCase = true;
+            }
+        }
+        console.log(this.inputString);
     }
 
     //print function
