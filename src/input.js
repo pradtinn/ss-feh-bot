@@ -181,7 +181,8 @@ class Input {
         for (i = 0; i < this.inputString.length; i++) {
             console.log(this.inputString[i]);
             if (makeUpperCase && this.isLetter(this.inputString[i])) {
-                this.inputString = this.inputString[i].toUpperCase() + this.inputString.slice(i+1);
+                this.inputString = this.inputString.substr(0, i) + this.inputString[i].toUpperCase()
+                                 + this.inputString.substr(i+1);
                 makeUpperCase = false;
                 i -= 1;
             }
