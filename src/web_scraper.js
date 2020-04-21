@@ -117,7 +117,7 @@ module.exports = {
                 tableCol.each( function(colCount=0) {
                     if (colCount == 1) {
                         var skillName = rowData(this).text().toLowerCase();
-                        console.log(skillName, name, name.localeCompare(skillName));
+                        console.log('\''+skillName+'\'', '\''+name+'\'', name.localeCompare(skillName));
                         if (name.localeCompare(skillName) == 0) {
                             console.log('found match!');
                             found = true;
