@@ -89,7 +89,7 @@ function handleError(msg) {
 bot.on('message', msg => {
     var message = msg.content;
     var channel = msg.channel;
-    console.log(channel,":",message);
+    console.log(channel.name,":",message);
     if (message.substring(0, 1) == '!') {
         if (message.substring(1) == 'heelp') {
             msg.member.createDM().then((dmchannel) => {
