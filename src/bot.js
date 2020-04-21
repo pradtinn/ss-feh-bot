@@ -77,6 +77,11 @@ var getUnitsData = async(inputs, callback) => {
     callback(embed);
 }
 
+var getSkillData = async(name) => {
+    var desc = await webScraper.parseSkill(name);
+    console.log(desc);
+}
+
 function handleError(msg) {
     var errorMessages = errors.errorMessages;
     var errIndex = Math.floor(Math.random() * errorMessages.length);
@@ -140,8 +145,7 @@ bot.on('message', msg => {
                 } 
                 break;
                 case 's': {
-                    var desc = webScraper.parseSkill(i.getInputString());
-                    console.log(desc);
+                    getSkillData(i.getInputString());
                 }
                 break;
             }
