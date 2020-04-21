@@ -116,7 +116,7 @@ module.exports = {
                 tableCol.each( function(colCount=0) {
                     if (colCount == 1) {
                         var skillName = rowData(this).text();
-                        console.log(skillName, name);
+                        console.log(skillName.toLowerCase(), name.toLowerCase());
                         if (skillName.toLowerCase() == name.toLowerCase()) {
                             console.log('found match!');
                             found = true;
