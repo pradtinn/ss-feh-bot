@@ -120,7 +120,7 @@ module.exports = {
                             found = true;
                     }
                     if (colCount == 2 && found)
-                        return tableCol(this).text();
+                        return rowData(this).text();
                     colCount += 1;
                 });
                 rowCount += 1;
