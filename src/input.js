@@ -180,7 +180,7 @@ class Input {
         var makeUpperCase = true;
         for (i = 0; i < this.inputString.length; i++) {
             if (makeUpperCase && this.isLetter(this.inputString[i])) {
-                this.inputString = this.inputString[i].toUpperCase() + this.inputString.slice(1);
+                this.inputString = this.inputString[i].toUpperCase() + this.inputString.slice(i+1);
                 makeUpperCase = false;
             }
             if (!this.isLetter(this.inputString[i])) {
