@@ -22,16 +22,15 @@ var getUnitData = async(input, pfp, callback) => {
         input.getMerges(), input.getDragonflowers());
     var imagePath = 'Art/'+unitData.getImageFolder()+'/Face_FC.png';
     var rarityString = '';
-    for (var i = 0; i < 5; i++) { 
-        if (i < unitData.getRarity())
-            rarityString += emotes.rarityEmotes[unitData.getRarity()]; 
-        else {
-            rarityString += '<:Blank:703011527573242032>';
-            console.log('Blank added');
-        }
+    for (var i = 0; i < unitData.getRarity(); i++) { 
+        rarityString += emotes.rarityEmotes[unitData.getRarity()]; 
     }
     rarityString += ' '+emotes.weaponEmotes[unitData.getWeaponType()];
     rarityString += ' '+emotes.moveEmotes[unitData.getMoveType()];
+    for (var i = 0; i < 5 - unitData.getRarity(); i++) {
+        rarityString += '<:Blank:703011527573242032>';
+        console.log('Blank added');
+    }
     var unitEmbed = new Discord.MessageEmbed()
         .setColor('#04c2ac')
         .setTitle(unitData.getNameTitle())
