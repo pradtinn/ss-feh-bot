@@ -22,8 +22,11 @@ var getUnitData = async(input, pfp, callback) => {
         input.getMerges(), input.getDragonflowers());
     var imagePath = 'Art/'+unitData.getImageFolder()+'/Face_FC.png';
     var rarityString = '';
-    for (var i = 0; i < unitData.getRarity(); i++) { 
-        rarityString += emotes.rarityEmotes[unitData.getRarity()]; 
+    for (var i = 0; i < 5; i++) { 
+        if (i < unitData.getRarity())
+            rarityString += emotes.rarityEmotes[unitData.getRarity()]; 
+        else
+            rarityString += ' ';
     }
     rarityString += ' '+emotes.weaponEmotes[unitData.getWeaponType()];
     rarityString += ' '+emotes.moveEmotes[unitData.getMoveType()];
