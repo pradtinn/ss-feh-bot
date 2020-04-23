@@ -29,7 +29,6 @@ var getUnitData = async(input, pfp, callback) => {
     rarityString += ' '+emotes.moveEmotes[unitData.getMoveType()];
     for (var i = 0; i < 5 - unitData.getRarity(); i++) {
         rarityString += '<:Blank:703011527573242032>';
-        console.log('Blank added');
     }
     var unitEmbed = new Discord.MessageEmbed()
         .setColor('#04c2ac')
