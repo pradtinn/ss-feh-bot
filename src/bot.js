@@ -25,8 +25,10 @@ var getUnitData = async(input, pfp, callback) => {
     for (var i = 0; i < 5; i++) { 
         if (i < unitData.getRarity())
             rarityString += emotes.rarityEmotes[unitData.getRarity()]; 
-        else
-            rarityString += ' ';
+        else {
+            rarityString += '<:Blank:703011527573242032>';
+            console.log('Blank added');
+        }
     }
     rarityString += ' '+emotes.weaponEmotes[unitData.getWeaponType()];
     rarityString += ' '+emotes.moveEmotes[unitData.getMoveType()];
