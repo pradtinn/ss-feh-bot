@@ -166,7 +166,7 @@ bot.on('message', msg => {
         } else {
             handleError(msg);
         }
-    } else if (message == '<:flayn:605823560572862540>') {
+    } else if (message == '<:flayn:605823560572862540>' && channel.id == '518217165153894460') {
         var callOut = Math.floor(Math.random() * 100);
         if (callOut >= 80)
             channel.send('Stop flayning');
