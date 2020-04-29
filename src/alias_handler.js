@@ -64,10 +64,14 @@ module.exports = {
         if (!filterAlias(lowerCaseAlias))
             return false;
         var removeKey;
-        var out = loopThroughKeys((oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase) => {
+        var alreadyExists = loopThroughKeys((oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase) => {
             if (oldKeysLowerCase.includes(lowerCaseAlias)) {
-                return false;
+                return true;
             }
+        });
+        if (alreadyExists)
+            return false;
+        var out = loopThroughKeys((oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase) => {
             if ((data[oldKey].toLowerCase == lowerCaseName || oldKeysLowerCase.includes(lowerCaseName))
                 && oldKeys.length < 6) {
                     Object.defineProperty(data, oldKey+'$'+alias, Object.getOwnPropertyDescriptor(data, oldKey));
