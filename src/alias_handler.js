@@ -65,8 +65,11 @@ module.exports = {
             return false;
         var removeKey;
         var out = loopThroughKeys((oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase) => {
+            if (oldKeysLowerCase.includes(lowerCaseAlias)) {
+                return false;
+            }
             if ((data[oldKey].toLowerCase == lowerCaseName || oldKeysLowerCase.includes(lowerCaseName))
-                && !oldKeysLowerCase.includes(lowerCaseAlias) && oldKeys.length < 6) {
+                && oldKeys.length < 6) {
                     Object.defineProperty(data, oldKey+'$'+alias, Object.getOwnPropertyDescriptor(data, oldKey));
                     removeKey = oldKey;
                     return true;
