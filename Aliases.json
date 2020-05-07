@@ -89,7 +89,7 @@
     "FCorrin$Female Corrin": "Corrin:_Fateful_Princess",
     "Summer Corrin": "Corrin:_Novice_Vacationer",
     "Walmart": "Walhart:_The_Conqueror",
-    "Fallen Corrin": "Corrin:_Wailing_Soul",
+    "Fallen FCorrin": "Corrin:_Wailing_Soul",
     "Virion": "Virion:_Elite_Archer",
     "Cynthia": "Cynthia:_Hero_Chaser",
     "Spring Veronica": "Veronica:_Spring_Princess",
@@ -511,5 +511,10 @@
     "Young Minerva": "Minerva:_Princess-Knight",
     "Young Caeda": "Caeda:_Princess_of_Talys",
     "Young Marth": "Marth:_Legacied_Hero",
-    "Legendary Edelgard$L!Edelgard$LEdelgard$war crime mommy": "Edelgard:_Flame_Emperor"
+    "Legendary Edelgard$L!Edelgard$LEdelgard$war crime mommy": "Edelgard:_Flame_Emperor",
+    "Fallen Ike": "Ike:_Zeal_Unleashed",
+    "Fallen Julia": "Julia:_Heart_Usurped",
+    "Fallen Lyon": "Lyon:_Demon_King",
+    "Fallen MCorrin": "Corrin:_Bloodbound_Beast",
+    "Fallen Ashnard$Ashnard": "Ashnard:_Mad_King"
 }
