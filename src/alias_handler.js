@@ -13,7 +13,7 @@ admin.initializeApp({
     databaseURL: 'https://ss-feh-bot.firebaseio.com/'
 });
 
-var root = data.ref();
+var root = admin.database().ref();
 
 var filter = [ 
     'best', 'worst', 'fuck', 'bitch', 'shit', 'damn', 'crap', 'stupid', 'bad', 'good',
