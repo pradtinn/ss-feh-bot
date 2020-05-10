@@ -1,6 +1,6 @@
 const fs = require('fs');
 const admin = require('firebase-admin');
-const service_acc = require('service_acc.json');
+const service_acc = require('../service_acc.json');
 
 var rawData = fs.readFileSync('Aliases.json');
 var data = JSON.parse(rawData);
