@@ -1,10 +1,17 @@
 const fs = require('fs');
+const admin = require('firebase-admin');
+const service_acc = require('service_acc.json');
 
-var rawData = fs.readFileSync('Aliases.json');
+var rawData = fs.readFileSync('Aliases1.json');
 var data = JSON.parse(rawData);
 var keys = Object.keys(data);
 
 //handles alias file operations
+
+admin.initializeApp({
+    credential: admin.credential.cert(service_acc),
+    databaseURL: 'https://ss-feh-bot.firebaseio.com/'
+});
 
 var filter = [ 
     'best', 'worst', 'fuck', 'bitch', 'shit', 'damn', 'crap', 'stupid', 'bad', 'good',
@@ -30,6 +37,8 @@ function loopThroughKeys(callback) {
 }
 
 function filterAlias(alias) {
+    if (alias.length > 50)
+        return false;
     for (var i in filter) {
         if (alias.indexOf(filter[i]) > -1)
             return false;
@@ -38,7 +47,7 @@ function filterAlias(alias) {
 }
 
 function refresh() {
-    rawData = fs.readFileSync('Aliases.json');
+    rawData = fs.readFileSync('Aliases1.json');
     data = JSON.parse(rawData);
     keys = Object.keys(data);
 }
@@ -46,8 +55,11 @@ function refresh() {
 module.exports = {
     getProperName(name) {
         var lowerCaseName = name.toLowerCase();
-        var out = '';
-        loopThroughKeys((oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase) => {
+        var properName = data[keys.find(key => key.toLowerCase() == lowerCaseName)];
+        if (properName == null)
+            return '';
+        return properName;
+        /*loopThroughKeys((oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase) => {
             var lowerCaseData = data[oldKey].toLowerCase();
             if (lowerCaseName == lowerCaseData || oldKeysLowerCase.includes(lowerCaseName) ||
                 lowerCaseData.replace(/_/g, ' ') == lowerCaseName) {
@@ -55,15 +67,23 @@ module.exports = {
                 return true;
             }
             return false;
-        });
-        return out;
+        });*/
     },
     addAlias(name, alias) {
         var lowerCaseAlias = alias.toLowerCase();
         var lowerCaseName = name.toLowerCase();
         if (!filterAlias(lowerCaseAlias))
             return false;
-        var removeKey;
+        if (data[keys.find(key => key.toLowerCase() == lowerCaseAlias)])
+            return false;
+        var properName = data[keys.find(key => key.toLowerCase() == lowerCaseName)];
+        if (properName == null)
+            return false;
+        data[alias] = properName;
+        var newData = JSON.stringify(data, null, 4);
+        fs.writeFileSync('Aliases1.json', newData);
+        refresh();
+        /*var removeKey;
         var alreadyExists = loopThroughKeys((oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase) => {
             if (oldKeysLowerCase.includes(lowerCaseAlias)) {
                 return true;
@@ -86,20 +106,22 @@ module.exports = {
             fs.writeFileSync('Aliases.json', newData);
             refresh();
         }
-        return out;
+        return out;*/
     },
     getAliases(name) {
         var lowerCaseName = name.toLowerCase();
-        var newName = '';
+        var newName = data[keys.find(key => key.toLowerCase == lowerCaseName)];
+        if (newName == null)
+            newName = '';
         var aliases = [];
-        loopThroughKeys((oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase) => {
+        /*loopThroughKeys((oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase) => {
             if (data[oldKey].toLowerCase() == lowerCaseName || oldKeysLowerCase.includes(lowerCaseName)) {
                 newName = data[oldKey].replace(/_/g, ' ');
                 aliases = oldKeys;
                 return true;
             }
             return false;
-        });
+        });*/
         return { 'name': newName, 'output': aliases.join(', ') };
     },
     removeAlias(alias) {

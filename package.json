@@ -9,6 +9,7 @@
         "cheerio": "^1.0.0-rc.3",
         "discord.js": "^12.1.1",
         "dotenv": "^8.2.0",
+        "firebase-admin": "^8.12.1",
         "fs": "0.0.1-security",
         "promise": "^8.1.0",
         "winston": "^3.2.1"
