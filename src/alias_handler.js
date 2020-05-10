@@ -28,8 +28,8 @@ function loopThroughKeys(callback) {
     for (var i = 0; i < keys.length; i++) {
         var oldKey = keys[i];
         var oldKeyLowerCase = oldKey.toLowerCase();
-        var oldKeys = oldKey.split('-');
-        var oldKeysLowerCase = oldKeyLowerCase.split('-');
+        var oldKeys = oldKey.split('$');
+        var oldKeysLowerCase = oldKeyLowerCase.split('$');
         if (callback(oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase))
             return true;
     }
@@ -81,7 +81,7 @@ module.exports = {
         var out = loopThroughKeys((oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase) => {
             if ((data[oldKey].toLowerCase == lowerCaseName || oldKeysLowerCase.includes(lowerCaseName))
                 && oldKeys.length < 6) {
-                    Object.defineProperty(data, oldKey+'-'+alias, Object.getOwnPropertyDescriptor(data, oldKey));
+                    Object.defineProperty(data, oldKey+'$'+alias, Object.getOwnPropertyDescriptor(data, oldKey));
                     removeKey = oldKey;
                     return true;
             }
@@ -116,7 +116,7 @@ module.exports = {
             var nameIndex = oldKeysLowerCase.indexOf(lowerCaseAlias);
             if (oldKeys.length > 1 && nameIndex > 0) {
                 oldKeys.splice(nameIndex, 1);
-                Object.defineProperty(data, oldKeys.join('-'), Object.getOwnPropertyDescriptor(data, oldKey));
+                Object.defineProperty(data, oldKeys.join('$'), Object.getOwnPropertyDescriptor(data, oldKey));
                 removeKey = oldKey;
                 return true;
             }
