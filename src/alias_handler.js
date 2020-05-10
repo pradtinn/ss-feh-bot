@@ -13,6 +13,8 @@ admin.initializeApp({
     databaseURL: 'https://ss-feh-bot.firebaseio.com/'
 });
 
+var root = data.ref();
+
 var filter = [ 
     'best', 'worst', 'fuck', 'bitch', 'shit', 'damn', 'crap', 'stupid', 'bad', 'good',
     'better', 'worse', 'pussy', 'cunt', 'cancer', 'suck', 'dick', 'penis', 'twat', 'vagina',
