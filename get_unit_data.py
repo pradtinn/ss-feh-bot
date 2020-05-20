@@ -50,7 +50,7 @@ for unit in units:
             j = 0
             for table in skills_tables:
                 pass
-            print(data)
+            print(skill_indices)
             break
         i += 1
 
