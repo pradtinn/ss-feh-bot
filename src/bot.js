@@ -7,6 +7,7 @@ const webScraper = require('./web_scraper.js');
 const fs = require('fs');
 const emotes = require('./emotes.js');
 const errors = require('./error_messages.js');
+const alias_handler = require('./alias_handler.js');
 
 const TOKEN = process.env.TOKEN;
 
@@ -112,10 +113,11 @@ bot.on('message', msg => {
                 '`!a <unit name>` for hero\'s aliases\n'+
                 '`!ra <alias>` to remove alias\n'+
                 '`!c <unit 1 name>.<unit 2 name>` to compare units\n'+
-                '`!sd <passive skill name>` to look up passive skill description'+
+                '`!sd <passive skill name>` to look up passive skill description\n'+
                 '`!heelp` to have commands DM\'d to you\n'+
                 'Now that you know the commands you have no excuse for slipping up, got it?');
             });
+            return;
         }
         var i = new Input(message.substring(1));
         if (i.getName() != 'ERROR') {

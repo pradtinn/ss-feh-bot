@@ -1,9 +1,9 @@
 const ah = require('./alias_handler.js');
-//input class
+//input class for formatting the input and getting useful data from it
 
 class Input {
     constructor(input) {
-        //<cmd> <rarity>* <unitname>+<merges>/<boon><bane>|<dragonflowers>
+        //<cmd> <rarity> <unitname>+<merges>/<boon><bane>|<dragonflowers>
         this.inputString = input;
         this.output = '';
         this.cmd = input.substr(0, input.indexOf(' '));
@@ -53,12 +53,12 @@ class Input {
                 var sections = this.inputString.split(' ');
                 this.inputString = sections.join(' ');
                 this.inputString = this.removeBeginEndSpace(this.inputString);
-                //this.properUpperCase();
             }
         }
     }
 
     //!h functions
+    //inserts spaces in the input to normalize it
     insertSpaces() {
         var i;
         var mergeIVDF = '+/|';
@@ -69,6 +69,7 @@ class Input {
                 this.inputString = this.inputString.slice(0, i+1) + ' ' + this.inputString.slice(i+1);
         }
     }
+    //get unit parameters from the input
     splitString() {
         var sections = this.inputString.split(' ');
 
@@ -101,6 +102,7 @@ class Input {
             this.rarity = parseInt(sections[1], 10);
         }
     }
+    //turn raw iv data into actual string representations
     formatIVs() {
         var i;
         for (i = 0; i < this.ivs.length; i++) {
@@ -128,6 +130,7 @@ class Input {
                 this.bane = formattedIV;
         }
     }
+    //check if values given are valid
     verifyValues() {
         if (isNaN(this.rarity) || this.rarity < 1 || this.rarity > 5)
             this.rarity = 5;
@@ -145,6 +148,7 @@ class Input {
     }
 
     //!a functions
+    //determine if setting an alias or requesting the list of aliases, then parsing the info
     determineA() {
         var sections = this.inputString.split('$');
         if (sections.length == 2) {
@@ -156,6 +160,7 @@ class Input {
         }
         return sections.length;
     }
+    //helper function to remove excess spaces
     removeBeginEndSpace(str) {
         while (str[0] == ' ') {
             str = str.slice(1);
@@ -165,6 +170,7 @@ class Input {
         }
         return str;
     }
+    //get aliases from alias file
     getAliases() {
         var aliases = ah.getAliases(this.name);
         this.output = aliases.output;
@@ -173,29 +179,7 @@ class Input {
             this.name = 'ERROR';
     }
 
-    //!s functions
-    /*isLetter(character) {
-        return ((character >= 'A' && character <= 'Z') || (character >= 'a' && character <= 'z'));
-    }*/
-    /*properUpperCase() {
-        var i;
-        var makeUpperCase = true;
-        for (i = 0; i < this.inputString.length; i++) {
-            console.log(this.inputString[i]);
-            if (makeUpperCase && this.isLetter(this.inputString[i])) {
-                this.inputString = this.inputString.substr(0, i) + this.inputString[i].toUpperCase()
-                                 + this.inputString.substr(i+1);
-                makeUpperCase = false;
-            }
-            if (!this.isLetter(this.inputString[i])) {
-                makeUpperCase = true;
-            }
-            console.log(this.inputString);
-        }
-        console.log(this.inputString);
-    }*/
-
-    //print function
+    //print function for debugging
     toString() {
         return 'Name: '+this.name+'\nRarity: '+this.rarity+'\nMerge: '+this.merge+'\nIVs: '+this.boon+'/'+
             this.bane+'\nDFs: '+this.dragonflowers+'\n';
