@@ -146,6 +146,7 @@ class Unit {
     }
     setLvl40Stats() {
         var i;
+        console.log(stat.statArrToString(this.lvl1Stats));
         var total = 0;
         for (i = 0; i < this.lvl40Stats.length-1; i++) {
             var growthModifier = 0;
