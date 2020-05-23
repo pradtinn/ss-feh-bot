@@ -134,9 +134,13 @@ class Unit {
         }
         if (this.merges > 0)
             this.lvl1Stats[5].changeStat(1);
+        console.log('First set stat breakpoint: '+stat.statArrToString(this.lvl1Stats));
         this.applyMerges();
+        console.log('Merge breakpoint: '+stat.statArrToString(this.lvl1Stats));
         this.verifyDragonflowers();
+        console.log('DF check breakpoint: '+stat.statArrToString(this.lvl1Stats));
         this.applyDragonFlowers();
+        console.log('DF breakpoint: '+stat.statArrToString(this.lvl1Stats));
     }
     setGrowths(growthSpread) {
         var i;
@@ -146,7 +150,6 @@ class Unit {
     }
     setLvl40Stats() {
         var i;
-        console.log(stat.statArrToString(this.lvl1Stats));
         var total = 0;
         for (i = 0; i < this.lvl40Stats.length-1; i++) {
             var growthModifier = 0;
