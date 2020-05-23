@@ -32,7 +32,9 @@ module.exports = {
         unit.setMoveType(data[name]['moveType']);
         unit.setWeaponType(data[name]['weaponType']);
         unit.setReleaseDate(data[name]['releaseDate']);
-        unit.setLvl1Stats(data[name]['lvl1stats'][rarity.toString()]);
+        var lvl1stats = data[name]['lvl1stats'][rarity.toString()];
+        console.log(lvl1stats);
+        unit.setLvl1Stats(lvl1stats);
         unit.setGrowths(data[name]['growths']);
         unit.setLvl40Stats();
         return unit;
