@@ -118,8 +118,9 @@ class Unit {
     setLvl1Stats(fullStatSpread) {
         var i;
         for (i = 0; i < fullStatSpread.length; i++) {
+            var statSpread = fullStatSpread[i].split('/');
             var spreadIndex = 1;
-            if (fullStatSpread[i].length < 2)
+            if (statSpread.length < 2)
                 spreadIndex = 0;
             switch(this.lvl1Stats[i].getName()) {
                 case this.boon:
@@ -130,7 +131,7 @@ class Unit {
                         spreadIndex = 0;
                 break;
             }
-            this.lvl1Stats[i].changeStat(parseInt(fullStatSpread[i][spreadIndex], 10));
+            this.lvl1Stats[i].changeStat(parseInt(statSpread[spreadIndex], 10));
         }
         if (this.merges > 0)
             this.lvl1Stats[5].changeStat(1);

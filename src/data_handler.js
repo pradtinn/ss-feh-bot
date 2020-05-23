@@ -16,6 +16,16 @@ function searchForAlias(alias) {
     return null;
 }
 
+function getTotal(stats) {
+    var i;
+    var total = 0;
+    for (i = 0; i < stats.length; i++) {
+        spread = stats[i].split('/');
+        total += spread[1];
+    }
+    return total;
+}
+
 module.exports = {
     getName(alias) {
         if (data.hasOwnProperty(alias)) {
@@ -33,6 +43,7 @@ module.exports = {
         unit.setWeaponType(data[name]['weaponType']);
         unit.setReleaseDate(data[name]['releaseDate']);
         var lvl1stats = data[name]['lvl1stats'][rarity.toString()];
+        lvl1stats.push(getTotal(lvl1stats));
         console.log(lvl1stats);
         unit.setLvl1Stats(lvl1stats);
         unit.setGrowths(data[name]['growths']);
