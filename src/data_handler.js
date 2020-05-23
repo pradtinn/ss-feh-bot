@@ -29,12 +29,10 @@ module.exports = {
     },
     async getUnit(name, rarity, boon, bane, merges, dragonflowers) {
         var unit = new Unit(name, rarity, boon, bane, merges, dragonflowers);
-        console.log(toString(rarity));
-        console.log(rarity);
         unit.setMoveType(data[name]['moveType']);
         unit.setWeaponType(data[name]['weaponType']);
         unit.setReleaseDate(data[name]['releaseDate']);
-        unit.setLvl1Stats(data[name]['lvl1Stats'][toString(rarity)]);
+        unit.setLvl1Stats(data[name]['lvl1Stats'][rarity.toString()]);
         unit.setGrowths(data[name]['growths']);
         unit.setLvl40Stats();
         return unit;
