@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import codecs
 
 heroes_link = 'https://feheroes.gamepedia.com/List_of_Heroes'
 hero_link = 'https://feheroes.gamepedia.com/'
@@ -10,48 +11,32 @@ page_parser = BeautifulSoup(heroes_page.content, 'html.parser')
 
 units = page_parser.find_all('tr', class_='hero-filter-element')
 
-data = {}
+with open('unit_data.json') as inp:
+    data = json.load(inp)
 
 for unit in units:
-    i = 0
-    for col in unit.children:
-        if i == 1:
-            name = col.a.get('href')[1:]
-            data[name] = {'lvl1stats': {'1': [], '2': [], '3': [], '4': [], '5': []}, 'growths': [], 'weapons': [],
-                 'assists': [], 'passives': []}
-            unit_link = hero_link+name
-            unit_page = requests.get(unit_link)
-            unit_parser = BeautifulSoup(unit_page.content, 'html.parser')
-            
-            stat_tables = unit_parser.find_all('table', class_ = 'wikitable default')
-            j = 0
-            for table in stat_tables:
-                if j == 0 or j == 2:
-                    k = 1
-                    for tr in table.tbody.find_all('tr')[1:]:
-                        for td in tr.find_all('td')[1:-1]:
-                            if j == 0:
-                                data[name]['lvl1stats'][str(k)].append(td.get_text())
-                            else:
-                                data[name]['growths'].append(td.get_text())
-                        k += 1  
-                j += 1
-            print(name)
-
-            skill_indices = ['weapons', 'assists', 'specials', 'passives']
-            divs = unit_parser.find_all('div')
-            for div in divs:
-                if 'Assist' in div.get_text() and 'assists' in skill_indices:
-                    skill_indices.remove('assists')
-                if 'Special' in div.get_text() and 'specials' in skill_indices:
-                    skill_indices.remove('specials')
-            
-            skills_tables = unit_parser.find_all('table', class_='wikitable default unsortable skills-table')
-            j = 0
-            for table in skills_tables:
-                pass
-            print(skill_indices)
-            break
+    i = 3
+    name = unit.contents[1].get_text().replace(' ', '_')
+    for col in unit.contents[3:]:
+        if i == 4:
+            weapon_type = col.img['alt']
+            if 'Sword' in weapon_type or 'Lance' in weapon_type or 'Axe' in weapon_type:
+                weapon_type = weapon_type.split(' ')[1]
+            data[name]['weaponType'] = weapon_type
+        if i == 3:
+            move_type = col.img['alt']
+            data[name]['moveType'] = move_type
+        if i == 6:
+            release_date = col.get_text()
+            data[name]['releaseDate'] = release_date
         i += 1
 
-print(data)
+with open('Aliases.json') as a:
+    aliases = json.load(a)
+
+for alias, name in aliases.items():
+    alias_list = alias.split('+')
+    data[name]['alias'] = alias_list
+
+with open('unit_data.json', 'w') as out:
+    json.dump(data, out)
