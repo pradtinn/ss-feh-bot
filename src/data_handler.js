@@ -21,7 +21,8 @@ function getStatsWithTotal(stats) {
     var out = [];
     var total = 0;
     for (i = 0; i < stats.length; i++) {
-        out.push(stats[i].split('/'));
+        var spread = stats[i].split('/');
+        out.push(spread);
         total += spread[1];
     }
     out.push(total)
