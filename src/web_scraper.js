@@ -107,7 +107,7 @@ module.exports = {
         var websiteData = cheerio.load(result.data);
         var tables = websiteData('table.cargoTable');
         var skillType = ['A', 'B', 'C'];
-        var properName;
+        var properName = '';
         var found = false;
         tables.each( function(count=0) {
             var tableData = cheerio.load(this);
