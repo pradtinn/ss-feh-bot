@@ -199,7 +199,7 @@ class Unit {
     setPassives(passives) {
         for (var [key, value] of Object.entries(passives)) {
             if (typeof value == 'string')
-                passives[key].setName(value);
+                this.passives[key].setName(value);
         }
     }
     setMoveType(moveType) {
