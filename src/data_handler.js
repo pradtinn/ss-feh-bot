@@ -16,14 +16,16 @@ function searchForAlias(alias) {
     return null;
 }
 
-function getTotal(stats) {
+function getStatsWithTotal(stats) {
     var i;
+    var out = [];
     var total = 0;
     for (i = 0; i < stats.length; i++) {
-        spread = stats[i].split('/');
+        out.push(stats[i].split('/'));
         total += spread[1];
     }
-    return total;
+    out.push(total)
+    return out;
 }
 
 module.exports = {
@@ -43,9 +45,8 @@ module.exports = {
         unit.setWeaponType(data[name]['weaponType']);
         unit.setReleaseDate(data[name]['releaseDate']);
         var lvl1stats = data[name]['lvl1stats'][rarity.toString()];
-        lvl1stats.push(getTotal(lvl1stats));
-        console.log(lvl1stats);
-        unit.setLvl1Stats(lvl1stats);
+        var lvl1statsWithTotal = getStatsWithTotal(lvl1stats);
+        unit.setLvl1Stats(lvl1statsWithTotal);
         unit.setGrowths(data[name]['growths']);
         unit.setLvl40Stats();
         return unit;
