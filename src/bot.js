@@ -40,6 +40,15 @@ var getUnitData = async(input, pfp, callback) => {
     if (unitData.getAssist() != '') {
         unitEmbed.addField('Assist', unitData.getAssist());
     }
+    if (unitData.getSpecial() != '') {
+        unitEmbed.addField('Special', unitData.getSpecial());
+    }
+    var abc = ['A', 'B', 'C'];
+    abc.forEach(element => {
+        if (unitData.getPassive(element) != '') {
+            unitEmbed.addField(element, unitData.getPassive(element));
+        }
+    });
     if (unitData.getName() != 'Bramimond' || pfp == null) {
         fs.access(imagePath, fs.constants.F_OK, (err) => {
             if (!err) {
