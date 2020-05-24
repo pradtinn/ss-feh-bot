@@ -7,6 +7,7 @@ const fs = require('fs');
 const emotes = require('./emotes.js');
 const errors = require('./error_messages.js');
 const dataHandler = require('./data_handler.js');
+const webScraper = require('./web_scraper.js');
 
 const TOKEN = process.env.TOKEN;
 
