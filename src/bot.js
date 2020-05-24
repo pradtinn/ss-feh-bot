@@ -37,6 +37,9 @@ var getUnitData = async(input, pfp, callback) => {
             { name: 'Stats', value: unitData.print() },
             { name: 'Weapon', value: unitData.getWeapon() }
         );
+    if (unitData.getAssist() != '') {
+        unitEmbed.addField('Assist', unitData.getAssist());
+    }
     if (unitData.getName() != 'Bramimond' || pfp == null) {
         fs.access(imagePath, fs.constants.F_OK, (err) => {
             if (!err) {
