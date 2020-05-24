@@ -23,7 +23,7 @@ var getUnitData = async(input, pfp, callback) => {
     //var unitData = await webScraper.parseSite(website, input.getRarity(), input.getBoon(), input.getBane(), 
     //    input.getMerges(), input.getDragonflowers());
     var unitData = await dataHandler.getUnit(input.getName(), input.getRarity(), input.getBoon(), input.getBane(),
-        input.getMerges(), input.getDragonflowers())
+        input.getMerges(), input.getDragonflowers());
     var imagePath = 'Art/'+unitData.getImageFolder()+'/Face_FC.png';
     var rarityString = '';
     for (var i = 0; i < unitData.getRarity(); i++) { 
@@ -63,8 +63,8 @@ var getUnitsData = async(inputs, callback) => {
     var embed = new Discord.MessageEmbed().setColor('#04c2ac');
     for (var i = 0; i < inputs.length; i++) {
         var website = 'https://feheroes.gamepedia.com/'+inputs[i].getName();
-        unitsData[i] = await webScraper.parseSite(website, inputs[i].getRarity(), inputs[i].getBoon(), inputs[i].getBane(),
-            inputs[i].getMerges(), inputs[i].getDragonflowers());
+        unitsData[i] = await dataHandler.getUnit(input.getName(), input.getRarity(), input.getBoon(), input.getBane(),
+        input.getMerges(), input.getDragonflowers());
     }
     if (unitsData[0].getNameTitle() == unitsData[1].getNameTitle()) {
         embed
