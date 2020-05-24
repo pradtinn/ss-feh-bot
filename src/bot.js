@@ -34,7 +34,8 @@ var getUnitData = async(input, pfp, callback) => {
         .setTitle(unitData.getNameTitle())
         .setDescription(rarityString)
         .addFields(
-            { name: 'Stats', value: unitData.print() }
+            { name: 'Stats', value: unitData.print() },
+            { name: 'Weapon', value: unitData.getWeapon() }
         );
     if (unitData.getName() != 'Bramimond' || pfp == null) {
         fs.access(imagePath, fs.constants.F_OK, (err) => {
