@@ -118,7 +118,7 @@ class Unit {
     setLvl1Stats(fullStatSpread) {
         var i;
         for (i = 0; i < fullStatSpread.length; i++) {
-            var statSpread = fullStatSpread[i].split('/');
+            var statSpread = fullStatSpread[i];
             var spreadIndex = 1;
             if (statSpread.length < 2)
                 spreadIndex = 0;
