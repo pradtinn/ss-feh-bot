@@ -24,10 +24,10 @@ class Unit {
         this.growths = stat.initStatArray(names);
         this.lvl40Stats = stat.initStatArray(names);
         
-        this.weapon = Skill('');
-        this.assist = Skill('');
-        this.special = Skill('');
-        this.passives = {'A': Skill(''), 'B': Skill(''), 'C': Skill('')}
+        this.weapon = new Skill('');
+        this.assist = new Skill('');
+        this.special = new Skill('');
+        this.passives = {'A': new Skill(''), 'B': new Skill(''), 'C': new Skill('')}
 
         this.moveType;
         this.releaseDate;
