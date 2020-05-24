@@ -95,6 +95,8 @@ var getUnitsData = async(inputs, callback) => {
 
 var getSkillData = async(name, callback) => {
     var descName = await webScraper.parseSkill(name);
+    if (descName[0] == '')
+        descName[0] = name;
     var skillEmbed = new Discord.MessageEmbed()
         .setColor('#04c2ac')
         .setTitle(descName[0])
