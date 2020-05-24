@@ -47,6 +47,7 @@ module.exports = {
         unit.setReleaseDate(data[name]['releaseDate']);
         var lvl1stats = data[name]['lvl1stats'][rarity.toString()];
         var lvl1statsWithTotal = getStatsWithTotal(lvl1stats);
+        console.log(lvl1statsWithTotal);
         unit.setLvl1Stats(lvl1statsWithTotal);
         unit.setGrowths(data[name]['growths']);
         unit.setLvl40Stats();
