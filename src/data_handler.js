@@ -23,7 +23,7 @@ function getStatsWithTotal(stats) {
     for (i = 0; i < stats.length; i++) {
         var spread = stats[i].split('/');
         out.push(spread);
-        total += spread[1];
+        total += parseInt(spread[1], 10);
     }
     out.push(total)
     return out;
