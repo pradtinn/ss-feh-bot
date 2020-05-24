@@ -93,12 +93,12 @@ var getUnitsData = async(inputs, callback) => {
 }
 
 var getSkillData = async(name, callback) => {
-    var desc = await webScraper.parseSkill(name);
+    var descName = await webScraper.parseSkill(name);
     var skillEmbed = new Discord.MessageEmbed()
         .setColor('#04c2ac')
-        .setTitle(name)
+        .setTitle(descName[0])
         .addFields(
-            { name: 'Desc', value: desc }
+            { name: 'Desc', value: descName[1] }
         );
     callback(skillEmbed);
 }

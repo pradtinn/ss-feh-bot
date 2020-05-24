@@ -107,6 +107,7 @@ module.exports = {
         var websiteData = cheerio.load(result.data);
         var tables = websiteData('table.cargoTable');
         var skillType = ['A', 'B', 'C'];
+        var properName;
         var found = false;
         tables.each( function(count=0) {
             var tableData = cheerio.load(this);
@@ -120,6 +121,7 @@ module.exports = {
                         //console.log('\''+skillName+'\'', '\''+name+'\'', name.localeCompare(skillName));
                         if (name.localeCompare(skillName) == 0) {
                             //console.log('found match!');
+                            properName = rowData(this).text();
                             found = true;
                         }
                     }
@@ -137,6 +139,6 @@ module.exports = {
                 return false;
             count += 1;
         });
-        return desc;
+        return [properName, desc];
     }
 }
