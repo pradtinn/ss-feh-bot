@@ -63,8 +63,8 @@ var getUnitsData = async(inputs, callback) => {
     var embed = new Discord.MessageEmbed().setColor('#04c2ac');
     for (var i = 0; i < inputs.length; i++) {
         var website = 'https://feheroes.gamepedia.com/'+inputs[i].getName();
-        unitsData[i] = await dataHandler.getUnit(input.getName(), input.getRarity(), input.getBoon(), input.getBane(),
-        input.getMerges(), input.getDragonflowers());
+        unitsData[i] = await dataHandler.getUnit(inputs[i].getName(), inputs[i].getRarity(), inputs[i].getBoon(), inputs[i].getBane(),
+        inputs[i].getMerges(), inputs[i].getDragonflowers());
     }
     if (unitsData[0].getNameTitle() == unitsData[1].getNameTitle()) {
         embed
