@@ -45,6 +45,10 @@ module.exports = {
         unit.setMoveType(data[name]['moveType']);
         unit.setWeaponType(data[name]['weaponType']);
         unit.setReleaseDate(data[name]['releaseDate']);
+        unit.setWeapon(data[name]['weapon']);
+        unit.setAssist(data[name]['assist']);
+        unit.setSpecial(data[name]['special']);
+        unit.setPassives(data[name]['passives']);
         var lvl1stats = data[name]['lvl1stats'][rarity.toString()];
         var lvl1statsWithTotal = getStatsWithTotal(lvl1stats);
         console.log(lvl1statsWithTotal);
@@ -52,5 +56,6 @@ module.exports = {
         unit.setGrowths(data[name]['growths']);
         unit.setLvl40Stats();
         return unit;
-    }
+    },
+
 }

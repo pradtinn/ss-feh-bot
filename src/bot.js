@@ -3,11 +3,9 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const input = require('./input.js');
 var Input = input.Input;
-const webScraper = require('./web_scraper.js');
 const fs = require('fs');
 const emotes = require('./emotes.js');
 const errors = require('./error_messages.js');
-const alias_handler = require('./alias_handler.js');
 const dataHandler = require('./data_handler.js');
 
 const TOKEN = process.env.TOKEN;
@@ -19,9 +17,6 @@ bot.on('ready', () => {
 });
 
 var getUnitData = async(input, pfp, callback) => {
-    var website = 'https://feheroes.gamepedia.com/'+input.getName();
-    //var unitData = await webScraper.parseSite(website, input.getRarity(), input.getBoon(), input.getBane(), 
-    //    input.getMerges(), input.getDragonflowers());
     var unitData = await dataHandler.getUnit(input.getName(), input.getRarity(), input.getBoon(), input.getBane(),
         input.getMerges(), input.getDragonflowers());
     var imagePath = 'Art/'+unitData.getImageFolder()+'/Face_FC.png';

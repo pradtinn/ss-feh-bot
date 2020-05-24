@@ -1,7 +1,9 @@
 var stat = require('./stat.js');
+var skill = require('./skill.js');
 var date = require('./date.js');
 const emotes = require('./emotes.js');
 var Date = date.Date;
+var Skill = skill.Skill;
 
 //unit data class
 
@@ -21,6 +23,11 @@ class Unit {
         this.lvl1Stats = stat.initStatArray(names);
         this.growths = stat.initStatArray(names);
         this.lvl40Stats = stat.initStatArray(names);
+        
+        this.weapon = Skill('');
+        this.assist = Skill('');
+        this.special = Skill('');
+        this.passives = {'A': Skill(''), 'B': Skill(''), 'C': Skill('')}
 
         this.moveType;
         this.releaseDate;
@@ -64,6 +71,18 @@ class Unit {
     }
     getTotal() {
         return this.lvl40Stats[5].toString();
+    }
+    getWeapon() {
+        return this.weapon.getName();
+    }
+    getAssist() {
+        return this.assist.getName();
+    }
+    getSpecial() {
+        return this.special.getName();
+    }
+    getPassive(index) {
+        return this.passives[index].getName();
     }
     getReleaseDate() {
         return this.releaseDate;
@@ -167,6 +186,21 @@ class Unit {
             total += this.lvl40Stats[i].getValue();
         }
         this.lvl40Stats[5].changeStat(total);
+    }
+    setWeapon(weapon) {
+        this.weapon.setName(weapon);
+    }
+    setAssist(assist) {
+        this.assist.setName(assist);
+    }
+    setSpecial(special) {
+        this.special.setName(special);
+    }
+    setPassives(passives) {
+        for (var [key, value] of Object.entries(passives)) {
+            if (typeof value == 'string')
+                passives[key].setName(value);
+        }
     }
     setMoveType(moveType) {
         if (emotes.moveEmotes.hasOwnProperty(moveType)) {
