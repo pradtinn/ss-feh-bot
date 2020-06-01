@@ -54,6 +54,9 @@ class Input {
                 this.inputString = sections.join(' ');
                 this.inputString = this.removeBeginEndSpace(this.inputString);
             }
+            case 'update': {
+                this.determineA();
+            }
         }
     }
 

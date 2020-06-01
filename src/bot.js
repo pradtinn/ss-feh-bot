@@ -8,6 +8,7 @@ const emotes = require('./emotes.js');
 const errors = require('./error_messages.js');
 const dataHandler = require('./data_handler.js');
 const webScraper = require('./web_scraper.js');
+const {spawn} = require('child_process');
 
 const TOKEN = process.env.TOKEN;
 
@@ -115,6 +116,14 @@ function handleError(msg) {
         msg.channel.send(errorMessages[errIndex]);
 }
 
+function addNewUnit(name) {
+    return spawn('python', [
+        '-u',
+        'get_unit_data.py',
+        name
+    ])
+}
+
 bot.on('message', msg => {
     var message = msg.content;
     var channel = msg.channel;
@@ -176,6 +185,15 @@ bot.on('message', msg => {
                     });
                 }
                 break;
+                case 'update': {
+                    var child = addNewUnit(i.getName());
+                    child.stdout.on('data', (data) => {
+                        console.log(`stdout: ${data}`);
+                    });
+                    child.stderr.on('data', (data) => {
+                        console.log(`stderr: ${data}`)
+                    })
+                }
             }
             if (i.getReact())
                 msg.react('✅');
