@@ -186,13 +186,17 @@ bot.on('message', msg => {
                 }
                 break;
                 case 'update': {
-                    var child = addNewUnit(i.getName());
-                    child.stdout.on('data', (data) => {
-                        console.log(`stdout: ${data}`);
-                    });
-                    child.stderr.on('data', (data) => {
-                        console.log(`stderr: ${data}`)
-                    })
+                    if (/*msg.author.id == "611005635223617577" || */msg.author.id == "305397153910751242") {
+                        var child = addNewUnit(i.getName());
+                        child.stdout.on('data', (data) => {
+                            console.log(`stdout: ${data}`);
+                        });
+                        child.stderr.on('data', (data) => {
+                            console.log(`stderr: ${data}`)
+                        });
+                    } else {
+                        handleError(msg);
+                    }
                 }
             }
             if (i.getReact())
