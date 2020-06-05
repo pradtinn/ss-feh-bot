@@ -21,6 +21,6 @@ module.exports = {
         'Colorless Beast': '<:ColorlessBeast:699815679280545813>', 'Red Beast': '<:RedBeast:699815679435735131>', 'Blue Beast': '<:BlueBeast:699815411117588523>', 'Green Beast': '<:GreenBeast:699815678961647667>',
         'Colorless Breath': '<:ColorlessBreath:699815679192334407>', 'Red Breath': '<:RedBreath:699815679049597061>', 'Blue Breath': '<:BlueBreath:699815410723455027>', 'Green Breath': '<:GreenBreath:699815679292997653>',
         'Colorless Tome': '<:ColorlessTome:699815679024431145>', 'Red Tome': '<:RedTome:699815679422890044>', 'Blue Tome': '<:BlueTome:699815411193085952>', 'Green Tome': '<:GreenTome:699815679318163476>',
-        'Staff': '<:Staff:699815679410569306>'
+        'Colorless Staff': '<:Staff:699815679410569306>'
     }
 };
