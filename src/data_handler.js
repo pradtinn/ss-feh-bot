@@ -7,6 +7,10 @@ var data = JSON.parse(rawData);
 
 //holds all unit-related data
 
+function lowerCaseAliases(aliases) {
+    //TODO: given aliases return lowercase list of them
+}
+
 function searchForAlias(alias) {
     for (var [key, value] of Object.entries(data)) {
         if (value['alias'].includes(alias)) {
@@ -30,6 +34,10 @@ function getStatsWithTotal(stats) {
 }
 
 module.exports = {
+    refresh() {
+        rawData = fs.readFileSync('unit_data.json');
+        data = JSON.parse(rawData);
+    },
     getName(alias) {
         if (data.hasOwnProperty(alias)) {
             return alias;
@@ -38,6 +46,9 @@ module.exports = {
         if (name == null) {
             return '';
         }
+        return name;
+    },
+    addAlias(name, alias) {
         return name;
     },
     async getUnit(name, rarity, boon, bane, merges, dragonflowers) {
@@ -56,6 +67,5 @@ module.exports = {
         unit.setGrowths(data[name]['growths']);
         unit.setLvl40Stats();
         return unit;
-    },
-
+    }
 }

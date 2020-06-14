@@ -1,4 +1,4 @@
-const ah = require('./alias_handler.js');
+const aliasHandler = require('./alias_handler.js');
 //input class for formatting the input and getting useful data from it
 
 class Input {
@@ -29,7 +29,7 @@ class Input {
             case 'a': {
                 var numSections = this.determineA();
                 if (numSections == 2) {
-                    if (this.name.indexOf('$') != -1 || !ah.addAlias(this.name, this.alias)) {
+                    if (this.name.indexOf('$') != -1 || !aliasHandler.addAlias(this.name, this.alias)) {
                         this.name = 'ERROR';
                     }
                     else
@@ -42,7 +42,7 @@ class Input {
                 var sections = this.inputString.split('$');
                 if (sections.length == 1) {
                     this.name = sections[0].slice(1);
-                    if (ah.removeAlias(this.name))
+                    if (aliasHandler.removeAlias(this.name))
                         this.react = true;
                     else
                         this.name = 'ERROR';
@@ -145,7 +145,7 @@ class Input {
         }
         if (isNaN(this.dragonflowers) || this.dragonflowers < 0 || this.dragonflowers > 10)
             this.dragonflowers = 0;
-        this.name = ah.getProperName(this.name);
+        this.name = aliasHandler.getProperName(this.name);
         if (this.name == '')
             this.name = 'ERROR';
     }
@@ -175,7 +175,7 @@ class Input {
     }
     //get aliases from alias file
     getAliases() {
-        var aliases = ah.getAliases(this.name);
+        var aliases = aliasHandler.getAliases(this.name);
         this.output = aliases.output;
         this.name = aliases.name;
         if (this.name == '')

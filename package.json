@@ -12,6 +12,7 @@
         "dotenv": "^8.2.0",
         "firebase-admin": "^8.12.1",
         "fs": "0.0.1-security",
+        "mysql": "^2.18.1",
         "promise": "^8.1.0",
         "winston": "^3.2.1"
     },

@@ -105,6 +105,7 @@ module.exports = {
     statArrsToString: function(arr1, arr2, arr3, boon, bane, merges) {
         var i;
         var out = '';
+        var stat_width = 3;
         for (i = 0; i < arr1.length-1 && i < arr2.length-1 && i < arr3.length; i++) {
             switch(arr1[i].getName()) {
                 case boon: out += '+';
@@ -121,7 +122,7 @@ module.exports = {
             }
             out += arr1[i].getName() + ' ';
             var j;
-            for (j = 0; j < 3-arr1[i].getName().length; j++)
+            for (j = 0; j < stat_width-arr1[i].getName().length; j++)
                 out += ' ';
             out += arr1[i].toString() + ' | '+arr2[i].toString()
             if (merges < 1)

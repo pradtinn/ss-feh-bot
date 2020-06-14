@@ -1,6 +1,5 @@
 const fs = require('fs');
-const admin = require('firebase-admin');
-const service_acc = require('../service_acc.json');
+const sql = require('mysql')
 
 var rawData = fs.readFileSync('Aliases.json');
 var data = JSON.parse(rawData);
@@ -8,12 +7,16 @@ var keys = Object.keys(data);
 
 //handles alias file operations
 
-admin.initializeApp({
-    credential: admin.credential.cert(service_acc),
-    databaseURL: 'https://ss-feh-bot.firebaseio.com/'
+var con = sql.createConnection({
+    host: 'ec2-34-198-243-120.compute-1.amazonaws.com:5432',
+    user: 'rjrcwbcyxuzkby',
+    password: 'd5c3e6b0a90889a0457ae81a1da9282433a385bb3fa8e0e45e846cd21b71f07f'
 });
 
-var root = admin.database().ref();
+con.connect(function(err) {
+    if (err) throw err;
+    console.log('Connected!');
+});
 
 var filter = [ 
     'best', 'worst', 'fuck', 'bitch', 'shit', 'damn', 'crap', 'stupid', 'bad', 'good',

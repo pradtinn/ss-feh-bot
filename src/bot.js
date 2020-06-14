@@ -197,6 +197,7 @@ bot.on('message', msg => {
                     } else {
                         handleError(msg);
                     }
+                    dataHandler.refresh();
                 }
             }
             if (i.getReact())

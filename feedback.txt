@@ -1,0 +1,98 @@
+=== Skill.js
+
+	All the comments are superfluous - the things they mention are self-evident and only create clutter
+
+
+=== Unit_data.json
+
+	Mixing types in the passives section (blanks are arrays instead of strings)
+
+
+=== Date.js
+
+	Redefining Date instead of using the built-in object is odd - I'm assuming this was intentional
+	to handle errors parsing into a date, but you could do that with the built-in Date more elegantly
+
+
+	if (dateArrInt.length != 3 || this.err) {
+            this.err = true;
+        }
+
+	is a redundant statement, which is usually a good clue that you could refactor your conditions to be neater
+
+
+=== Data_handler.js
+
+	if (name == null) {
+            return '';
+        }
+        return name;
+
+	is a good opportunity for a ternary!
+
+
+	If the purpose of leaving console.logs in is for debugging, you'd be better served using try-catch blocks
+	and printing the errors
+
+
+	Idk the order of operations in javascript, but will the first lines in this file
+	be executed every time getUnit is called? If so, that'd be an easy thing to fix up to improve efficiency
+
+
+=== Unit.js
+
+	Having 6 arguments in the constructor would generally be considered "too many" and a code smell.
+	Often if you have too many arguments to a constructor, it's a good opportunity for the Builder pattern 
+	https://en.wikipedia.org/wiki/Builder_patter
+
+
+	Having a constructor that instantiates a lot of your fields to empty 
+	(requiring calls to the set functions in order to have a usable object) 
+	is colloquially referred to as an "insane object", and should generally be avoided where possible.
+
+
+	Unit has too much responsibility as an object - many methods like getCompareString, applyDragonflowers, 		applyMerges, etc. really ought to be pulled out to other classes.
+
+
+=== Web_scraper.js
+
+	A lot of the functions here would generally be considered "too long" with too many nested control statements.
+
+
+=== Stat.js
+
+ 	//return this.name+': '+this.value.toString()+'\n';
+
+	Commented line of code! Always clean up ASAP, as commented code lines linger around when other developers 	don't know if they're safe to remove.
+
+
+	3-this.value.toString().length
+
+	The "3" here would be referred to as a "magic number" since there's no way of knowing what it means unless
+	you're intimately familiar with the domain/code. Good practice is to label magic numbers by assigning them
+	to descriptively-named variables and using the variable instead
+
+
+=== alias_handler.js
+
+	Does loopThroughKeys *have* to take a callback? Maybe it does, but it's generally better to avoid using
+	them if you can, since they make code harder to read and are often misused / bug generators.
+
+
+=== input.js
+
+	const ah = require('./alias_handler.js');
+
+	It's pedantic but I would write it out as aliasHandler, single or double letter variable names should be
+	avoided unless it's like "i" in a loop or something.
+
+
+	Exporting a bag of functions instead of a class :sharenaCry:
+
+
+=== bot.js
+
+	I'm like 90% sure most of your accessors could be replaced with properties,
+	but it's been a while since I've done raw javascript
+
+
