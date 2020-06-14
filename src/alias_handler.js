@@ -8,7 +8,7 @@ var keys = Object.keys(data);
 //handles alias file operations
 
 var con = sql.createConnection({
-    host: 'ec2-34-198-243-120.compute-1.amazonaws.com:5432',
+    host: process.env.DATABASE_URL,
     user: 'rjrcwbcyxuzkby',
     password: 'd5c3e6b0a90889a0457ae81a1da9282433a385bb3fa8e0e45e846cd21b71f07f'
 });
