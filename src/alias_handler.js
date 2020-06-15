@@ -1,5 +1,5 @@
 const fs = require('fs');
-const sql = require('mysql')
+const {Client} = require('pg')
 
 var rawData = fs.readFileSync('Aliases.json');
 var data = JSON.parse(rawData);
@@ -7,16 +7,19 @@ var keys = Object.keys(data);
 
 //handles alias file operations
 
-var con = sql.createConnection({
-    host: process.env.DATABASE_URL,
-    user: 'rjrcwbcyxuzkby',
-    password: 'd5c3e6b0a90889a0457ae81a1da9282433a385bb3fa8e0e45e846cd21b71f07f'
+const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
-con.connect(function(err) {
-    if (err) throw err;
-    console.log('Connected!');
-});
+client.connect();
+
+// client.query("SELECT * FROM aliases ORDER BY Name ASC", (err, result, fields) => {
+//     if (err) throw err;
+//     console.log(result['rows']);
+// });
 
 var filter = [ 
     'best', 'worst', 'fuck', 'bitch', 'shit', 'damn', 'crap', 'stupid', 'bad', 'good',
@@ -57,6 +60,11 @@ function refresh() {
 
 module.exports = {
     getProperName(name) {
+        console.log("SELECT Alias, Name FROM aliases WHERE Alias ILIKE \"\%"+escape(name)+"\%\"");
+        client.query("SELECT Alias, Name FROM aliases WHERE Alias ILIKE \'\%"+escape(name)+"\%\'", (err, result, fields) => {
+            if (err) throw err;
+            console.log(result['rows']);
+        });
         var lowerCaseName = name.toLowerCase();
         var out = '';
         loopThroughKeys((oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase) => {
