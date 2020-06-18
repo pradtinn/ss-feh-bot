@@ -58,15 +58,49 @@ function refresh() {
     keys = Object.keys(data);
 }
 
+function queryDatabase(str) {
+    return new Promise((resolve, reject) => {
+        client.query(str, (err, res) => {
+            if (err) reject(err);
+            resolve(res);
+        })
+    });
+}
+
 module.exports = {
     getProperName(name) {
-        console.log("SELECT Alias, Name FROM aliases WHERE Alias ILIKE \"\%"+escape(name)+"\%\"");
-        client.query("SELECT Alias, Name FROM aliases WHERE Alias ILIKE \'\%"+escape(name)+"\%\'", (err, result, fields) => {
-            if (err) throw err;
-            console.log(result['rows']);
-        });
-        var lowerCaseName = name.toLowerCase();
         var out = '';
+        // const nameSearchResult = await client.query("SELECT Name FROM aliases WHERE Name LIKE \'"+escape(name)+"\'");
+        // var nameRows = nameSearchResult.rows;
+        // if (nameRows.length > 0) {
+        //     return unescape(nameRows[0]['name']);
+        // }
+        // var aliasSearchResult;
+        // queryDatabase("SELECT Alias, Name FROM aliases WHERE Alias ILIKE \'\%"+escape(name)+"\%\' OR Name LIKE \'"+escape(name)+"\'").then(result => {
+        //     aliasSearchResult = result;
+        //     // console.log(aliasSearchResult);
+        // });
+        // console.log(aliasSearchResult);
+        // client.query("SELECT Alias, Name FROM aliases WHERE Alias ILIKE \'\%"+escape(name)+"\%\' OR Name LIKE \'"+escape(name)+"\'", (err, res) => {
+        //     if (err) throw err;
+        //     aliasSearchResult = res;
+        // });
+        // var aliasRows = aliasSearchResult.rows;
+        // console.log(aliasRows);
+        // if (aliasRows.length == 0) {
+        //     return '';
+        // }
+        // for (i of aliasRows) {
+        //     if (unescape(i['name']) == name) {
+        //         return unescape(i['name']);
+        //     }
+        //     var aliases = unescape(i['alias']).toLowerCase().split('+');
+        //     if (aliases.includes(name.toLowerCase())) {
+        //         return unescape(i['name']);
+        //     }
+        // }
+        // return '';
+        var lowerCaseName = name.toLowerCase();
         loopThroughKeys((oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase) => {
             var lowerCaseData = data[oldKey].toLowerCase();
             if (lowerCaseName == lowerCaseData || oldKeysLowerCase.includes(lowerCaseName) ||
