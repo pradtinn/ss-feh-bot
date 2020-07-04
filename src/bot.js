@@ -127,6 +127,7 @@ function addNewUnit(name) {
 bot.on('message', msg => {
     var message = msg.content;
     var channel = msg.channel;
+    var author = msg.author;
     if (message.substring(0, 1) == '!') {
         if (message.substring(1) == 'heelp') {
             msg.member.createDM().then((dmchannel) => {
@@ -198,6 +199,12 @@ bot.on('message', msg => {
                         handleError(msg);
                     }
                     dataHandler.refresh();
+                }
+                break;
+                case 'calendar': {
+                    var imagePath = 'Calendar.png';
+                    const attachment = new Discord.MessageAttachment('./Calendar.png');
+                    channel.send(attachment);
                 }
             }
             if (i.getReact())

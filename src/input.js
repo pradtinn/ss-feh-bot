@@ -7,6 +7,9 @@ class Input {
         this.inputString = input;
         this.output = '';
         this.cmd = input.substr(0, input.indexOf(' '));
+        if (input.indexOf(' ') == -1) {
+            this.cmd = input;
+        }
         this.inputString = this.inputString.slice(input.indexOf(' '));
         this.rarity = 5;
         this.react = false;
