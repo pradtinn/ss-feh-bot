@@ -139,7 +139,7 @@ bot.on('message', msg => {
                 '`!c <unit 1 name>.<unit 2 name>` to compare units\n'+
                 '`!sd <passive skill name>` to look up passive skill description\n'+
                 '`!heelp` to have commands DM\'d to you\n'+
-                '`!calendar` to view this month\'s calendar'+
+                '`!calendar` to view this month\'s calendar\n'+
                 'Now that you know the commands you have no excuse for slipping up, got it?');
             });
             return;
