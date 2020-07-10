@@ -9,7 +9,6 @@ const errors = require('./error_messages.js');
 const dataHandler = require('./data_handler.js');
 const webScraper = require('./web_scraper.js');
 const { spawn } = require('child_process');
-// const { resolve } = require('path');
 
 const TOKEN = process.env.TOKEN;
 
