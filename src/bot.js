@@ -8,7 +8,8 @@ const emotes = require('./emotes.js');
 const errors = require('./error_messages.js');
 const dataHandler = require('./data_handler.js');
 const webScraper = require('./web_scraper.js');
-const {spawn} = require('child_process');
+const { spawn } = require('child_process');
+// const { resolve } = require('path');
 
 const TOKEN = process.env.TOKEN;
 
@@ -121,7 +122,52 @@ function addNewUnit(name) {
         '-u',
         'get_unit_data.py',
         name
-    ])
+    ]);
+}
+
+function lookUpWeapon(name, sendWeaponData, msg) {
+    const child = spawn('python', [
+        '-u',
+        'get_weapon.py',
+        name
+    ]);
+    child.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`);
+    });
+    child.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`);
+    });
+    child.on('exit', () => {
+        sendWeaponData(msg);
+    });
+}
+
+function sendWeaponData(msg) {
+    const weapon_file = fs.readFileSync('weapon_lookup_result.json');
+    if (weapon_file.length == 0) {
+        handleError(msg);
+        return 1;
+    }
+    const weapon_data = JSON.parse(weapon_file);
+    var owners = Object.keys(weapon_data['owners']).sort((a, b) => { return weapon_data['owners'][a] - weapon_data['owners'][b]; });
+    var owner_string = '```\n';
+    owners.forEach(value => {
+        owner_string += `${value}: ${weapon_data['owners'][value]}*\n`;
+    });
+    owner_string += '\n```';
+    const weaponEmbed = new Discord.MessageEmbed()
+        .setColor('#04c2ac')
+        .setTitle(weapon_data['name'])
+        .addField('Stats', `**Might:** ${weapon_data['might']}\n**Range:** ${weapon_data['range']}`);
+    if (weapon_data['prereq'] != 'None') {
+        weaponEmbed.addField('Prerequisite', weapon_data['prereq']);
+    }
+    if (weapon_data['desc'] != 'None') {
+        weaponEmbed.addField('Description', weapon_data['desc']);
+    }
+    weaponEmbed.addField('Owners', owner_string);
+    msg.channel.send(weaponEmbed);
+    return 0;
 }
 
 bot.on('message', msg => {
@@ -140,6 +186,7 @@ bot.on('message', msg => {
                 '`!sd <passive skill name>` to look up passive skill description\n'+
                 '`!heelp` to have commands DM\'d to you\n'+
                 '`!calendar` to view this month\'s calendar\n'+
+                '`!w <weapon name>` to look up a weapon\n'+
                 'Now that you know the commands you have no excuse for slipping up, got it?');
             });
             return;
@@ -203,9 +250,12 @@ bot.on('message', msg => {
                 }
                 break;
                 case 'calendar': {
-                    var imagePath = 'Calendar.png';
                     const attachment = new Discord.MessageAttachment('./Calendar.png');
                     channel.send(attachment);
+                }
+                break;
+                case 'w': {
+                    lookUpWeapon(i.getInputString(), sendWeaponData, msg);
                 }
             }
             if (i.getReact())
