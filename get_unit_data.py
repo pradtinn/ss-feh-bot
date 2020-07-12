@@ -79,4 +79,4 @@ print(new_unit)
 data[name] = new_unit
 
 with open('unit_data.json', 'w') as out:
-    json.dump(data, out)
+    json.dump(data, out, indent=4)
