@@ -1,16 +1,18 @@
 {
-    "name": "Iron Sword",
+    "name": "Steel Sword",
     "type": "Sword",
-    "might": "6",
+    "might": "8",
     "range": "1",
-    "prereq": "None",
+    "prereq": [
+        "Iron Sword"
+    ],
     "desc": "None",
     "owners": {
-        "Hana: Focused Samurai": "1",
+        "Hana: Focused Samurai": "2",
         "Hinata: Wild Samurai": "3",
         "Laslow: Dancing Duelist": "3",
-        "Olivia: Blushing Beauty": "1",
-        "Stahl: Viridian Knight": "1",
+        "Olivia: Blushing Beauty": "2",
+        "Stahl: Viridian Knight": "2",
         "Draug: Gentle Giant": "2"
     },
     "past_max": true

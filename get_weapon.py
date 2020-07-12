@@ -13,13 +13,19 @@ def remap_characters(string, mapping):
 
 weapon_raw = sys.argv[1]
 weapon = ''
+weapon_alt = ''
 for word in weapon_raw.split():
     if len(word) > 2:
-        word = word.capitalize()
+        if word[0] == '(':
+            word = word[0] + word[1:].capitalize()
+        else:
+            word = word.capitalize()
+    weapon_alt = '_'.join((weapon_alt, word))
     weapon = '_'.join((weapon, word))
 weapon = weapon[1:]
 
 link = ('https://feheroes.gamepedia.com/'+weapon).encode('utf-8')
+link_alt = ('https://feheroes.gamepedia.com/'+weapon_alt).encode('utf-8')
 page = requests.get(link)
 page_parser = BeautifulSoup(page.content, 'html.parser')
 result = {
@@ -27,7 +33,7 @@ result = {
     'type': '',
     'might': '',
     'range': '',
-    'prereq': '',
+    'prereq': [],
     'desc': '',
     'owners': dict(),
     'past_max': False
@@ -42,7 +48,8 @@ character_mapping = {
     '\\xc3\\x97': '*',
     '\\xe2\\x89\\xa4': '<=',
     '\\xef\\xbc\\x97': '7',
-    '\\xe2\\x89\\xa5': '>='
+    '\\xe2\\x89\\xa5': '>=',
+    '\\xe2 \\x99': '\''
 }
 
 infobox = page_parser.find('div', class_='hero-infobox')
@@ -54,9 +61,12 @@ infobox = infobox.table.tbody
 result['type'] = infobox.find('th', string='Weapon type\n').parent.td.a['title']
 result['might'] = infobox.find('th', string='Might\n').parent.td.get_text()[:-1]
 result['range'] = infobox.find('th', string='Range\n').parent.td.get_text()[:-1]
-result['prereq'] = infobox.find('span', string='Required').parent.parent.td.get_text()[:-1]
-if len(result['prereq']) == 1:
-    result['prereq'] = 'None'
+prereqs = infobox.find('span', string='Required').parent.parent.td.find_all('a')
+if len(prereqs) == 0:
+    result['prereq'] = ['None']
+else:
+    for prereq in prereqs:
+        result['prereq'].append(prereq.get_text())
 if infobox.find('th', string='Description\n') == None:
     result['desc'] = 'None'
 else:

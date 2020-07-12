@@ -159,7 +159,7 @@ function sendWeaponData(msg) {
         .setTitle(weapon_data['name'])
         .addField('Stats', `**Might:** ${weapon_data['might']}\n**Range:** ${weapon_data['range']}`);
     if (weapon_data['prereq'] != 'None') {
-        weaponEmbed.addField('Prerequisite', weapon_data['prereq']);
+        weaponEmbed.addField('Prerequisite', weapon_data['prereq'].join());
     }
     if (weapon_data['desc'] != 'None') {
         weaponEmbed.addField('Description', weapon_data['desc']);
