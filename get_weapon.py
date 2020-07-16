@@ -49,7 +49,8 @@ character_mapping = {
     '\\xe2\\x89\\xa4': '<=',
     '\\xef\\xbc\\x97': '7',
     '\\xe2\\x89\\xa5': '>=',
-    '\\xe2 \\x99': '\''
+    '\\xe2 \\x99': '\'',
+    '\\xef\\xbc\\x96': '6'
 }
 
 infobox = page_parser.find('div', class_='hero-infobox')
