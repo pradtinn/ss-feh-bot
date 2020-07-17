@@ -164,7 +164,12 @@ function sendWeaponData(msg) {
     if (weapon_data['desc'] != 'None') {
         weaponEmbed.addField('Description', weapon_data['desc']);
     }
-    weaponEmbed.addField('Owners', owner_string);
+    if (weapon_data['refine'] != 'None') {
+        weaponEmbed.addField('Refine', weapon_data['refine']);
+    }
+    if (Object.keys(weapon_data['owners']).length > 0) {
+        weaponEmbed.addField('Owners', owner_string);
+    }
     msg.channel.send(weaponEmbed);
     return 0;
 }

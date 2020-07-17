@@ -35,6 +35,7 @@ result = {
     'range': '',
     'prereq': [],
     'desc': '',
+    'refine': '',
     'owners': dict(),
     'past_max': False
 }
@@ -74,29 +75,39 @@ else:
     result['desc'] = infobox.find('th', string='Description\n').parent.td.get_text().encode('utf-8', errors='replace')[:-1]
     result['desc'] = remap_characters(result['desc'], character_mapping)
     result['desc'] = result['desc'][2:-1]
+refine = page_parser.find('span', id='Upgrades')
+if refine == None:
+    result['refine'] = 'None'
+else:
+    refine = refine.parent.next_sibling.next_sibling.next_sibling.next_sibling.find('span', style='color:#528C34')
+    if refine == None:
+        result['refine'] = 'None'
+    else:
+        result['refine'] = remap_characters(refine.get_text(), character_mapping)
 
 owner_table = page_parser.find('span', id='List_of_owners').parent.next_sibling.next_sibling.tbody
-for tr in owner_table.find_all('tr')[1:]:
-    td_count = 0
-    owner_name = ''
-    rarity = ''
-    for td in tr.find_all('td'):
-        if td_count == 0:
-            owner_name = td.div.a['title']
+if owner_table != None:
+    for tr in owner_table.find_all('tr')[1:]:
+        td_count = 0
+        owner_name = ''
+        rarity = ''
+        for td in tr.find_all('td'):
+            if td_count == 0:
+                owner_name = td.div.a['title']
+            else:
+                if (td.find('a', class_='mw-selflink') != None):
+                    rarity = td.a.next_sibling.next_sibling
+            td_count += 1
+        if not result['past_max']:
+            result['owners'][owner_name] = rarity
+            if len(result['owners']) > MAX_OWNERS:
+                result['past_max'] = True 
         else:
-            if (td.find('a', class_='mw-selflink') != None):
-                rarity = td.a.next_sibling.next_sibling
-        td_count += 1
-    if not result['past_max']:
-        result['owners'][owner_name] = rarity
-        if len(result['owners']) > MAX_OWNERS:
-            result['past_max'] = True 
-    else:
-        for o, r in result['owners'].items():
-            if rarity < r:
-                result['owners'].pop(o)
-                result['owners'][owner_name] = rarity
-                break
+            for o, r in result['owners'].items():
+                if rarity < r:
+                    result['owners'].pop(o)
+                    result['owners'][owner_name] = rarity
+                    break
 
 # print(result)
 with open('weapon_lookup_result.json', 'w') as file:

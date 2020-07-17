@@ -1,19 +1,14 @@
 {
-    "name": "Steel Sword",
+    "name": "Armorsmasher+",
     "type": "Sword",
-    "might": "8",
+    "might": "14",
     "range": "1",
     "prereq": [
-        "Iron Sword"
+        "Armorsmasher",
+        "Armorslayer+"
     ],
-    "desc": "None",
-    "owners": {
-        "Hana: Focused Samurai": "2",
-        "Hinata: Wild Samurai": "3",
-        "Laslow: Dancing Duelist": "3",
-        "Olivia: Blushing Beauty": "2",
-        "Stahl: Viridian Knight": "2",
-        "Draug: Gentle Giant": "2"
-    },
-    "past_max": true
+    "desc": "Effective against armored foes.",
+    "refine": "Neutralizes armored foes' bonuses (from skills like Fortify, Rally, etc.) during combat.",
+    "owners": {},
+    "past_max": false
 }

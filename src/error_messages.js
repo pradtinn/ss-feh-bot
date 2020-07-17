@@ -25,6 +25,7 @@ module.exports = {
         'Don\'t even think about it.',
         'When you need help - and you will - don\'t come crying back to me.',
         'You\'re despicable...',
-        'Hold a grudge if you must.'
+        'Hold a grudge if you must.',
+        'Sorry, that won\'t ever make it into the game'
     ]
 }
