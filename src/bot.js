@@ -178,10 +178,21 @@ bot.on('message', msg => {
     var message = msg.content;
     var channel = msg.channel;
     var author = msg.author;
+    if (message.toLowerCase().includes('hilda')) {
+        const child = spawn('python', [
+            '-u',
+            'marianne_art.py',
+            'hilda'
+        ]);
+        child.stderr.on('data', (image_link) => {
+            channel.send(`${image_link}`)
+        })
+    }
     if (message.toLowerCase().includes('marianne')) {
         const child = spawn('python', [
             '-u',
-            'marianne_art.py'
+            'marianne_art.py',
+            'marianne'
         ]);
         child.stderr.on('data', (image_link) => {
             channel.send(`${image_link}`)

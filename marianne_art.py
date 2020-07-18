@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import time
 import json
 import random
+import sys
 
 # img_link = img['src']
 # selected_img_link = 'https://safebooru.org/index.php?page=post&s=view&id='+img_link[img_link.index('?')+1:]
@@ -24,7 +25,9 @@ import random
 # with open('marianne_art.json', 'w') as file:
 #     json.dump(data, file)
 
-with open('marianne_art.json', 'r') as file:
+filename = sys.argv[1]+'_art.json'
+
+with open(filename, 'r') as file:
     image_pids = json.load(file)['pids']
 
 img_index = random.randint(0, len(image_pids)-1)
