@@ -270,12 +270,12 @@ bot.on('message', msg => {
                     ]);
                     child.stdout.on('data', (data) => {
                         console.log(`${data}`);
-                    })
-                    child.stderr.on('data', (image_link) => {
-                        if (image_link.includes('safebooru')) {
-                            channel.send(`${image_link}`);
-                        } else {
-                            console.log(`stderr: {${image_link}}`);
+                    });
+                    child.stderr.on('data', (data) => {
+                        if (data.includes('safebooru')) {
+                            channel.send(`${data}`);
+                        } else if (data.includes('ERROR')) {
+                            console.log('ERROR');
                             handleError(msg);
                         }
                     })

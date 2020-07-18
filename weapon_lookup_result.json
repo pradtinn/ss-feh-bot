@@ -1,14 +1,15 @@
 {
-    "name": "Armorsmasher+",
-    "type": "Sword",
+    "name": "Winds of Silesse",
+    "type": "Green Tome",
     "might": "14",
-    "range": "1",
+    "range": "2",
     "prereq": [
-        "Armorsmasher",
-        "Armorslayer+"
+        "Rexcalibur"
     ],
-    "desc": "Effective against armored foes.",
-    "refine": "Neutralizes armored foes' bonuses (from skills like Fortify, Rally, etc.) during combat.",
-    "owners": {},
+    "desc": "Grants Spd+3. If unit is not adjacent to an ally, grants Atk/Spd+6 to unit during combat.",
+    "refine": "None",
+    "owners": {
+        "Ced: Hero on the Wind": "5"
+    },
     "past_max": false
 }
