@@ -178,7 +178,7 @@ bot.on('message', msg => {
     var message = msg.content;
     var channel = msg.channel;
     var author = msg.author;
-    if (author == '305397153910751242' && message.toLowerCase().includes('marianne')) {
+    if (message.toLowerCase().includes('marianne')) {
         console.log('message from prad');
         const child = spawn('python', [
             '-u',
