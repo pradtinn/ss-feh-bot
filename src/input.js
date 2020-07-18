@@ -53,6 +53,7 @@ class Input {
             }
             break;
             case 'w':
+            case 'gib':
             case 'sd': {
                 var sections = this.inputString.split(' ');
                 this.inputString = sections.join(' ');

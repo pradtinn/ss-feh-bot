@@ -178,26 +178,6 @@ bot.on('message', msg => {
     var message = msg.content;
     var channel = msg.channel;
     var author = msg.author;
-    if (message.toLowerCase().includes('hilda')) {
-        const child = spawn('python', [
-            '-u',
-            'marianne_art.py',
-            'hilda'
-        ]);
-        child.stderr.on('data', (image_link) => {
-            channel.send(`${image_link}`)
-        })
-    }
-    if (message.toLowerCase().includes('marianne')) {
-        const child = spawn('python', [
-            '-u',
-            'marianne_art.py',
-            'marianne'
-        ]);
-        child.stderr.on('data', (image_link) => {
-            channel.send(`${image_link}`)
-        })
-    }
     if (message.substring(0, 1) == '!') {
         if (message.substring(1) == 'heelp') {
             msg.member.createDM().then((dmchannel) => {
@@ -280,6 +260,25 @@ bot.on('message', msg => {
                 break;
                 case 'w': {
                     lookUpWeapon(i.getInputString(), sendWeaponData, msg);
+                }
+                break;
+                case 'gib': {
+                    const child = spawn('python', [
+                        '-u',
+                        'art.py',
+                        i.getInputString()
+                    ]);
+                    child.stdout.on('data', (data) => {
+                        console.log(`${data}`);
+                    })
+                    child.stderr.on('data', (image_link) => {
+                        if (image_link.includes('safebooru')) {
+                            channel.send(`${image_link}`);
+                        } else {
+                            console.log(`stderr: {${image_link}}`);
+                            handleError(msg);
+                        }
+                    })
                 }
             }
             if (i.getReact())
