@@ -179,13 +179,11 @@ bot.on('message', msg => {
     var channel = msg.channel;
     var author = msg.author;
     if (message.toLowerCase().includes('marianne')) {
-        console.log('message from prad');
         const child = spawn('python', [
             '-u',
             'marianne_art.py'
         ]);
         child.stderr.on('data', (image_link) => {
-            console.log(`stderr: ${image_link}`);
             channel.send(`${image_link}`)
         })
     }
