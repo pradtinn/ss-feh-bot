@@ -178,6 +178,9 @@ bot.on('message', msg => {
     var message = msg.content;
     var channel = msg.channel;
     var author = msg.author;
+    if (author == "611005635223617577" && message.includes('voice')) {
+        channel.send("Mina you're forbidden from talking about voices"); 
+    }
     if (message.substring(0, 1) == '!') {
         if (message.substring(1) == 'heelp') {
             msg.member.createDM().then((dmchannel) => {
