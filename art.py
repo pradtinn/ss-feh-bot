@@ -62,6 +62,10 @@ print('Page status code: {}'.format(actual_page.status_code))
 if actual_page.status_code == 404:
     actual_link_jpg = sample_link.replace('samples', 'images').replace('sample_', '')
     actual_link_jpg = actual_link_jpg[:actual_link_jpg.index('?')]
+    actual_page = requests.get(actual_link_jpg)
+    if actual_page.status_code == 404:
+        print('No proper image is found, returning the preview instead: {}'.format(sample_link))
+        exit(sample_link)
     print('Actual link found: {}'.format(actual_link_jpg))
     exit(actual_link_jpg)
 print('Actual link found: {}'.format(actual_link_png))
