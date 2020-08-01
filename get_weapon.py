@@ -20,9 +20,15 @@ for word in weapon_raw.split():
             word = word[0] + word[1:].capitalize()
         else:
             word = word.capitalize()
+        try:
+            dashIndex = word.find('-', 0, len(word)-1)
+            word = word[:dashIndex+1] + word[dashIndex+1:].capitalize()
+        except ValueError:
+            pass
     weapon_alt = '_'.join((weapon_alt, word))
     weapon = '_'.join((weapon, word))
 weapon = weapon[1:]
+weapon = weapon.replace('’', '\'')
 
 link = ('https://feheroes.gamepedia.com/'+weapon).encode('utf-8')
 link_alt = ('https://feheroes.gamepedia.com/'+weapon_alt).encode('utf-8')

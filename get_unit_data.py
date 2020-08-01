@@ -62,6 +62,7 @@ skill_types = ['Weapons', 'Assists', 'Specials', 'Passives']
 skill_to_data_rep = {'Weapons': 'weapon', 'Assists': 'assist', 'Specials': 'special', 'Passives': 'passives'}
 for skill in skill_types:
     skill_h3 = page_parser.find(id=skill)
+    print(skill, skill_h3)
     next_element = skill_h3.parent.next_sibling.next_sibling
     if next_element.name != 'div':
         if skill != 'Passives':

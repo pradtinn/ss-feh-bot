@@ -1,15 +1,15 @@
 {
-    "name": "Winds of Silesse",
-    "type": "Green Tome",
+    "name": "Athame",
+    "type": "Red Dagger",
     "might": "14",
     "range": "2",
     "prereq": [
-        "Rexcalibur"
+        "Silver Dagger"
     ],
-    "desc": "Grants Spd+3. If unit is not adjacent to an ally, grants Atk/Spd+6 to unit during combat.",
+    "desc": "Grants Res+3. At start of combat, if foe's HP < 100%, grants Atk/Spd+5 during combat, and if foe initiates combat, unit can counterattack before foe's first attack.Effect: [ Dagger 7 ]  [ Dagger 7 ] After combat, if unit attacked, inflicts Def/Res-7 on target and foes within 2 spaces of target through their next actions.",
     "refine": "None",
     "owners": {
-        "Ced: Hero on the Wind": "5"
+        "Kronya: Gleaming Blade": "5"
     },
     "past_max": false
 }

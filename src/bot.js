@@ -136,8 +136,11 @@ function lookUpWeapon(name, sendWeaponData, msg) {
     child.stderr.on('data', (data) => {
         console.log(`stderr: ${data}`);
     });
-    child.on('exit', () => {
-        sendWeaponData(msg);
+    child.on('exit', (code) => {
+        if (code == 0)
+            sendWeaponData(msg);
+        else 
+            handleError(msg);
     });
 }
 
