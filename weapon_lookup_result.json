@@ -1,15 +1,15 @@
 {
-    "name": "Resolute Blade",
-    "type": "Sword",
-    "might": "16",
-    "range": "1",
+    "name": "Sky Maiougi+",
+    "type": "Red Dagger",
+    "might": "12",
+    "range": "2",
     "prereq": [
-        "Wo Dao"
+        "Sky Maiougi"
     ],
-    "desc": "Grants Atk+3. Deals +10 damage when Special triggers.\n",
-    "refine": "*If unit's Spd > foe's Spd, deals damage = 70% of difference between stats. (Maximum bonus of +7 damage. Combos with Phantom Spd.)*",
+    "desc": "Effective against armored foes. Disables unit's and foe's skills that change attack priority. After combat, if unit attacked, inflicts Def/Res-7 on target and foes within 2 spaces of target through their next actions.\n",
+    "refine": "None",
     "owners": {
-        "Mia: Lady of Blades": "5"
+        "Ryoma: Dancing Samurai": "5"
     },
     "past_max": false
 }

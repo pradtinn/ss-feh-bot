@@ -31,6 +31,7 @@ weapon = weapon[1:]
 weapon = weapon.replace('’', '\'')
 
 link = ('https://feheroes.gamepedia.com/'+weapon).encode('utf-8')
+print(link)
 link_alt = ('https://feheroes.gamepedia.com/'+weapon_alt).encode('utf-8')
 page = requests.get(link)
 page_parser = BeautifulSoup(page.content, 'html.parser')
@@ -91,10 +92,11 @@ refine = page_parser.find('span', id='Upgrades')
 if refine == None:
     result['refine'] = 'None'
 else:
-    refine = refine.parent.next_sibling.next_sibling.next_sibling.next_sibling.find('span', style='color:#528C34').parent
+    refine = refine.parent.next_sibling.next_sibling.next_sibling.next_sibling.find('span', style='color:#528C34')
     if refine == None:
         result['refine'] = 'None'
     else:
+        refine = refine.parent
         base_eff_desc = ''
         temp = refine.next_element
         while (temp.name != 'span'):
