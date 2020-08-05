@@ -57,7 +57,8 @@ character_mapping = {
     '\\xef\\xbc\\x97': '7',
     '\\xe2\\x89\\xa5': '>=',
     '\\xe2 \\x99': '\'',
-    '\\xef\\xbc\\x96': '6'
+    '\\xef\\xbc\\x96': '6',
+    '<br/>': '\n'
 }
 
 infobox = page_parser.find('div', class_='hero-infobox')
@@ -78,18 +79,33 @@ else:
 if infobox.find('th', string='Description\n') == None:
     result['desc'] = 'None'
 else:
-    result['desc'] = infobox.find('th', string='Description\n').parent.td.get_text().encode('utf-8', errors='replace')[:-1]
-    result['desc'] = remap_characters(result['desc'], character_mapping)
-    result['desc'] = result['desc'][2:-1]
+    td = infobox.find('th', string='Description\n').parent.td
+    desc = ''
+    for child in td.children:
+        if child.string != None:
+            desc += remap_characters(child.string, character_mapping)+'\n'
+    td = td.get_text().encode('utf-8', errors='replace')[:-1]
+    result['desc'] = remap_characters(desc, character_mapping)
+    result['desc'] = result['desc'][:-1]
 refine = page_parser.find('span', id='Upgrades')
 if refine == None:
     result['refine'] = 'None'
 else:
-    refine = refine.parent.next_sibling.next_sibling.next_sibling.next_sibling.find('span', style='color:#528C34')
+    refine = refine.parent.next_sibling.next_sibling.next_sibling.next_sibling.find('span', style='color:#528C34').parent
     if refine == None:
         result['refine'] = 'None'
     else:
-        result['refine'] = remap_characters(refine.get_text(), character_mapping)
+        base_eff_desc = ''
+        temp = refine.next_element
+        while (temp.name != 'span'):
+            base_eff_desc += remap_characters(temp, character_mapping)
+            temp = temp.next_element
+        if (base_eff_desc != result['desc']):
+            result['refine'] = remap_characters(base_eff_desc, character_mapping)
+        else:
+            result['refine'] = ''
+        refine = refine.span
+        result['refine'] += '*'+remap_characters(refine.get_text(), character_mapping)+'*'
 
 owner_table = page_parser.find('span', id='List_of_owners').parent.next_sibling.next_sibling.tbody
 if owner_table != None:

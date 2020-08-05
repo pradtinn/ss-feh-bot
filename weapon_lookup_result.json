@@ -1,15 +1,15 @@
 {
-    "name": "Athame",
-    "type": "Red Dagger",
-    "might": "14",
-    "range": "2",
+    "name": "Resolute Blade",
+    "type": "Sword",
+    "might": "16",
+    "range": "1",
     "prereq": [
-        "Silver Dagger"
+        "Wo Dao"
     ],
-    "desc": "Grants Res+3. At start of combat, if foe's HP < 100%, grants Atk/Spd+5 during combat, and if foe initiates combat, unit can counterattack before foe's first attack.Effect: [ Dagger 7 ]  [ Dagger 7 ] After combat, if unit attacked, inflicts Def/Res-7 on target and foes within 2 spaces of target through their next actions.",
-    "refine": "None",
+    "desc": "Grants Atk+3. Deals +10 damage when Special triggers.\n",
+    "refine": "*If unit's Spd > foe's Spd, deals damage = 70% of difference between stats. (Maximum bonus of +7 damage. Combos with Phantom Spd.)*",
     "owners": {
-        "Kronya: Gleaming Blade": "5"
+        "Mia: Lady of Blades": "5"
     },
     "past_max": false
 }
