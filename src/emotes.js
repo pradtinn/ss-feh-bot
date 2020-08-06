@@ -21,6 +21,10 @@ module.exports = {
         'Colorless Beast': '<:ColorlessBeast:699815679280545813>', 'Red Beast': '<:RedBeast:699815679435735131>', 'Blue Beast': '<:BlueBeast:699815411117588523>', 'Green Beast': '<:GreenBeast:699815678961647667>',
         'Colorless Breath': '<:ColorlessBreath:699815679192334407>', 'Red Breath': '<:RedBreath:699815679049597061>', 'Blue Breath': '<:BlueBreath:699815410723455027>', 'Green Breath': '<:GreenBreath:699815679292997653>',
         'Colorless Tome': '<:ColorlessTome:699815679024431145>', 'Red Tome': '<:RedTome:699815679422890044>', 'Blue Tome': '<:BlueTome:699815411193085952>', 'Green Tome': '<:GreenTome:699815679318163476>',
-        'Colorless Staff': '<:Staff:699815679410569306>'
+        'Colorless Staff': '<:Staff:699815679410569306>',
+        'All Bows': '<:ColorlessBow:699815679355912234><:RedBow:699815679356043394><:BlueBow:699815411096617073><:GreenBow:699815679276220456>',
+        'All Daggers': '<:ColorlessDagger:699815679339003984><:RedDagger:699815679330615327><:BlueDagger:699815410954141697><:GreenDagger:699815679200854077>',
+        'All Breaths': '<:ColorlessBreath:699815679192334407><:RedBreath:699815679049597061><:BlueBreath:699815410723455027><:GreenBreath:699815679292997653>',
+        'All Beasts': '<:ColorlessBeast:699815679280545813><:RedBeast:699815679435735131><:BlueBeast:699815411117588523><:GreenBeast:699815678961647667>'
     }
 };

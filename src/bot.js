@@ -159,7 +159,8 @@ function sendWeaponData(msg) {
     owner_string += '\n```';
     const weaponEmbed = new Discord.MessageEmbed()
         .setColor('#04c2ac')
-        .setTitle(weapon_data['name'])
+        .setTitle(weapon_data['name']+' '+emotes['weaponEmotes'][weapon_data['type']])
+        // .setThumbnail(weapon_data['image-link'])
         .addField('Stats', `**Might:** ${weapon_data['might']}\n**Range:** ${weapon_data['range']}`);
     if (weapon_data['prereq'] != 'None') {
         weaponEmbed.addField('Prerequisite', weapon_data['prereq'].join());
@@ -172,6 +173,9 @@ function sendWeaponData(msg) {
     }
     if (Object.keys(weapon_data['owners']).length > 0) {
         weaponEmbed.addField('Owners', owner_string);
+    }
+    if (weapon_data['image-link'] != '') {
+        weaponEmbed.setThumbnail(weapon_data['image-link']);
     }
     msg.channel.send(weaponEmbed);
     return 0;

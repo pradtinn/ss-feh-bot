@@ -31,7 +31,6 @@ weapon = weapon[1:]
 weapon = weapon.replace('’', '\'')
 
 link = ('https://feheroes.gamepedia.com/'+weapon).encode('utf-8')
-print(link)
 link_alt = ('https://feheroes.gamepedia.com/'+weapon_alt).encode('utf-8')
 page = requests.get(link)
 page_parser = BeautifulSoup(page.content, 'html.parser')
@@ -44,7 +43,8 @@ result = {
     'desc': '',
     'refine': '',
     'owners': dict(),
-    'past_max': False
+    'past_max': False,
+    'image-link': '' 
 }
 MAX_OWNERS = 5
 character_mapping = {
@@ -68,7 +68,21 @@ if infobox == None:
     exit(1)
 infobox = infobox.table.tbody
 # print(infobox.prettify().encode('utf-8', 'ignore'))
+image = infobox.find('a', class_='image')
+if image != None:
+    image = image.img['src']
+    result['image-link'] = image[:image.find('?')]
 result['type'] = infobox.find('th', string='Weapon type\n').parent.td.a['title']
+if 'bow' in result['type']:
+    result['type'] = 'All Bows'
+elif 'Dagger' in result['type']:
+    result['type'] = 'All Daggers'
+elif 'Breath' in result['type']:
+    result['type'] = 'All Breaths'
+elif 'Beast' in result['type']:
+    result['type'] = 'All Beasts'
+elif 'Staff' in result['type']:
+    result['type'] = 'Colorless Staff'
 result['might'] = infobox.find('th', string='Might\n').parent.td.get_text()[:-1]
 result['range'] = infobox.find('th', string='Range\n').parent.td.get_text()[:-1]
 prereqs = infobox.find('span', string='Required').parent.parent.td.find_all('a')
