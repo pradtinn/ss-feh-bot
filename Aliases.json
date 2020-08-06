@@ -310,7 +310,7 @@
     "Spring Loki": "Loki:_Spring_Trickster",
     "Loki": "Loki:_The_Trickster",
     "Bride Louise": "Louise:_Eternal_Devotion",
-    "Rudolf": "Rudolf:_Emperor_of_Rigel",
+    "Valentine's Rudolf": "Rudolf:_Emperor_of_Rigel",
     "Brave Lucina": "Lucina:_Brave_Princess",
     "Valentine's Roy+LA Roy": "Roy:_Youthful_Gifts",
     "Legendary Lucina": "Lucina:_Glorious_Archer",
@@ -546,5 +546,10 @@
     "FKris+F!Kris+Female Kris": "Kris:_Unsung_Hero",
     "Eremiya": "Eremiya:_Bishop_of_Woe",
     "Hel": "Hel:_Death_Sovereign",
-    "Brave Eliwood": "Eliwood:_Marquess_Pherae"
+    "Brave Eliwood": "Eliwood:_Marquess_Pherae",
+    "Pirate Brigid": "Brigid:_Orgahil_Pirate",
+    "Pirate Tibarn": "Tibarn:_Shipless_Pirate",
+    "Pirate Geese": "Geese:_A_Life_at_Sea",
+    "Harmonic Veronica+Harmonic Vero+Duo Veronica+Pirate Veronica+Pirate Vero": "Veronica:_Harmonic_Pirates",
+    "Pirate Darros+ProZD": "Darros:_Seawalker"
 }
