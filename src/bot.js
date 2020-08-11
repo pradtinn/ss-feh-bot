@@ -240,6 +240,17 @@ bot.on('message', msg => {
                 } 
                 break;
                 case 'sd': {
+                    var child = spawn('python', [
+                        '-u',
+                        'get_skill.py',
+                        i.getInputString()
+                    ]);
+                    child.stdout.on('data', (data) => {
+                        console.log(`stdout: ${data}`);
+                    });
+                    child.stderr.on('data', (data) => {
+                        console.log(`stderr: ${data}`);
+                    });
                     getSkillData(i.getInputString(), (embed) => {
                         channel.send(embed);
                     });
