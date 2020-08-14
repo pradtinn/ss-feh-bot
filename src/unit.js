@@ -220,16 +220,20 @@ class Unit {
         return false;
     }
     verifyDragonflowers() {
-        if (this.moveType != 'Infantry') {
-            if (this.dragonflowers > 5) {
-                console.log('ERROR: Dragonflowers more than maximum, reverting to +5');
+        if (this.dragonflowers > 5) {
+            if (this.releaseDate.compare(new Date('2020-8-18')) >= 0) {
                 this.dragonflowers = 5;
             }
-        } else if (this.dragonflowers > 5) {
+        } else if (this.moveType != 'Infantry') {
+            if (this.dragonflowers > 10) {
+                console.log('ERROR: Dragonflowers more than maximum, reverting to +10');
+                this.dragonflowers = 10;
+            }
+        } else if (this.dragonflowers > 15) {
             var tenDFCutoff = new Date('2019-2-20');
             if (this.releaseDate.compare(tenDFCutoff) >= 0) {
-                console.log('ERROR: Dragonflowers more than maximum, reverting to +5');
-                this.dragonflowers = 5;
+                console.log('ERROR: Dragonflowers more than maximum, reverting to +10');
+                this.dragonflowers = 10;
             }
         }
     }
@@ -238,6 +242,16 @@ class Unit {
             return stat.compare(a, b);
         });
         switch(this.dragonflowers) {
+            case 15:
+                stat.changeMultipleStats(this.lvl1Stats, [1, 1], [4, 5]);
+            case 14:
+                stat.changeMultipleStats(this.lvl1Stats, [1, 1], [3, 5]);
+            case 13:
+                stat.changeMultipleStats(this.lvl1Stats, [1, 1], [2, 5]);
+            case 12:
+                stat.changeMultipleStats(this.lvl1Stats, [1, 1], [1, 5]);
+            case 11:
+                stat.changeMultipleStats(this.lvl1Stats, [1, 1], [0, 5]);
             case 10:
                 stat.changeMultipleStats(this.lvl1Stats, [1, 1], [4, 5]);
             case 9:

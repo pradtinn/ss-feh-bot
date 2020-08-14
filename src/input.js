@@ -149,7 +149,7 @@ class Input {
             this.boon = '';
             this.bane = '';
         }
-        if (isNaN(this.dragonflowers) || this.dragonflowers < 0 || this.dragonflowers > 10)
+        if (isNaN(this.dragonflowers) || this.dragonflowers < 0 || this.dragonflowers > 15)
             this.dragonflowers = 0;
         this.name = aliasHandler.getProperName(this.name);
         if (this.name == '')
