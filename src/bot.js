@@ -7,8 +7,19 @@ const fs = require('fs');
 const emotes = require('./emotes.js');
 const errors = require('./error_messages.js');
 const dataHandler = require('./data_handler.js');
+const aliasHandler = require('./alias_handler.js');
 const webScraper = require('./web_scraper.js');
 const { spawn } = require('child_process');
+const { Client } = require('pg');
+
+const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
+
+client.connect();
 
 const TOKEN = process.env.TOKEN;
 
@@ -206,9 +217,22 @@ bot.on('message', msg => {
         if (i.getName() != 'ERROR') {
             switch(i.getCmd()) {
                 case 'h': {
-                    getUnitData(i, msg.author.avatarURL(), (unitEmbed) => {
-                        channel.send(unitEmbed);
-                    });
+                    const name = "'"+i.getName().replace(/'/g, "''")+"'";
+                    client.query(`SELECT "FIND_UNIT"(${name})`)
+                        .then(result => {
+                            const find = result['rows'][0]['FIND_UNIT'];
+                            i.verifyValues(find);
+                            if (i.getName() != 'ERROR') {
+                                getUnitData(i, msg.author.avatarURL(), (unitEmbed) => {
+                                    channel.send(unitEmbed);
+                                });
+                            } else
+                                handleError(msg);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                            handleError(msg);
+                        });
                 }
                 break;
                 case 'a': {

@@ -25,7 +25,6 @@ class Input {
                 this.insertSpaces();
                 this.splitString();
                 this.formatIVs();
-                this.verifyValues();
                 this.react = false;
             }
             break;
@@ -140,7 +139,7 @@ class Input {
         }
     }
     //check if values given are valid
-    verifyValues() {
+    verifyValues(name) {
         if (isNaN(this.rarity) || this.rarity < 1 || this.rarity > 5)
             this.rarity = 5;
         if (isNaN(this.merge) || this.merge < 0 || this.merge > 10)
@@ -151,8 +150,8 @@ class Input {
         }
         if (isNaN(this.dragonflowers) || this.dragonflowers < 0 || this.dragonflowers > 15)
             this.dragonflowers = 0;
-        this.name = aliasHandler.getProperName(this.name);
-        if (this.name == '')
+        this.name = name;
+        if (this.name == null)
             this.name = 'ERROR';
     }
 

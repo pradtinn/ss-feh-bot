@@ -16,9 +16,36 @@ const client = new Client({
 
 client.connect();
 
-// client.query("SELECT * FROM aliases ORDER BY Name ASC", (err, result, fields) => {
-//     if (err) throw err;
-//     console.log(result['rows']);
+// Object.entries(data).forEach(entry => {
+//     let aliasesArr = entry[0].split('+');
+//     while (aliasesArr.length > 5) {
+//         aliasesArr.pop();
+//     }
+//     let i = 1;
+//     let aliases = "";
+//     aliasesArr.forEach(val => {
+//         if (i != 1)
+//             aliases += ", "
+//         aliases += "'"+val.replace(/'/g, "''")+"'";
+//         i++;
+//     });
+//     const unit = entry[1].replace(/'/g, "''");
+//     let columns = "unit, ";
+//     i = 1;
+//     aliases.split(", ").forEach(val => {
+//         if (i < 6) {
+//             if (i != 1)
+//                 columns += ", ";
+//             columns += "alias"+i;
+//             i++;
+//         }
+//     });
+//     client.query(`INSERT INTO aliases (${columns}) VALUES ('${unit}', ${aliases})`, (err) => {
+//         if (err) {
+//             console.log(aliases);
+//             console.log(err);
+//         }
+//     });
 // });
 
 var filter = [ 
@@ -68,49 +95,31 @@ function queryDatabase(str) {
 }
 
 module.exports = {
-    getProperName(name) {
-        var out = '';
-        // const nameSearchResult = await client.query("SELECT Name FROM aliases WHERE Name LIKE \'"+escape(name)+"\'");
-        // var nameRows = nameSearchResult.rows;
-        // if (nameRows.length > 0) {
-        //     return unescape(nameRows[0]['name']);
-        // }
-        // var aliasSearchResult;
-        // queryDatabase("SELECT Alias, Name FROM aliases WHERE Alias ILIKE \'\%"+escape(name)+"\%\' OR Name LIKE \'"+escape(name)+"\'").then(result => {
-        //     aliasSearchResult = result;
-        //     // console.log(aliasSearchResult);
-        // });
-        // console.log(aliasSearchResult);
-        // client.query("SELECT Alias, Name FROM aliases WHERE Alias ILIKE \'\%"+escape(name)+"\%\' OR Name LIKE \'"+escape(name)+"\'", (err, res) => {
-        //     if (err) throw err;
-        //     aliasSearchResult = res;
-        // });
-        // var aliasRows = aliasSearchResult.rows;
-        // console.log(aliasRows);
-        // if (aliasRows.length == 0) {
-        //     return '';
-        // }
-        // for (i of aliasRows) {
-        //     if (unescape(i['name']) == name) {
-        //         return unescape(i['name']);
+    async getProperName(name) {
+        name = "'"+name.replace(/'/g, "''")+"'";
+        client.query(`SELECT "FIND_UNIT"(${name})`)
+            .then(result => {
+                const find = result['rows'][0]['FIND_UNIT'];
+                console.log(find);
+                if (find == null)
+                    return 'ERROR';
+                return find;
+            })
+            .catch(error => {
+                return 'ERROR';
+            });
+        // var out = '';
+        // var lowerCaseName = name.toLowerCase();
+        // loopThroughKeys((oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase) => {
+        //     var lowerCaseData = data[oldKey].toLowerCase();
+        //     if (lowerCaseName == lowerCaseData || oldKeysLowerCase.includes(lowerCaseName) ||
+        //         lowerCaseData.replace(/_/g, ' ') == lowerCaseName) {
+        //         out = data[oldKey];
+        //         return true;
         //     }
-        //     var aliases = unescape(i['alias']).toLowerCase().split('+');
-        //     if (aliases.includes(name.toLowerCase())) {
-        //         return unescape(i['name']);
-        //     }
-        // }
-        // return '';
-        var lowerCaseName = name.toLowerCase();
-        loopThroughKeys((oldKey, oldKeyLowerCase, oldKeys, oldKeysLowerCase) => {
-            var lowerCaseData = data[oldKey].toLowerCase();
-            if (lowerCaseName == lowerCaseData || oldKeysLowerCase.includes(lowerCaseName) ||
-                lowerCaseData.replace(/_/g, ' ') == lowerCaseName) {
-                out = data[oldKey];
-                return true;
-            }
-            return false;
-        });
-        return out;
+        //     return false;
+        // });
+        // return out;
     },
     addAlias(name, alias) {
         var lowerCaseAlias = alias.toLowerCase();
