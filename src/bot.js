@@ -29,6 +29,18 @@ bot.on('ready', () => {
     console.info('Logged in as '+bot.user.tag+'!');
 });
 
+function handleH(i, msg, callback) {
+    const name = "'"+i.getName().replace(/'/g, "''")+"'";
+    client.query(`SELECT "FIND_UNIT"(${name})`)
+        .then(result => {
+            callback(result);
+        })
+        .catch(error => {
+            console.log(error);
+            handleError(msg);
+        });
+}
+
 var getUnitData = async(input, pfp, callback) => {
     var unitData = await dataHandler.getUnit(input.getName(), input.getRarity(), input.getBoon(), input.getBane(),
         input.getMerges(), input.getDragonflowers());
@@ -217,22 +229,16 @@ bot.on('message', msg => {
         if (i.getName() != 'ERROR') {
             switch(i.getCmd()) {
                 case 'h': {
-                    const name = "'"+i.getName().replace(/'/g, "''")+"'";
-                    client.query(`SELECT "FIND_UNIT"(${name})`)
-                        .then(result => {
-                            const find = result['rows'][0]['FIND_UNIT'];
-                            i.verifyValues(find);
-                            if (i.getName() != 'ERROR') {
-                                getUnitData(i, msg.author.avatarURL(), (unitEmbed) => {
-                                    channel.send(unitEmbed);
-                                });
-                            } else
-                                handleError(msg);
-                        })
-                        .catch(error => {
-                            console.log(error);
+                    handleH(i, msg, (result) => {
+                        const find = result['rows'][0]['FIND_UNIT'];
+                        i.verifyValues(find);
+                        if (i.getName() != 'ERROR') {
+                            getUnitData(i, msg.author.avatarURL(), (unitEmbed) => {
+                                msg.channel.send(unitEmbed);
+                            });
+                        } else
                             handleError(msg);
-                        });
+                    });
                 }
                 break;
                 case 'a': {
@@ -253,13 +259,30 @@ bot.on('message', msg => {
                         sections[0] = 'h'+sections[0];
                         sections[1] = 'h '+sections[1];
                         var inputs = [ new Input(sections[0]), new Input(sections[1]) ];
-                        if (inputs[0].getName() == 'ERROR' || inputs[1].getName() == 'ERROR') {
-                            handleError(msg);
-                            break;
-                        }
-                        getUnitsData(inputs, (embed) => {
-                            channel.send(embed);
+                        handleH(inputs[0], msg, (result1) => {
+                            const find1 = result1['rows'][0]['FIND_UNIT'];
+                            inputs[0].verifyValues(find1);
+                            if (inputs[0].getName() != 'ERROR') {
+                                handleH(inputs[1], msg, (result2) => {
+                                    const find2 = result2['rows'][0]['FIND_UNIT'];
+                                    inputs[1].verifyValues(find2);
+                                    if (inputs[1].getName() != 'ERROR') {
+                                        getUnitsData(inputs, (embed) => {
+                                            channel.send(embed);
+                                        });
+                                    } else
+                                        handleError(msg);
+                                });
+                            } else
+                                handleError(msg);
                         });
+                        // if (inputs[0].getName() == 'ERROR' || inputs[1].getName() == 'ERROR') {
+                        //     handleError(msg);
+                        //     break;
+                        // }
+                        // getUnitsData(inputs, (embed) => {
+                        //     channel.send(embed);
+                        // });
                     }
                 } 
                 break;
