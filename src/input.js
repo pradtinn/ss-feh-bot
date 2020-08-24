@@ -26,18 +26,19 @@ class Input {
                 this.splitString();
                 this.formatIVs();
                 this.react = false;
+                if (this.name == 'None')
+                    this.name = 'ERROR';
             }
             break;
             case 'a': {
                 var numSections = this.determineA();
                 if (numSections == 2) {
-                    if (this.name.indexOf('$') != -1 || !aliasHandler.addAlias(this.name, this.alias)) {
+                    if (this.name.indexOf('$') != -1) {
                         this.name = 'ERROR';
                     }
                     else
                         this.react = true;
-                } else if (numSections == 1)
-                    this.getAliases();
+                }
             }
             break;
             case 'ra': {
@@ -179,12 +180,12 @@ class Input {
         return str;
     }
     //get aliases from alias file
-    getAliases() {
-        var aliases = aliasHandler.getAliases(this.name);
-        this.output = aliases.output;
-        this.name = aliases.name;
-        if (this.name == '')
-            this.name = 'ERROR';
+    getAlias() {
+        return this.alias;
+    }
+
+    switchReact() {
+        this.react = !this.react;
     }
 
     //print function for debugging

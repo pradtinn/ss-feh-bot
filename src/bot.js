@@ -11,6 +11,7 @@ const aliasHandler = require('./alias_handler.js');
 const webScraper = require('./web_scraper.js');
 const { spawn } = require('child_process');
 const { Client } = require('pg');
+const { isObject } = require('util');
 
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
@@ -29,8 +30,8 @@ bot.on('ready', () => {
     console.info('Logged in as '+bot.user.tag+'!');
 });
 
-function handleH(i, msg, callback) {
-    const name = "'"+i.getName().replace(/'/g, "''")+"'";
+function findUnit(name, msg, callback) {
+    name = "'"+name.replace(/'/g, "''")+"'";
     client.query(`SELECT "FIND_UNIT"(${name})`)
         .then(result => {
             callback(result);
@@ -229,7 +230,7 @@ bot.on('message', msg => {
         if (i.getName() != 'ERROR') {
             switch(i.getCmd()) {
                 case 'h': {
-                    handleH(i, msg, (result) => {
+                    findUnit(i.getName(), msg, (result) => {
                         const find = result['rows'][0]['FIND_UNIT'];
                         i.verifyValues(find);
                         if (i.getName() != 'ERROR') {
@@ -242,14 +243,79 @@ bot.on('message', msg => {
                 }
                 break;
                 case 'a': {
-                    if (i.getOutput() != '') {
-                        var aliasEmbed = new Discord.MessageEmbed() 
-                            .setColor('#04c2ac')
-                            .setTitle(i.getName())
-                            .addFields(
-                                { name: 'Aliases', value: i.getOutput() }
-                            );
-                        channel.send(aliasEmbed);
+                    if (i.getAlias() == '') {
+                        findUnit(i.getName(), msg, (result) => {
+                            let find = result['rows'][0]['FIND_UNIT'];
+                            if (find == null) {
+                                handleError(msg);
+                                return;
+                            }
+                            find = "'"+find.replace(/'/g, "''")+"'";
+                            client.query(`SELECT * FROM aliases WHERE unit ILIKE ${find}`)
+                                .then((ali) => {
+                                    if (ali == null) {
+                                        handleError(msg);
+                                        return;
+                                    }
+                                    const aliases = ali['rows'][0];
+                                    let ali_string = "";
+                                    let foundNone = false;
+                                    let i = 0;
+                                    Object.values(aliases).forEach((value) => {
+                                        if (i > 0 && !foundNone) {
+                                            if (value == "None")
+                                                foundNone = true;
+                                            else {
+                                                if (i > 1)
+                                                    ali_string += ", ";
+                                                ali_string += value;
+                                            }
+                                        }
+                                        i++;
+                                    });
+                                    const aliasEmbed = new Discord.MessageEmbed()
+                                        .setColor("#04c2ac")
+                                        .setTitle(find.replace(/['_]/g, ' '))
+                                        .addField("Aliases", ali_string);
+                                    channel.send(aliasEmbed);
+                                })
+                                .catch((error) => {
+                                    console.log(error);
+                                    handleError(msg);
+                                });
+                        });
+                    } else {
+                        findUnit(i.getAlias(), msg, (result) => {
+                            let find = result['rows'][0]['FIND_UNIT'];
+                            if (find != null) {
+                                handleError(msg);
+                                i.switchReact();
+                                return;
+                            }
+                            findUnit(i.getName(), msg, (result2) => {
+                                find = result2['rows'][0]['FIND_UNIT'];
+                                if (find == null) {
+                                    handleError(msg);
+                                    i.switchReact();
+                                    return;
+                                }
+                                let alias = "'"+i.getAlias().replace(/'/g, "''")+"'";
+                                let name = "'"+find.replace(/'/g, "''")+"'";
+                                client.query(`SELECT "ADD_ALIAS"(${name}, ${alias})`)
+                                    .then((result3) => {
+                                        let added = result3['rows'][0]['ADD_ALIAS'];
+                                        if (!added) {
+                                            handleError(msg);
+                                            i.switchReact();
+                                        }
+                                    })
+                                    .catch((error) => {
+                                        console.log(error);
+                                        handleError(msg);
+                                        i.switchReact();
+                                    })
+                            });
+                        });
                     }
                 }
                 break;
@@ -259,11 +325,11 @@ bot.on('message', msg => {
                         sections[0] = 'h'+sections[0];
                         sections[1] = 'h '+sections[1];
                         var inputs = [ new Input(sections[0]), new Input(sections[1]) ];
-                        handleH(inputs[0], msg, (result1) => {
+                        findUnit(inputs[0].getName(), msg, (result1) => {
                             const find1 = result1['rows'][0]['FIND_UNIT'];
                             inputs[0].verifyValues(find1);
                             if (inputs[0].getName() != 'ERROR') {
-                                handleH(inputs[1], msg, (result2) => {
+                                findUnit(inputs[1].getName(), msg, (result2) => {
                                     const find2 = result2['rows'][0]['FIND_UNIT'];
                                     inputs[1].verifyValues(find2);
                                     if (inputs[1].getName() != 'ERROR') {
@@ -276,13 +342,6 @@ bot.on('message', msg => {
                             } else
                                 handleError(msg);
                         });
-                        // if (inputs[0].getName() == 'ERROR' || inputs[1].getName() == 'ERROR') {
-                        //     handleError(msg);
-                        //     break;
-                        // }
-                        // getUnitsData(inputs, (embed) => {
-                        //     channel.send(embed);
-                        // });
                     }
                 } 
                 break;
