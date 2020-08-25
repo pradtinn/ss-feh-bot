@@ -56,7 +56,7 @@ var filter = [
     'horrible', 'hate', 'love', 'like', 'tit', 'abs', 'cute', 'hot', 'ugly', 'fanservice',
     'armpit', 'thigh', 'cheek', 'crotch', 'snatch', 'taint', 'slut', 'whore', 'prostitute',
     'hoe', 'thot', 'virgin', 'perv', 'hentai', 'mina', 'horn', 'thirst', 'chest', 'loli',
-    'milf', 'dilf', 'ara'
+    'milf', 'dilf', 'ara', 'none'
 ];
 
 function loopThroughKeys(callback) {
@@ -69,14 +69,6 @@ function loopThroughKeys(callback) {
             return true;
     }
     return false;
-}
-
-function filterAlias(alias) {
-    for (var i in filter) {
-        if (alias.indexOf(filter[i]) > -1)
-            return false;
-    }
-    return true;
 }
 
 function refresh() {
@@ -95,6 +87,13 @@ function queryDatabase(str) {
 }
 
 module.exports = {
+    filterAlias(alias) {
+        for (var i in filter) {
+            if (alias.indexOf(filter[i]) > -1)
+                return false;
+        }
+        return true;
+    }, 
     async getProperName(name) {
         name = "'"+name.replace(/'/g, "''")+"'";
         client.query(`SELECT "FIND_UNIT"(${name})`)

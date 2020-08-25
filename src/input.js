@@ -12,7 +12,6 @@ class Input {
         }
         this.inputString = this.inputString.slice(input.indexOf(' '));
         this.rarity = 5;
-        this.react = false;
         this.name = '';
         this.alias = '';
         this.merge = 0;
@@ -25,7 +24,6 @@ class Input {
                 this.insertSpaces();
                 this.splitString();
                 this.formatIVs();
-                this.react = false;
                 if (this.name == 'None')
                     this.name = 'ERROR';
             }
@@ -33,11 +31,9 @@ class Input {
             case 'a': {
                 var numSections = this.determineA();
                 if (numSections == 2) {
-                    if (this.name.indexOf('$') != -1) {
+                    if (this.name.indexOf('$') != -1 || !aliasHandler.filterAlias(this.alias)) {
                         this.name = 'ERROR';
                     }
-                    else
-                        this.react = true;
                 }
             }
             break;
@@ -45,10 +41,9 @@ class Input {
                 var sections = this.inputString.split('$');
                 if (sections.length == 1) {
                     this.name = sections[0].slice(1);
-                    if (aliasHandler.removeAlias(this.name))
-                        this.react = true;
-                    else
+                    if (this.name.toLowerCase() == 'none') {
                         this.name = 'ERROR';
+                    }
                 }
             }
             break;
@@ -184,10 +179,6 @@ class Input {
         return this.alias;
     }
 
-    switchReact() {
-        this.react = !this.react;
-    }
-
     //print function for debugging
     toString() {
         return 'Name: '+this.name+'\nRarity: '+this.rarity+'\nMerge: '+this.merge+'\nIVs: '+this.boon+'/'+
@@ -221,9 +212,6 @@ class Input {
     }
     getDragonflowers() {
         return this.dragonflowers;
-    }
-    getReact() {
-        return this.react;
     }
 }
 

@@ -275,7 +275,7 @@ bot.on('message', msg => {
                                     });
                                     const aliasEmbed = new Discord.MessageEmbed()
                                         .setColor("#04c2ac")
-                                        .setTitle(find.replace(/['_]/g, ' '))
+                                        .setTitle(find.substring(1, find.length-1).replace(/''/g, "'").replace(/_/g, ' '))
                                         .addField("Aliases", ali_string);
                                     channel.send(aliasEmbed);
                                 })
@@ -289,14 +289,12 @@ bot.on('message', msg => {
                             let find = result['rows'][0]['FIND_UNIT'];
                             if (find != null) {
                                 handleError(msg);
-                                i.switchReact();
                                 return;
                             }
                             findUnit(i.getName(), msg, (result2) => {
                                 find = result2['rows'][0]['FIND_UNIT'];
                                 if (find == null) {
                                     handleError(msg);
-                                    i.switchReact();
                                     return;
                                 }
                                 let alias = "'"+i.getAlias().replace(/'/g, "''")+"'";
@@ -306,17 +304,34 @@ bot.on('message', msg => {
                                         let added = result3['rows'][0]['ADD_ALIAS'];
                                         if (!added) {
                                             handleError(msg);
-                                            i.switchReact();
+                                        } else {
+                                            msg.react('✅');
                                         }
                                     })
                                     .catch((error) => {
                                         console.log(error);
                                         handleError(msg);
-                                        i.switchReact();
                                     })
                             });
                         });
                     }
+                }
+                break;
+                case 'ra': {
+                    let alias = "'"+i.getName().replace(/'/g, "''")+"'";
+                    client.query(`SELECT "REMOVE_ALIAS"(${alias})`)
+                        .then((result) => {
+                            const removed = result['rows'][0]['REMOVE_ALIAS'];
+                            if (!removed) {
+                                handleError(msg);
+                            } else {
+                                msg.react('✅');
+                            }
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                            handleError(msg);
+                        });
                 }
                 break;
                 case 'c': {
@@ -405,8 +420,6 @@ bot.on('message', msg => {
                     })
                 }
             }
-            if (i.getReact())
-                msg.react('✅');
         } else {
             handleError(msg);
         }
