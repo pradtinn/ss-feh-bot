@@ -1,16 +1,16 @@
 {
-    "name": "Joyful Vows",
-    "type": "Colorless Tome",
-    "might": "14",
-    "range": "2",
+    "name": "Frost Breath",
+    "type": "All Breaths",
+    "might": "16",
+    "range": "1",
     "prereq": [
-        "Atlas"
+        "Flametongue"
     ],
-    "desc": "Effective against armored and cavalry foes. Grants Atk+3. If\u3010Bonus\u3011is active on unit, grants Atk/Res+6 during combat, and if unit initiates combat, foe cannot make a follow-up attack.\n\u3010Bonus\u3011\nAll effects that last \"for 1 turn\" or \"that turn only.\" Includes bonuses granted by a skill like Rally or Hone and positive status effects (extra movement or effects like Dominance).\n",
+    "desc": "Grants Res+3. At start of turn or when Play is used, inflicts Atk/Spd/Def/Res-4 on closest foe within 4 spaces of unit through their next action. If foe's Range = 2, calculates damage using the lower of foe's Def or Res.\n",
     "refine": "None",
     "owners": {
-        "Micaiah: Dawn Wind's Duo": "5"
+        "Nils: Bright Bard": "5"
     },
     "past_max": false,
-    "image-link": "https://gamepedia.cursecdn.com/feheroes_gamepedia_en/thumb/4/44/Wep_mg304.webp/75px-Wep_mg304.webp.png"
+    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/d/dd/Wep_ac020.webp/revision/latest/scale-to-width-down/100"
 }

@@ -226,6 +226,9 @@ bot.on('message', msg => {
             });
             return;
         }
+        if (message.substring(1) == 'brazil') {
+            channel.send('https://media.discordapp.net/attachments/699139136401178645/748094502908198993/ca5.gif');
+        }
         var i = new Input(message.substring(1));
         if (i.getName() != 'ERROR') {
             switch(i.getCmd()) {
