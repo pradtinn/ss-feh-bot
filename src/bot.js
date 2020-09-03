@@ -168,6 +168,26 @@ function lookUpWeapon(name, sendWeaponData, msg) {
     });
 }
 
+function lookUpSkill(name, sendSkillData, msg) {
+    const child = spawn('python', [
+        '-u',
+        'get_skill.py',
+        name
+    ]);
+    child.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`);
+    });
+    child.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`);
+    });
+    child.on('exit', (code) => {
+        if (code == 0)
+            sendSkillData(msg)
+        else
+            handleError(msg);
+    })
+}
+
 function sendWeaponData(msg) {
     const weapon_file = fs.readFileSync('weapon_lookup_result.json');
     if (weapon_file.length == 0) {
@@ -202,6 +222,45 @@ function sendWeaponData(msg) {
         weaponEmbed.setThumbnail(weapon_data['image-link']);
     }
     msg.channel.send(weaponEmbed);
+    return 0;
+}
+
+function replaceWithEmote(str) {
+    Object.entries(emotes.moveEmotes).forEach(([key, value]) => {
+        let reg = new RegExp(key, 'g')
+        str = str.replace(reg, value);
+    });
+    Object.entries(emotes.weaponEmotes).forEach(([key, value]) => {
+        let reg = new RegExp(key, 'g')
+        str = str.replace(reg, value);
+    });
+    return str;
+}
+
+function sendSkillData(msg) {
+    const skill_file = fs.readFileSync('skill_lookup_result.json');
+    if (skill_file.length == 0) {
+        handleError(msg);
+        return 1;
+    }
+    const skill_data = JSON.parse(skill_file);
+    let owners_string = '```\n';
+    skill_data['owners'].forEach(([name, rarity]) => {
+        owners_string += `${name}: ${rarity}*\n`;
+    });
+    owners_string += '```\n';
+    let inherit_string = replaceWithEmote(skill_data['inherit']);
+    const skill_embed = new Discord.MessageEmbed()
+        .setColor('#04c2ac')
+        .setTitle(skill_data['name'])
+        .addFields(
+            {'name': 'Inheritance', 'value': inherit_string},
+            {'name': 'Description', 'value': skill_data['desc']},
+            {'name': 'Owners', 'value': owners_string}
+        );
+    if (skill_data.hasOwnProperty('image'))
+        skill_embed.setThumbnail(skill_data['image']);
+    msg.channel.send(skill_embed);
     return 0;
 }
 
@@ -364,20 +423,10 @@ bot.on('message', msg => {
                 } 
                 break;
                 case 'sd': {
-                    var child = spawn('python', [
-                        '-u',
-                        'get_skill.py',
-                        i.getInputString()
-                    ]);
-                    child.stdout.on('data', (data) => {
-                        console.log(`stdout: ${data}`);
-                    });
-                    child.stderr.on('data', (data) => {
-                        console.log(`stderr: ${data}`);
-                    });
-                    getSkillData(i.getInputString(), (embed) => {
-                        channel.send(embed);
-                    });
+                    lookUpSkill(i.getInputString(), sendSkillData, msg);
+                    // getSkillData(i.getInputString(), (embed) => {
+                    //     channel.send(embed);
+                    // });
                 }
                 break;
                 case 'update': {

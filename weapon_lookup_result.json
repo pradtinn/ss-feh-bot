@@ -1,16 +1,16 @@
 {
-    "name": "Frost Breath",
-    "type": "All Breaths",
-    "might": "16",
-    "range": "1",
+    "name": "Hoarfrost Knife",
+    "type": "All Daggers",
+    "might": "14",
+    "range": "2",
     "prereq": [
-        "Flametongue"
+        "None"
     ],
-    "desc": "Grants Res+3. At start of turn or when Play is used, inflicts Atk/Spd/Def/Res-4 on closest foe within 4 spaces of unit through their next action. If foe's Range = 2, calculates damage using the lower of foe's Def or Res.\n",
+    "desc": "Accelerates Special trigger (cooldown count-1). If unit initiates combat and foe uses sword, lance, axe, dragonstone, or beast damage, grants Def+20 during combat, and if foe can counter, unit makes a guaranteed follow-up attack. After combat, if unit attacked, inflicts Def/Res-7 on target and foes within 2 spaces of target through their next actions.\n",
     "refine": "None",
     "owners": {
-        "Nils: Bright Bard": "5"
+        "Flora: Cold as Ice": "5"
     },
     "past_max": false,
-    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/d/dd/Wep_ac020.webp/revision/latest/scale-to-width-down/100"
+    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/6/64/Weapon_Hoarfrost_Knife.png/revision/latest/scale-to-width-down/50"
 }

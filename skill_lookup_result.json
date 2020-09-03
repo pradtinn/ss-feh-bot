@@ -1,0 +1,16 @@
+{
+    "name": "Close Call 3",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/3/3d/Close_Call_3.png/revision/latest/scale-to-width-down/30?cb=20191205103011",
+    "desc": "If unit's Spd > foe's Spd, reduces damage from attacks during combat and from area-of-effect Specials (excluding R\u00f8kkr area-of-effect Specials) by percentage = difference between stats \u00d7 4 (max 40%). If unit initiates combat, unit moves 1 space away after combat.\n",
+    "inherit": "Cannot use: ArmoredCavalryFlyingRed BowRed DaggerRed TomeRed BreathRed BeastBlue BowBlue DaggerBlue TomeBlue BreathBlue BeastGreen BowGreen DaggerGreen TomeGreen BreathGreen BeastColorless BowColorless DaggerColorless TomeColorless StaffColorless BreathColorless Beast\n",
+    "owners": [
+        [
+            "Mareeta: Sword of Stars",
+            "5"
+        ],
+        [
+            "Say'ri: Chon'sin's Blade",
+            "5"
+        ]
+    ]
+}
