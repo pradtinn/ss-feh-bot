@@ -56,7 +56,7 @@ var filter = [
     'horrible', 'hate', 'love', 'like', 'tit', 'abs', 'cute', 'hot', 'ugly', 'fanservice',
     'armpit', 'thigh', 'cheek', 'crotch', 'snatch', 'taint', 'slut', 'whore', 'prostitute',
     'hoe', 'thot', 'virgin', 'perv', 'hentai', 'mina', 'horn', 'thirst', 'chest', 'loli',
-    'milf', 'dilf', 'ara', 'lewd', 'none'
+    'milf', 'dilf', 'ara', 'lewd', 'mean', 'stupid', 'none'
 ];
 
 function loopThroughKeys(callback) {
