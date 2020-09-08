@@ -16,38 +16,6 @@ const client = new Client({
 
 client.connect();
 
-// Object.entries(data).forEach(entry => {
-//     let aliasesArr = entry[0].split('+');
-//     while (aliasesArr.length > 5) {
-//         aliasesArr.pop();
-//     }
-//     let i = 1;
-//     let aliases = "";
-//     aliasesArr.forEach(val => {
-//         if (i != 1)
-//             aliases += ", "
-//         aliases += "'"+val.replace(/'/g, "''")+"'";
-//         i++;
-//     });
-//     const unit = entry[1].replace(/'/g, "''");
-//     let columns = "unit, ";
-//     i = 1;
-//     aliases.split(", ").forEach(val => {
-//         if (i < 6) {
-//             if (i != 1)
-//                 columns += ", ";
-//             columns += "alias"+i;
-//             i++;
-//         }
-//     });
-//     client.query(`INSERT INTO aliases (${columns}) VALUES ('${unit}', ${aliases})`, (err) => {
-//         if (err) {
-//             console.log(aliases);
-//             console.log(err);
-//         }
-//     });
-// });
-
 var filter = [ 
     'best', 'worst', 'fuck', 'bitch', 'shit', 'damn', 'crap', 'stupid', 'bad', 'good',
     'better', 'worse', 'pussy', 'cunt', 'cancer', 'suck', 'dick', 'penis', 'twat', 'vagina',
@@ -56,7 +24,7 @@ var filter = [
     'horrible', 'hate', 'love', 'like', 'tit', 'abs', 'cute', 'hot', 'ugly', 'fanservice',
     'armpit', 'thigh', 'cheek', 'crotch', 'snatch', 'taint', 'slut', 'whore', 'prostitute',
     'hoe', 'thot', 'virgin', 'perv', 'hentai', 'mina', 'horn', 'thirst', 'chest', 'loli',
-    'milf', 'dilf', 'ara', 'lewd', 'mean', 'stupid', 'none'
+    'milf', 'dilf', 'ara', 'lewd', 'mean', 'stupid', 'dumb', 'nice', 'none'
 ];
 
 function loopThroughKeys(callback) {
