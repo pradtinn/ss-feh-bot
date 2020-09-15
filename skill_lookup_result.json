@@ -1,15 +1,11 @@
 {
-    "name": "Close Call 3",
-    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/3/3d/Close_Call_3.png/revision/latest/scale-to-width-down/30?cb=20191205103011",
-    "desc": "If unit's Spd > foe's Spd, reduces damage from attacks during combat and from area-of-effect Specials (excluding R\u00f8kkr area-of-effect Specials) by percentage = difference between stats \u00d7 4 (max 40%). If unit initiates combat, unit moves 1 space away after combat.\n",
-    "inherit": "Cannot use: ArmoredCavalryFlyingRed BowRed DaggerRed TomeRed BreathRed BeastBlue BowBlue DaggerBlue TomeBlue BreathBlue BeastGreen BowGreen DaggerGreen TomeGreen BreathGreen BeastColorless BowColorless DaggerColorless TomeColorless StaffColorless BreathColorless Beast\n",
+    "name": "Atk/Def Unity",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/b/b2/Atk_Def_Unity.png/revision/latest/scale-to-width-down/30?cb=20200819101944",
+    "desc": "If unit is within 2 spaces of an ally, grants Atk/Def+5 and bonus to Atk/Def during combat = current penalty on each of those stats \u00d7 2. (Example: if unit has -7 penalty to Atk, grants Atk+19, for a net bonus of Atk+12.) Calculates each stat bonus independently.\n",
+    "inherit": "No restrictions.\n",
     "owners": [
         [
-            "Mareeta: Sword of Stars",
-            "5"
-        ],
-        [
-            "Say'ri: Chon'sin's Blade",
+            "Dimitri: King of Faerghus",
             "5"
         ]
     ]

@@ -27,22 +27,27 @@ def skill_capitalize(name):
 
 skill_raw = sys.argv[1]
 skill = skill_capitalize(skill_raw)
+slash_index = skill.find('/')
+skill = skill.replace('/', ' ')
 level = ''
 if skill[-1].isnumeric():
     level = skill[-1]
     skill = skill[:-1]
-# print(skill, ',', level)
 
 link = ('https://feheroes.gamepedia.com/'+skill).encode('utf-8')
 page = BeautifulSoup(requests.get(link).content, 'html.parser')
+skill = skill[:slash_index] + '/' + skill[slash_index+1:]
 
 skill_table = page.find('table')
 if skill_table == None:
+    print('skill table = None')
     file.close()
     exit(1)
 out['name'] = skill+level
+
 skill_row = skill_table.find('td', text=skill+level+'\n')
 if skill_row == None:
+    print('skill row = None')
     file.close()
     exit(1)
 skill_row = skill_row.parent
