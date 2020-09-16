@@ -36,7 +36,8 @@ if skill[-1].isnumeric():
 
 link = ('https://feheroes.gamepedia.com/'+skill).encode('utf-8')
 page = BeautifulSoup(requests.get(link).content, 'html.parser')
-skill = skill[:slash_index] + '/' + skill[slash_index+1:]
+if slash_index > -1:
+    skill = skill[:slash_index] + '/' + skill[slash_index+1:]
 
 skill_table = page.find('table')
 if skill_table == None:

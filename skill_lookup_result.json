@@ -1,11 +1,10 @@
 {
-    "name": "Atk/Def Unity",
-    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/b/b2/Atk_Def_Unity.png/revision/latest/scale-to-width-down/30?cb=20200819101944",
-    "desc": "If unit is within 2 spaces of an ally, grants Atk/Def+5 and bonus to Atk/Def during combat = current penalty on each of those stats \u00d7 2. (Example: if unit has -7 penalty to Atk, grants Atk+19, for a net bonus of Atk+12.) Calculates each stat bonus independently.\n",
-    "inherit": "No restrictions.\n",
+    "name": "Negating Fang",
+    "desc": "Reduces damage from foe's attacks by 30%. After triggering, boosts damage for unit's next attack by 30% of unit's Atk. (Boost resets at the end of combat.)\n",
+    "inherit": "This skill can only be equipped by its original unit.\n",
     "owners": [
         [
-            "Dimitri: King of Faerghus",
+            "Corrin: Child of Dusk",
             "5"
         ]
     ]
