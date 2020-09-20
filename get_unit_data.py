@@ -38,7 +38,7 @@ release_date = ''
 
 for tr in infobox.find_all('tr')[2:]:
     if tr.th.get_text() == 'Weapon Type\n':
-        new_unit['weaponType'] = tr.td.get_text()[1:-1]
+        new_unit['weaponType'] = tr.td.get_text()[1:-1].replace('bow', 'Bow')
     if tr.th.get_text() == 'Move Type\n':
         new_unit['moveType'] = tr.td.get_text()[1:-1]
     if tr.th.get_text() == 'Release Date\n':
