@@ -15,7 +15,7 @@ weapon_raw = sys.argv[1]
 weapon = ''
 weapon_alt = ''
 for word in weapon_raw.split():
-    if len(word) > 2:
+    if len(word) > 2 or word == 't':
         if word[0] == '(':
             word = word[0] + word[1:].capitalize()
         else:
