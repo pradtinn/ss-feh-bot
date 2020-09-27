@@ -12,26 +12,41 @@ def remap_characters(string, mapping):
     return new_string 
 
 weapon_raw = sys.argv[1]
-weapon = ''
-weapon_alt = ''
-for word in weapon_raw.split():
-    if len(word) > 2 or word == 't':
-        if word[0] == '(':
-            word = word[0] + word[1:].capitalize()
-        else:
-            word = word.capitalize()
-        try:
-            dashIndex = word.find('-', 0, len(word)-1)
-            word = word[:dashIndex+1] + word[dashIndex+1:].capitalize()
-        except ValueError:
-            pass
-    weapon_alt = '_'.join((weapon_alt, word))
-    weapon = '_'.join((weapon, word))
-weapon = weapon[1:]
-weapon = weapon.replace('’', '\'')
+isUnit = sys.argv[2]
 
-link = ('https://feheroes.gamepedia.com/'+weapon).encode('utf-8')
-link_alt = ('https://feheroes.gamepedia.com/'+weapon_alt).encode('utf-8')
+link = ''
+
+if isUnit == 'true':
+    link = ('https://feheroes.gamepedia.com/'+weapon_raw.replace(' ', '_')).encode('utf-8')
+    print(link)
+    page = requests.get(link)
+    unit_parser = BeautifulSoup(page.content, 'html.parser')
+    weapon_h3 = unit_parser.find(id='Weapons')
+    if weapon_h3 == None:
+        open('weapon_lookup_result.json', 'w')
+        exit(1)
+    weapon_table = weapon_h3.parent.next_sibling.next_sibling
+    last_weapon = weapon_table.find_all('tr')[-1].td.a['href']
+    link = ('https://feheroes.gamepedia'+last_weapon).encode('utf-8')
+else:
+    weapon = ''
+    for word in weapon_raw.split():
+        if len(word) > 2 or word == 't':
+            if word[0] == '(':
+                word = word[0] + word[1:].capitalize()
+            else:
+                word = word.capitalize()
+            try:
+                dashIndex = word.find('-', 0, len(word)-1)
+                word = word[:dashIndex+1] + word[dashIndex+1:].capitalize()
+            except ValueError:
+                pass
+        weapon = '_'.join((weapon, word))
+    weapon = weapon[1:]
+    weapon = weapon.replace('’', '\'')
+
+    link = ('https://feheroes.gamepedia.com/'+weapon).encode('utf-8')
+
 page = requests.get(link)
 page_parser = BeautifulSoup(page.content, 'html.parser')
 result = {

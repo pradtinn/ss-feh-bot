@@ -1,10 +1,11 @@
 {
-    "name": "Negating Fang",
-    "desc": "Reduces damage from foe's attacks by 30%. After triggering, boosts damage for unit's next attack by 30% of unit's Atk. (Boost resets at the end of combat.)\n",
-    "inherit": "This skill can only be equipped by its original unit.\n",
+    "name": "Dive-Bomb 3",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/5/5c/Dive-Bomb_3.png/revision/latest/scale-to-width-down/30?cb=20200806143835",
+    "desc": "At start of combat, if both unit's and foe's HP \u2265 80% and unit initiates combat, unit can make a follow-up attack before foe can counterattack.\n",
+    "inherit": "Cannot use: InfantryArmoredCavalryRed BowRed DaggerRed TomeBlue BowBlue DaggerBlue TomeGreen BowGreen DaggerGreen TomeColorless BowColorless DaggerColorless TomeColorless Staff\n",
     "owners": [
         [
-            "Corrin: Child of Dusk",
+            "Tibarn: Shipless Pirate",
             "5"
         ]
     ]

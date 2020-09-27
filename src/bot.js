@@ -12,6 +12,7 @@ const webScraper = require('./web_scraper.js');
 const { spawn } = require('child_process');
 const { Client } = require('pg');
 const { isObject } = require('util');
+const unit = require('./unit.js');
 
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
@@ -148,11 +149,12 @@ function addNewUnit(name) {
     ]);
 }
 
-function lookUpWeapon(name, sendWeaponData, msg) {
+function lookUpWeapon(name, isUnit, sendWeaponData, msg) {
     const child = spawn('python', [
         '-u',
         'get_weapon.py',
-        name
+        name,
+        isUnit
     ]);
     child.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
@@ -450,7 +452,16 @@ bot.on('message', msg => {
                 }
                 break;
                 case 'w': {
-                    lookUpWeapon(i.getInputString(), sendWeaponData, msg);
+                    findUnit(i.getInputString(), msg, (result) => {
+                        const find = result['rows'][0]['FIND_UNIT'];
+                        i.verifyValues(find);
+                        if (i.getName() != 'ERROR') {
+                            getUnitData(i, msg.author.avatarURL(), (unitEmbed) => {
+                                lookUpWeapon(unitEmbed.title, true, sendWeaponData, msg);
+                            });
+                        } else
+                            lookUpWeapon(i.getInputString(), false, sendWeaponData, msg);
+                    });
                 }
                 break;
                 case 'gib': {

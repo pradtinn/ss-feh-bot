@@ -1,16 +1,16 @@
 {
-    "name": "Hoarfrost Knife",
-    "type": "All Daggers",
+    "name": "Naga (tome)",
+    "type": "Green Tome",
     "might": "14",
     "range": "2",
     "prereq": [
-        "None"
+        "Rexcalibur"
     ],
-    "desc": "Accelerates Special trigger (cooldown count-1). If unit initiates combat and foe uses sword, lance, axe, dragonstone, or beast damage, grants Def+20 during combat, and if foe can counter, unit makes a guaranteed follow-up attack. After combat, if unit attacked, inflicts Def/Res-7 on target and foes within 2 spaces of target through their next actions.\n",
-    "refine": "None",
+    "desc": "Effective against dragon foes. If foe initiates combat, grants Def/Res+2 during combat.\n",
+    "refine": "Effective against dragon foes. If foe initiates combat, grants Def/Res+4 during combat.\n*In combat against a dragon foe, disables foe's skills that \"calculate damage using the lower of foe's Def or Res\" and unit can counterattack regardless of foe's range.*",
     "owners": {
-        "Flora: Cold as Ice": "5"
+        "Julia: Naga's Blood": "5"
     },
     "past_max": false,
-    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/6/64/Weapon_Hoarfrost_Knife.png/revision/latest/scale-to-width-down/50"
+    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/7/7a/Weapon_Naga_tome.png/revision/latest/scale-to-width-down/56"
 }
