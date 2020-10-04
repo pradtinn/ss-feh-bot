@@ -1,11 +1,11 @@
 {
-    "name": "Dive-Bomb 3",
-    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/5/5c/Dive-Bomb_3.png/revision/latest/scale-to-width-down/30?cb=20200806143835",
-    "desc": "At start of combat, if both unit's and foe's HP \u2265 80% and unit initiates combat, unit can make a follow-up attack before foe can counterattack.\n",
-    "inherit": "Cannot use: InfantryArmoredCavalryRed BowRed DaggerRed TomeBlue BowBlue DaggerBlue TomeGreen BowGreen DaggerGreen TomeColorless BowColorless DaggerColorless TomeColorless Staff\n",
+    "name": "Blue Lion Rule",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/3/3a/Blue_Lion_Rule.png/revision/latest/scale-to-width-down/30?cb=20200819101953",
+    "desc": "If unit's Def > foe's Def, reduces damage from attacks during combat and from area-of-effect Specials (excluding R\u00f8kkr area-of-effect Specials) by percentage=difference between stats \u00d7 4 (max 40%), and also if foe initiates combat, unit makes a guaranteed follow-up attack.\n",
+    "inherit": "This skill can only be equipped by its original unit.\n",
     "owners": [
         [
-            "Tibarn: Shipless Pirate",
+            "Dimitri: King of Faerghus",
             "5"
         ]
     ]

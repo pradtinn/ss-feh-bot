@@ -1,16 +1,16 @@
 {
-    "name": "Naga (tome)",
-    "type": "Green Tome",
+    "name": "Carrot Cudgel+",
+    "type": "Sword",
     "might": "14",
-    "range": "2",
+    "range": "1",
     "prereq": [
-        "Rexcalibur"
+        "Carrot Cudgel"
     ],
-    "desc": "Effective against dragon foes. If foe initiates combat, grants Def/Res+2 during combat.\n",
-    "refine": "Effective against dragon foes. If foe initiates combat, grants Def/Res+4 during combat.\n*In combat against a dragon foe, disables foe's skills that \"calculate damage using the lower of foe's Def or Res\" and unit can counterattack regardless of foe's range.*",
+    "desc": "If unit is within 2 spaces of an ally, grants Atk/Def+5 to unit and neutralizes unit's penalties to Atk/Def during combat.\n",
+    "refine": "None",
     "owners": {
-        "Julia: Naga's Blood": "5"
+        "Bartre: Earsome Warrior": "5"
     },
     "past_max": false,
-    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/7/7a/Weapon_Naga_tome.png/revision/latest/scale-to-width-down/56"
+    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/3/32/Wep_sw094.webp/revision/latest/scale-to-width-down/55"
 }
