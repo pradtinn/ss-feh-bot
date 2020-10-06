@@ -95,7 +95,9 @@ var getUnitData = async(input, pfp, callback) => {
 
 var getUnitsData = async(inputs, callback) => {
     var unitsData = [];
-    var embed = new Discord.MessageEmbed().setColor('#04c2ac');
+    var embed = new Discord.MessageEmbed()
+        .setColor('#04c2ac')
+        .setTitle('Comparison Result');
     for (var i = 0; i < inputs.length; i++) {
         var website = 'https://feheroes.gamepedia.com/'+inputs[i].getName();
         unitsData[i] = await dataHandler.getUnit(inputs[i].getName(), inputs[i].getRarity(), inputs[i].getBoon(), inputs[i].getBane(),
@@ -355,8 +357,6 @@ bot.on('message', msg => {
                                 handleError(msg);
                                 return;
                             }
-                            // let temp_name = "'"+i.getName().replace(/'/g, "''")+"'";
-                            // console.log(temp_name)
                             findUnit(i.getName(), msg, (result2) => {
                                 find = result2['rows'][0]['FIND_UNIT'];
                                 if (find == null) {
@@ -365,7 +365,6 @@ bot.on('message', msg => {
                                 }
                                 let alias = "'"+i.getAlias().replace(/'/g, "''")+"'";
                                 let name = "'"+find.replace(/'/g, "''")+"'";
-                                console.log('NAME: '+name);
                                 client.query(`SELECT "ADD_ALIAS"(${name}, ${alias})`)
                                     .then((result3) => {
                                         let added = result3['rows'][0]['ADD_ALIAS'];
