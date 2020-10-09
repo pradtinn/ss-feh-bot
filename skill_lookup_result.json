@@ -1,16 +1,20 @@
 {
-    "name": "Grani's Shield",
-    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/4/49/Granis_Shield.png/revision/latest/scale-to-width-down/30?cb=20180810071942",
-    "desc": "Neutralizes \"effective against cavalry\" bonuses.\n",
-    "inherit": "Cannot use: InfantryArmoredFlying\n",
+    "name": "Atk/Spd",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/e/e0/Atk_Spd_2.png/revision/latest/scale-to-width-down/30?cb=20180810071229",
+    "desc": "Grants Atk/Spd+2.\n",
+    "inherit": "No restrictions.\n",
     "owners": [
         [
-            "Walhart: The Conqueror",
-            "3"
+            "Noire: Shade Seeker",
+            "5"
         ],
         [
-            "Camus: Sable Knight",
-            "4"
+            "Camilla: Steamy Secrets",
+            "5"
+        ],
+        [
+            "Nephenee: Fierce Halberdier",
+            "5"
         ]
     ]
 }
