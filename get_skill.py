@@ -9,7 +9,7 @@ file = open('skill_lookup_result.json', 'w')
 
 out = {}
 
-lowercase_words = ['and', 'of', 'for', 'to']
+lowercase_words = ['and', 'of', 'for', 'to', 's']
 uppercase_words = ['AR']
 
 def skill_capitalize(name):
@@ -48,9 +48,14 @@ out['name'] = skill+level
 
 skill_row = skill_table.find('td', text=skill+level+'\n')
 if skill_row == None:
-    print('skill row = None')
-    file.close()
-    exit(1)
+    skill_row = skill_table.find('td', text=skill+' 3'+'\n')
+    if skill_row == None:
+        print('skill row = None')
+        file.close()
+        exit(1)
+    else:
+        skill = skill+' '
+        level = '3'
 skill_row = skill_row.parent
 passive = False
 

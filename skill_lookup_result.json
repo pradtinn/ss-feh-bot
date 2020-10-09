@@ -1,12 +1,16 @@
 {
-    "name": "Blue Lion Rule",
-    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/3/3a/Blue_Lion_Rule.png/revision/latest/scale-to-width-down/30?cb=20200819101953",
-    "desc": "If unit's Def > foe's Def, reduces damage from attacks during combat and from area-of-effect Specials (excluding R\u00f8kkr area-of-effect Specials) by percentage=difference between stats \u00d7 4 (max 40%), and also if foe initiates combat, unit makes a guaranteed follow-up attack.\n",
-    "inherit": "This skill can only be equipped by its original unit.\n",
+    "name": "Grani's Shield",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/4/49/Granis_Shield.png/revision/latest/scale-to-width-down/30?cb=20180810071942",
+    "desc": "Neutralizes \"effective against cavalry\" bonuses.\n",
+    "inherit": "Cannot use: InfantryArmoredFlying\n",
     "owners": [
         [
-            "Dimitri: King of Faerghus",
-            "5"
+            "Walhart: The Conqueror",
+            "3"
+        ],
+        [
+            "Camus: Sable Knight",
+            "4"
         ]
     ]
 }
