@@ -83,7 +83,7 @@ for restr in inherit_restr.contents:
     else:
         out['inherit'] += restr.string
 
-owners_table = page.find_all('table')[1].tbody
+owners_table = page.find('span', id='List_of_owners').parent.next_sibling.next_sibling
 owners = {}
 for tr in owners_table.find_all('tr')[1:]:
     tds = tr.find_all('td')

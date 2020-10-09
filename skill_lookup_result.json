@@ -1,19 +1,11 @@
 {
-    "name": "Atk/Spd",
-    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/e/e0/Atk_Spd_2.png/revision/latest/scale-to-width-down/30?cb=20180810071229",
-    "desc": "Grants Atk/Spd+2.\n",
+    "name": "Atk/Def Unity",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/b/b2/Atk_Def_Unity.png/revision/latest/scale-to-width-down/30?cb=20200819101943",
+    "desc": "If unit is within 2 spaces of an ally, grants Atk/Def+5 and bonus to Atk/Def during combat = current penalty on each of those stats \u00d7 2. (Example: if unit has -7 penalty to Atk, grants Atk+19, for a net bonus of Atk+12.) Calculates each stat bonus independently.\n",
     "inherit": "No restrictions.\n",
     "owners": [
         [
-            "Noire: Shade Seeker",
-            "5"
-        ],
-        [
-            "Camilla: Steamy Secrets",
-            "5"
-        ],
-        [
-            "Nephenee: Fierce Halberdier",
+            "Dimitri: King of Faerghus",
             "5"
         ]
     ]
