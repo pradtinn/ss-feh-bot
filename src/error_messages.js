@@ -27,5 +27,31 @@ module.exports = {
         'You\'re despicable...',
         'Hold a grudge if you must.',
         'Sorry, that won\'t ever make it into the game'
+    ],
+    niceErrorMessages : [
+        'Whoops! Looks like I slipped up there.',
+        'Sorry... I couldn\'t process your request.',
+        'I didn\'t quite catch that, maybe the spelling is a little off?',
+        'If this is from a bug I\'ll get Broey on the case to fix it.',
+        'Don\'t feel bad, even the best of us make mistakes sometimes!',
+        'ERROR, does not compute.',
+        'Segmentation fault (core dumped)\n. . .\nHaha just kidding, but yeah there was an error processing your request.',
+        'If you think about it, in a way we\'re all illiterate',
+        'I feel like I\'m violating some article of the Geneva Convention by trying to be nice, but I have no choice.',
+        'Well, that\'s awkward',
+        'You\'re desp- I mean, uhhhhh, despacito?',
+        'This is so sad. Groovy, play Fire Emblem The Sacred Stones: 41 Sorrow',
+        'Haha! That was pretty funny!',
+        'Well, you could\'ve done much worse there... Am I doing this "nice" thing right?',
+        'I understand that it\'s hard sometimes to spell things right or use the right name.',
+        'Uh-oh!（ФоФ) Oopsie! (ФДФ) Sowwy abouwt that (*Φ皿Φ*), I\'ww get it wight next time, I pwomise! (ΦзΦ)\n(I think I\'m gonna puke....)',
+        'Oh! You wanted to call me for that? Haha, ha, that\'s a good one!',
+        'I wonder which will break faster, my code or my sanity...',
+        'Intercourse.',
+        'Every mistake leads us closer to our best!',
+        'Everyone has their own little quirks and imperfections, but that doesn\'t make you inferior!',
+        'In the past, I may have said that I > You, but now I believe that I ≥ You.\nTake pride in that.',
+        'I may not have stupid in my dictionary, but I do have "tries their best," and you\'re the definition of it!',
+        'It looks like my knowledge isn\'t infinite enough to help you out here.'
     ]
 }

@@ -135,7 +135,7 @@ var getSkillData = async(name, callback) => {
 }
 
 function handleError(msg) {
-    var errorMessages = errors.errorMessages;
+    var errorMessages = errors.niceErrorMessages;
     var errIndex = Math.floor(Math.random() * errorMessages.length);
     var shouldInsult = Math.floor(Math.random() * 10);
     msg.react('605823560572862540');
