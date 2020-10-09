@@ -229,7 +229,7 @@ class Unit {
                 console.log('ERROR: Dragonflowers more than maximum, reverting to +10');
                 this.dragonflowers = 10;
             }
-        } else if (this.dragonflowers > 15) {
+        } else if (this.dragonflowers > 10) {
             var tenDFCutoff = new Date('2019-2-20');
             if (this.releaseDate.compare(tenDFCutoff) >= 0) {
                 console.log('ERROR: Dragonflowers more than maximum, reverting to +10');

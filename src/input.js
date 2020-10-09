@@ -144,8 +144,10 @@ class Input {
             this.boon = '';
             this.bane = '';
         }
-        if (isNaN(this.dragonflowers) || this.dragonflowers < 0 || this.dragonflowers > 15)
+        if (isNaN(this.dragonflowers) || this.dragonflowers < 0)
             this.dragonflowers = 0;
+        else if (this.dragonflowers > 15)
+            this.dragonflowers = 15;
         this.name = name;
         if (this.name == null)
             this.name = 'ERROR';
