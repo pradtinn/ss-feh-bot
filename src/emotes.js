@@ -26,5 +26,12 @@ module.exports = {
         'All Daggers': '<:ColorlessDagger:699815679339003984><:RedDagger:699815679330615327><:BlueDagger:699815410954141697><:GreenDagger:699815679200854077>',
         'All Breaths': '<:ColorlessBreath:699815679192334407><:RedBreath:699815679049597061><:BlueBreath:699815410723455027><:GreenBreath:699815679292997653>',
         'All Beasts': '<:ColorlessBeast:699815679280545813><:RedBeast:699815679435735131><:BlueBeast:699815411117588523><:GreenBeast:699815678961647667>'
+    },
+
+    dragonflowerEmotes : {
+        'Infantry': '<:InfantryFlower:764187679620464671>',
+        'Cavalry': '<:CavalryFlower:764187743541526598>',
+        'Armored': '<:ArmorFlower:764187783945256960>',
+        'Flying': '<:FlierFlower:764187812970758164>'
     }
 };

@@ -97,7 +97,7 @@ class Unit {
     print() {
         var out = '```diff\n Lvl   1 |  40\n     --- | ---\n'+
             stat.statArrsToString(this.lvl1Stats, this.lvl40Stats, this.growths, this.boon, this.bane, this.merges)+
-            '\n```Total: '+this.getTotal();
+            '\n```Total: '+this.getTotal()+', '+emotes.dragonflowerEmotes[this.moveType]+': '+this.dragonflowers;
         return out;
     }
     //data manipulation
