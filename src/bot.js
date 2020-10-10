@@ -13,6 +13,7 @@ const { spawn } = require('child_process');
 const { Client } = require('pg');
 const { isObject } = require('util');
 const unit = require('./unit.js');
+const { DEFAULT_MIN_VERSION } = require('tls');
 
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
@@ -268,6 +269,75 @@ function sendSkillData(msg) {
     return 0;
 }
 
+function printMatrix(M) {
+    let out = '';
+    for (let j = 0; j < M[0].length; j++) {
+        for (let i = 0; i < M.length; i++) {
+            out += M[i][j]+'\t';
+        }
+        out += '\n';
+    }
+    console.log(out);
+}
+
+function lev(a, b) {
+    a = a.toLowerCase();
+    b = b.toLowerCase();
+    M = [];
+    let m = a.length, n = b.length;
+    let i = 0, j = 0;
+    for (i = 0; i <= m; i++) {
+        M.push(new Array(n+1).fill(0));
+    }
+    for (i = 1; i <= m; i++)
+        M[i][0] = i;
+    for (j = 1; j <= n; j++)
+        M[0][j] = j;
+
+    for (j = 1; j <= n; j++) {
+        for (i = 1; i <= m; i++) {
+            let substitutionCost = 1;
+            if (a[i-1] === b[j-1])
+                substitutionCost = 0;
+            M[i][j] = Math.min(
+                M[i-1][j]+1,
+                M[i][j-1]+1,
+                M[i-1][j-1]+substitutionCost
+            );
+        }
+    }
+    if (M[m][n] <= 3) {
+        console.log(a+', '+b);
+        printMatrix(M);
+    }
+    return M[m][n];
+}
+
+function approximateName(target, callback) {
+    client.query('SELECT * FROM aliases')
+        .then(result => {
+            const rows = result['rows'];//.filter(unit => unit['alias1'][0].toLowerCase() == target[0].toLowerCase());
+            let closestMatch = Math.pow(10, 1000);
+            let closestNames = [];
+            rows.forEach(unit => {
+                for ([col, name] of Object.entries(unit)) {
+                    if (col == 'unit')
+                        continue;
+                    if (name == 'None')
+                        break;
+                    let distance = lev(target, name);
+                    if (distance < closestMatch) {
+                        closestMatch = distance;
+                        closestNames = [name];
+                    } else if (distance == closestMatch) {
+                        closestNames.push(name);
+                    }
+                }
+            });
+            callback(closestNames);
+        });
+}
+
 bot.on('message', msg => {
     var message = msg.content;
     var channel = msg.channel;
@@ -296,6 +366,7 @@ bot.on('message', msg => {
         if (i.getName() != 'ERROR') {
             switch(i.getCmd()) {
                 case 'h': {
+                    let testName = i.getName();
                     findUnit(i.getName(), msg, (result) => {
                         const find = result['rows'][0]['FIND_UNIT'];
                         i.verifyValues(find);
@@ -303,8 +374,18 @@ bot.on('message', msg => {
                             getUnitData(i, msg.author.avatarURL(), (unitEmbed) => {
                                 msg.channel.send(unitEmbed);
                             });
-                        } else
-                            handleError(msg);
+                        } else {
+                            approximateName(testName, (closestNames) => {
+                                console.log(closestNames);
+                                let out = `No results found for ${testName}, maybe you meant one of these units:\`\`\`\n`;
+                                closestNames.forEach(name => {
+                                    out += name+'\n';
+                                });
+                                out += '```';
+                                console.log(out);
+                                msg.channel.send(out);
+                            });
+                        }
                     });
                 }
                 break;
@@ -431,7 +512,7 @@ bot.on('message', msg => {
                 }
                 break;
                 case 'update': {
-                    if (/*msg.author.id == "611005635223617577" || */msg.author.id == "305397153910751242") {
+                    if (/*msg.author.id == "611005635223617577" || */author.id == "305397153910751242") {
                         var child = addNewUnit(i.getName());
                         child.stdout.on('data', (data) => {
                             console.log(`stdout: ${data}`);
