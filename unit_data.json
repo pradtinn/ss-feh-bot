@@ -287,7 +287,7 @@
             "50%",
             "40%"
         ],
-        "weapon": "Falchion",
+        "weapon": "Falchion (Gaiden)",
         "assist": "",
         "special": "Draconic Aura",
         "passives": {
@@ -4528,7 +4528,7 @@
             "55%",
             "30%"
         ],
-        "weapon": "Falchion",
+        "weapon": "Falchion (Awakening)",
         "assist": "",
         "special": "Aether",
         "passives": {
@@ -15446,7 +15446,7 @@
             "60%",
             "40%"
         ],
-        "weapon": "Laevatein",
+        "weapon": "Laevatein (weapon)",
         "assist": "Swap",
         "special": "",
         "passives": {
@@ -17555,7 +17555,7 @@
             "45%",
             "35%"
         ],
-        "weapon": "Falchion",
+        "weapon": "Falchion (Awakening)",
         "assist": "",
         "special": "Aether",
         "passives": {
@@ -19186,7 +19186,7 @@
             "50%",
             "40%"
         ],
-        "weapon": "Falchion",
+        "weapon": "Falchion (Mystery)",
         "assist": "Pivot",
         "special": "",
         "passives": {
@@ -19247,7 +19247,7 @@
             "45%",
             "35%"
         ],
-        "weapon": "Falchion",
+        "weapon": "Falchion (Awakening)",
         "assist": "",
         "special": "",
         "passives": {
@@ -22984,7 +22984,7 @@
             "35%",
             "35%"
         ],
-        "weapon": "Missiletainn",
+        "weapon": "Missiletainn (tome)",
         "assist": "Rally Up Atk+",
         "special": "Blazing Light",
         "passives": {
@@ -23165,7 +23165,7 @@
             "55%",
             "35%"
         ],
-        "weapon": "Missiletainn",
+        "weapon": "Missiletainn (sword)",
         "assist": "",
         "special": "Blue Flame",
         "passives": {
