@@ -138,7 +138,7 @@ function handleError(msg) {
     var errorMessages = errors.niceErrorMessages;
     var errIndex = Math.floor(Math.random() * errorMessages.length);
     var shouldInsult = Math.floor(Math.random() * 10);
-    msg.react('605823560572862540');
+    msg.react('658148293024415794');
     if (shouldInsult >= 4)
         msg.channel.send(errorMessages[errIndex]);
 }
@@ -207,7 +207,7 @@ function sendWeaponData(msg) {
     owner_string += '\n```';
     const weaponEmbed = new Discord.MessageEmbed()
         .setColor('#04c2ac')
-        .setTitle(weapon_data['name']+' '+emotes['weaponEmotes'][weapon_data['type']])
+        .setTitle(decodeURI(weapon_data['name'])+' '+emotes['weaponEmotes'][weapon_data['type']])
         // .setThumbnail(weapon_data['image-link'])
         .addField('Stats', `**Might:** ${weapon_data['might']}\n**Range:** ${weapon_data['range']}`);
     if (weapon_data['prereq'] != 'None') {
@@ -428,9 +428,6 @@ bot.on('message', msg => {
                 break;
                 case 'sd': {
                     lookUpSkill(i.getInputString(), sendSkillData, msg);
-                    // getSkillData(i.getInputString(), (embed) => {
-                    //     channel.send(embed);
-                    // });
                 }
                 break;
                 case 'update': {
@@ -459,7 +456,13 @@ bot.on('message', msg => {
                         i.verifyValues(find);
                         if (i.getName() != 'ERROR') {
                             getUnitData(i, msg.author.avatarURL(), (unitEmbed) => {
-                                lookUpWeapon(unitEmbed.title, true, sendWeaponData, msg);
+                                for (const field of unitEmbed.fields) {
+                                    if (field['name'] == 'Weapon') {
+                                        let w = encodeURI(field['value']);
+                                        console.log(w);
+                                        lookUpWeapon(w, true, sendWeaponData, msg);
+                                    }
+                                }
                             });
                         } else
                             lookUpWeapon(i.getInputString(), false, sendWeaponData, msg);

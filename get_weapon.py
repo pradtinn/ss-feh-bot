@@ -17,17 +17,8 @@ isUnit = sys.argv[2]
 link = ''
 
 if isUnit == 'true':
-    link = ('https://feheroes.gamepedia.com/'+weapon_raw.replace(' ', '_')).encode('utf-8')
-    print(link)
-    page = requests.get(link)
-    unit_parser = BeautifulSoup(page.content, 'html.parser')
-    weapon_h3 = unit_parser.find(id='Weapons')
-    if weapon_h3 == None:
-        open('weapon_lookup_result.json', 'w')
-        exit(1)
-    weapon_table = weapon_h3.parent.next_sibling.next_sibling
-    last_weapon = weapon_table.find_all('tr')[-1].td.a['href']
-    link = ('https://feheroes.gamepedia'+last_weapon).encode('utf-8')
+    weapon = weapon_raw
+    link = ('https://feheroes.gamepedia.com/'+weapon).encode('utf-8')
 else:
     weapon = ''
     for word in weapon_raw.split():
@@ -77,8 +68,10 @@ character_mapping = {
     '<br/>': '\n'
 }
 
+print(link)
 infobox = page_parser.find('div', class_='hero-infobox')
 if infobox == None:
+    print('infobox not found')
     open('weapon_lookup_result.json', 'w')
     exit(1)
 infobox = infobox.table.tbody
