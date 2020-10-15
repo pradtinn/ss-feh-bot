@@ -68,7 +68,6 @@ character_mapping = {
     '<br/>': '\n'
 }
 
-print(link)
 infobox = page_parser.find('div', class_='hero-infobox')
 if infobox == None:
     print('infobox not found')
@@ -122,14 +121,16 @@ else:
         base_eff_desc = ''
         temp = refine.next_element
         while (temp.name != 'span'):
-            base_eff_desc += remap_characters(temp, character_mapping)
+            base_eff_desc += str(temp)
             temp = temp.next_element
+        base_eff_desc = base_eff_desc.replace('<br/><br/>', '\n')
+        base_eff_desc = base_eff_desc.replace('<br/>', '\n')
         if (base_eff_desc != result['desc']):
-            result['refine'] = remap_characters(base_eff_desc, character_mapping)
+            result['refine'] = base_eff_desc
         else:
             result['refine'] = ''
         refine = refine.span
-        result['refine'] += '*'+remap_characters(refine.get_text(), character_mapping)+'*'
+        result['refine'] += '*'+refine.get_text()+'*'
 
 owner_table = page_parser.find('span', id='List_of_owners').parent.next_sibling.next_sibling.tbody
 if owner_table != None:

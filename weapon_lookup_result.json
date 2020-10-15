@@ -1,0 +1,16 @@
+{
+    "name": "Argent%20Bow",
+    "type": "All Bows",
+    "might": "8",
+    "range": "2",
+    "prereq": [
+        "None"
+    ],
+    "desc": "Effective against flying foes. Inflicts Spd-2. If unit initiates combat, unit attacks twice.\n",
+    "refine": "*At start of turn, inflicts Def-7 on foe on the enemy team with the highest Def through its next action.*",
+    "owners": {
+        "Klein: Silver Nobleman": "5"
+    },
+    "past_max": false,
+    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/0/0e/Weapon_Argent_Bow.png/revision/latest/scale-to-width-down/96"
+}
