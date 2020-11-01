@@ -1,16 +1,17 @@
 {
-    "name": "Argent%20Bow",
-    "type": "All Bows",
+    "name": "Tannenbit",
+    "type": "Blue Tome",
     "might": "8",
     "range": "2",
     "prereq": [
-        "None"
+        "Ellight",
+        "Elthunder"
     ],
-    "desc": "Effective against flying foes. Inflicts Spd-2. If unit initiates combat, unit attacks twice.\n",
-    "refine": "*At start of turn, inflicts Def-7 on foe on the enemy team with the highest Def through its next action.*",
+    "desc": "When unit deals damage to foe during combat, restores 5 HP to unit. (Triggers even if 0 damage is dealt.)\n",
+    "refine": "None",
     "owners": {
-        "Klein: Silver Nobleman": "5"
+        "Nino: Flower of Frost": "5"
     },
     "past_max": false,
-    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/0/0e/Weapon_Argent_Bow.png/revision/latest/scale-to-width-down/96"
+    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/c/ce/Wep_mg145.webp/revision/latest/scale-to-width-down/56"
 }

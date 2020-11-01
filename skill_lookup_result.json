@@ -1,0 +1,7 @@
+{
+    "name": "Atrocity",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/8/85/Atrocity.png/revision/latest/scale-to-width-down/30?cb=20201030092431",
+    "desc": "At start of combat, if foe's HP \u2265 50%, boosts damage by 25% of unit's Atk, and after combat, inflicts Atk/Spd/Def/Res-5 and Special cooldown count+1 on target and foes within 2 spaces of target through their next actions. (No effect on Special cooldown counts already at maximum.)\n",
+    "inherit": "This skill can only be equipped by its original unit.\n",
+    "owners": []
+}

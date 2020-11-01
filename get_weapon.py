@@ -113,24 +113,27 @@ refine = page_parser.find('span', id='Upgrades')
 if refine == None:
     result['refine'] = 'None'
 else:
-    refine = refine.parent.next_sibling.next_sibling.next_sibling.next_sibling.find('span', style='color:#528C34')
+    refine = refine.parent.next_sibling.next_sibling.next_sibling.next_sibling.find_all('tr')[1].find_all('td')[2].div# .find('span', style='color:#528C34')
     if refine == None:
         result['refine'] = 'None'
     else:
-        refine = refine.parent
         base_eff_desc = ''
         temp = refine.next_element
-        while (temp.name != 'span'):
+        while (temp.name != 'span' and temp.name != 'td'):
             base_eff_desc += str(temp)
             temp = temp.next_element
         base_eff_desc = base_eff_desc.replace('<br/><br/>', '\n')
         base_eff_desc = base_eff_desc.replace('<br/>', '\n')
-        if (base_eff_desc != result['desc']):
+        # print('\''+base_eff_desc+'\'')
+        # print('\''+result['desc']+'\'')
+        if (base_eff_desc.replace('\n', '') != result['desc'].replace('\n', '')):
             result['refine'] = base_eff_desc
         else:
             result['refine'] = ''
-        refine = refine.span
-        result['refine'] += '*'+refine.get_text()+'*'
+        if refine.find('span', style='color:#528C34'):
+            result['refine'] += '*'+refine.span.get_text()+'*'
+        if result['refine'] == '':
+            result['refine'] = 'None'
 
 owner_table = page_parser.find('span', id='List_of_owners').parent.next_sibling.next_sibling.tbody
 if owner_table != None:
