@@ -14,6 +14,7 @@ const { Client } = require('pg');
 const { isObject } = require('util');
 const unit = require('./unit.js');
 const { DEFAULT_MIN_VERSION } = require('tls');
+// const snipe = require('./message_snipe.js');
 
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
@@ -568,6 +569,12 @@ bot.on('message', msg => {
                         }
                     })
                 }
+                break;
+                case 'snipe': {
+                    return;
+                    // channel.messsages.fetch()
+                    //     .then(messages => snipe.getMessage(allMessages));
+                }
             }
         } else {
             handleError(msg);
@@ -577,6 +584,8 @@ bot.on('message', msg => {
         if (callOut >= 80)
             channel.send('Stop flayning');
     } else if (msg.mentions.has(bot.user)) {
-        msg.react('605823560572862540');
+        if (author.id == '708368869605244938') 
+            channel.send('No');
+        else msg.react('605823560572862540');
     }
 });
