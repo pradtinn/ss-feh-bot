@@ -29,15 +29,6 @@ const TOKEN = process.env.TOKEN;
 
 bot.login(TOKEN);
 
-big_data = JSON.parse(fs.readFileSync('big_data.json'));
-big_data.forEach(unit => {
-    client.query(`INSERT INTO stats VALUES
-        (${unit['uid']}, ${unit['hp']}, ${unit['atk']}, ${unit['spd']}, ${unit['def']}, ${unit['res']}, ${unit['hp_growth']}, ${unit['atk_growth']}, ${unit['spd_growth']}, ${unit['def_growth']}, ${unit['res_growth']})`)
-        .catch(err => {
-            console.log(err);
-        })
-});
-
 bot.on('ready', () => {
     console.info('Logged in as '+bot.user.tag+'!');
 });
