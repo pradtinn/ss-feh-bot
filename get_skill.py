@@ -9,7 +9,7 @@ file = open('skill_lookup_result.json', 'w')
 
 out = {}
 
-lowercase_words = ['and', 'of', 'for', 'to']
+lowercase_words = ['and', 'of', 'for', 'to', 's']
 uppercase_words = ['AR']
 
 def skill_capitalize(name):
@@ -35,6 +35,7 @@ if skill[-1].isnumeric():
     skill = skill[:-1]
 
 link = ('https://feheroes.gamepedia.com/'+skill).encode('utf-8')
+print(link)
 page = BeautifulSoup(requests.get(link).content, 'html.parser')
 if slash_index > -1:
     skill = skill[:slash_index] + '/' + skill[slash_index+1:]
@@ -89,7 +90,7 @@ for tr in owners_table.find_all('tr')[1:]:
     tds = tr.find_all('td')
     name = tds[0].get_text()
     rarity = ''
-    for selflink in tr.find_all('a', class_='mw-selflink selflink'):
+    for selflink in tr.find_all('strong', class_='mw-selflink selflink'):
         if selflink.get_text() == skill+level:
             rarity = selflink.next_element.next_element.next_element
             break

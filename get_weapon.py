@@ -145,8 +145,11 @@ if owner_table != None:
             if td_count == 0:
                 owner_name = td.div.a['title']
             else:
-                if (td.find('a', class_='mw-selflink') != None):
-                    rarity = td.a.next_sibling.next_sibling
+                if (td.find('strong', class_='mw-selflink') != None):
+                    print('Not none')
+                    rarity = td.strong.next_sibling.next_sibling
+                else:
+                    print('None')
             td_count += 1
         if not result['past_max']:
             result['owners'][owner_name] = rarity

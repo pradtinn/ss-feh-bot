@@ -29,6 +29,15 @@ const TOKEN = process.env.TOKEN;
 
 bot.login(TOKEN);
 
+big_data = JSON.parse(fs.readFileSync('big_data.json'));
+big_data.forEach(unit => {
+    client.query(`INSERT INTO stats VALUES
+        (${unit['uid']}, ${unit['hp']}, ${unit['atk']}, ${unit['spd']}, ${unit['def']}, ${unit['res']}, ${unit['hp_growth']}, ${unit['atk_growth']}, ${unit['spd_growth']}, ${unit['def_growth']}, ${unit['res_growth']})`)
+        .catch(err => {
+            console.log(err);
+        })
+});
+
 bot.on('ready', () => {
     console.info('Logged in as '+bot.user.tag+'!');
 });
@@ -343,6 +352,27 @@ bot.on('message', msg => {
     var message = msg.content;
     var channel = msg.channel;
     var author = msg.author;
+    if (!author.bot) {
+        switch (message.toLowerCase()) {
+            case 'ayy': channel.send('lmao');
+            break;
+            case 'all i want for christmas': channel.send('https://m.youtube.com/watch?v=2RtI5UEZlzU');
+            break;
+            case 'don\'t fuck with us smashing summoners':
+            case 'dont fuck with us smashing summoners': channel.send('We repeat the same inside jokes every 5 minutes!');
+            break;
+            case 'your honor': channel.send('*I\'m* balling');
+            break;
+            case 'ok floot, what is the best christmas song?': channel.send('https://www.youtube.com/watch?v=EFLaUL8NG9Y');
+            break;
+            case 'ok floot, where is canada?': channel.send('Canada doesn\'t exist');
+            break;
+            case 'you are not a clown': channel.send('You are the entire circus.');
+            break;
+            case 'what song do i listen to?': channel.send('Broey\'s current addiction:\n https://www.youtube.com/watch?v=86q0FZSBm68');
+            break;
+        }
+    }
     if (message.substring(0, 1) == '!') {
         if (message.substring(1) == 'heelp') {
             msg.member.createDM().then((dmchannel) => {
@@ -574,6 +604,12 @@ bot.on('message', msg => {
                     return;
                     // channel.messsages.fetch()
                     //     .then(messages => snipe.getMessage(allMessages));
+                }
+                break;
+                case 'test': {
+                    embed = new Discord.MessageEmbed()
+                        .setThumbnail('https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/a/a0/Alm_Hero_of_Prophecy_Face_FC.webp/revision/latest/');
+                    channel.send(embed);
                 }
             }
         } else {
