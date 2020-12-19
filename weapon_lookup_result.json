@@ -1,17 +1,16 @@
 {
-    "name": "Tannenbit",
-    "type": "Blue Tome",
-    "might": "8",
-    "range": "2",
+    "name": "Veteran Lance",
+    "type": "Lance",
+    "might": "16",
+    "range": "1",
     "prereq": [
-        "Ellight",
-        "Elthunder"
+        "None"
     ],
-    "desc": "When unit deals damage to foe during combat, restores 5 HP to unit. (Triggers even if 0 damage is dealt.)\n",
-    "refine": "None",
+    "desc": "If foe initiates combat or, at start of combat, if foe's HP \u2265 70%, grants Atk/Res+5 to unit during combat.\n",
+    "refine": "*At start of turn, if any foe's Res \u2264 unit's Res-3 and that foe is adjacent to another foe, inflicts Atk-7 on that foe through its next action.*",
     "owners": {
-        "Nino: Flower of Frost": "5"
+        "Jagen: Veteran Knight": "5"
     },
     "past_max": false,
-    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/c/ce/Wep_mg145.webp/revision/latest/scale-to-width-down/56"
+    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/f/fd/Wep_lc070.webp/revision/latest/scale-to-width-down/49"
 }

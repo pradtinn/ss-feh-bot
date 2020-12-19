@@ -1,7 +1,12 @@
 {
-    "name": "Atrocity",
-    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/8/85/Atrocity.png/revision/latest/scale-to-width-down/30?cb=20201030092431",
-    "desc": "At start of combat, if foe's HP \u2265 50%, boosts damage by 25% of unit's Atk, and after combat, inflicts Atk/Spd/Def/Res-5 and Special cooldown count+1 on target and foes within 2 spaces of target through their next actions. (No effect on Special cooldown counts already at maximum.)\n",
-    "inherit": "This skill can only be equipped by its original unit.\n",
-    "owners": []
+    "name": "Slick Fighter 3",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/0/0a/Slick_Fighter_3.png/revision/latest/scale-to-width-down/30?cb=20201007015927",
+    "desc": "If unit's HP \u2265 25% and foe initiates combat, neutralizes penalties on unit during combat and unit makes a guaranteed follow-up attack.\n",
+    "inherit": "Cannot use: InfantryCavalryFlying\n",
+    "owners": [
+        [
+            "Dheginsea: Harvest Goldoan",
+            "5"
+        ]
+    ]
 }
