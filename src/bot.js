@@ -146,7 +146,7 @@ function handleError(msg) {
 }
 
 function addNewUnit(name) {
-    return spawn('python', [
+    return spawn('python3', [
         '-u',
         'get_unit_data.py',
         name
@@ -154,7 +154,7 @@ function addNewUnit(name) {
 }
 
 function lookUpWeapon(name, isUnit, sendWeaponData, msg) {
-    const child = spawn('python', [
+    const child = spawn('python3', [
         '-u',
         'get_weapon.py',
         name,
@@ -175,7 +175,7 @@ function lookUpWeapon(name, isUnit, sendWeaponData, msg) {
 }
 
 function lookUpSkill(name, sendSkillData, msg) {
-    const child = spawn('python', [
+    const child = spawn('python3', [
         '-u',
         'get_skill.py',
         name
@@ -573,7 +573,7 @@ bot.on('message', msg => {
                 }
                 break;
                 case 'gib': {
-                    const child = spawn('python', [
+                    const child = spawn('python3', [
                         '-u',
                         'art.py',
                         i.getInputString()
