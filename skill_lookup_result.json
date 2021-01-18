@@ -1,0 +1,12 @@
+{
+    "name": "Infantry Flash",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/7/73/Infantry_Flash_3.png/revision/latest/scale-to-width-down/30?cb=20180828070101",
+    "desc": "Infantry allies within 2 spaces gain: \"If unit's Spd > foe's Spd, grants Special cooldown charge +1 per unit's attack. (Only highest value applied. Does not stack.)\"\n",
+    "inherit": "Cannot use: ArmoredCavalryFlying\n",
+    "owners": [
+        [
+            "Marth: Hero-King",
+            "5"
+        ]
+    ]
+}

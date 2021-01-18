@@ -1,16 +1,16 @@
 {
-    "name": "Veteran Lance",
-    "type": "Lance",
+    "name": "Sealed Falchion",
+    "type": "Sword",
     "might": "16",
     "range": "1",
     "prereq": [
-        "None"
+        "Silver Sword"
     ],
-    "desc": "If foe initiates combat or, at start of combat, if foe's HP \u2265 70%, grants Atk/Res+5 to unit during combat.\n",
-    "refine": "*At start of turn, if any foe's Res \u2264 unit's Res-3 and that foe is adjacent to another foe, inflicts Atk-7 on that foe through its next action.*",
+    "desc": "Effective against dragon foes.\nAt start of combat, if unit's HP < 100%, grants Atk/Spd/Def/Res+5 during combat.\n",
+    "refine": "Effective against dragon foes.\n At start of combat, if unit's HP < 100% or if\u3010Bonus\u3011is active on unit, grants Atk/Spd/Def/Res+5 during combat. \n\u3010Bonus\u3011\nAll effects that last \"for 1 turn\" or \"that turn only.\" Includes bonuses granted by a skill like Rally or Hone and positive status effects (extra movement or effects like Dominance).\n*At start of combat, if foe's HP \u2265 75%, grants Atk/Spd/Def+5 to unit during combat and foe cannot make a follow-up attack.*",
     "owners": {
-        "Jagen: Veteran Knight": "5"
+        "Chrom: Knight Exalt": "5"
     },
     "past_max": false,
-    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/f/fd/Wep_lc070.webp/revision/latest/scale-to-width-down/49"
+    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/e/ed/Weapon_Sealed_Falchion.png/revision/latest/scale-to-width-down/50"
 }
