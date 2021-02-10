@@ -34,8 +34,7 @@ bot.on('ready', () => {
 });
 
 function findUnit(name, msg, callback) {
-    name = "'"+name.replace(/'/g, "''")+"'";
-    client.query(`SELECT "FIND_UNIT"(${name})`)
+    client.query('SELECT "FIND_UNIT"($1::text)', [name])
         .then(result => {
             callback(result);
         })
@@ -419,8 +418,8 @@ bot.on('message', msg => {
                                 handleError(msg);
                                 return;
                             }
-                            find = "'"+find.replace(/'/g, "''")+"'";
-                            client.query(`SELECT * FROM aliases WHERE unit ILIKE ${find}`)
+                            // find = "'"+find.replace(/'/g, "''")+"'";
+                            client.query('SELECT * FROM aliases WHERE unit ILIKE $1::text', [find])
                                 .then((ali) => {
                                     if (ali == null) {
                                         handleError(msg);
@@ -466,9 +465,10 @@ bot.on('message', msg => {
                                     handleError(msg);
                                     return;
                                 }
-                                let alias = "'"+i.getAlias().replace(/'/g, "''")+"'";
-                                let name = "'"+find.replace(/'/g, "''")+"'";
-                                client.query(`SELECT "ADD_ALIAS"(${name}, ${alias})`)
+                                let alias = i.getAlias();
+                                // let alias = "'"+i.getAlias().replace(/'/g, "''")+"'";
+                                // let name = "'"+find.replace(/'/g, "''")+"'";
+                                client.query('SELECT "ADD_ALIAS"($1::text, $2::text)', [find, alias])
                                     .then((result3) => {
                                         let added = result3['rows'][0]['ADD_ALIAS'];
                                         if (!added) {
@@ -487,8 +487,9 @@ bot.on('message', msg => {
                 }
                 break;
                 case 'ra': {
-                    let alias = "'"+i.getName().replace(/'/g, "''")+"'";
-                    client.query(`SELECT "REMOVE_ALIAS"(${alias})`)
+                    // let alias = "'"+i.getName().replace(/'/g, "''")+"'";
+                    let alias = i.getName();
+                    client.query('SELECT "REMOVE_ALIAS"($1::text)', [alias])
                         .then((result) => {
                             const removed = result['rows'][0]['REMOVE_ALIAS'];
                             if (!removed) {
