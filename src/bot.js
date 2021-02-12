@@ -550,7 +550,10 @@ bot.on('message', msg => {
                 }
                 break;
                 case 'calendar': {
-                    const attachment = new Discord.MessageAttachment('./Calendar.png');
+                    let attachment = new Discord.MessageAttachment('./Calendar_EST.png');
+                    if (i.getInputString().toLowerCase() == 'pst') {
+                        attachment = new Discord.MessageAttachment('./Calendar_PST.png');
+                    }
                     channel.send(attachment);
                 }
                 break;
