@@ -30,6 +30,7 @@ class Input {
             break;
             case 'a': {
                 var numSections = this.determineA();
+                this.name = this.name.replace(/!/g, ' ');
                 if (numSections == 2) {
                     if (this.name.indexOf('$') != -1 || !aliasHandler.filterAlias(this.alias)) {
                         this.name = 'ERROR';
@@ -67,6 +68,7 @@ class Input {
     insertSpaces() {
         var i;
         var mergeIVDF = '+/|';
+        this.inputString = this.inputString.replace(/!/g, ' ');
         for (i = 0; i < this.inputString.length; i++) {
             if (mergeIVDF.indexOf(this.inputString[i]) != -1 && this.inputString[i-1] != ' ')
                 this.inputString = this.inputString.slice(0, i) + ' ' + this.inputString.slice(i);

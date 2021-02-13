@@ -449,7 +449,7 @@ bot.on('message', msg => {
                                     });
                                     const aliasEmbed = new Discord.MessageEmbed()
                                         .setColor("#04c2ac")
-                                        .setTitle(find.substring(1, find.length-1).replace(/''/g, "'").replace(/_/g, ' '))
+                                        .setTitle(find.replace(/_/g, ' '))
                                         .addField("Aliases", ali_string);
                                     channel.send(aliasEmbed);
                                 })
