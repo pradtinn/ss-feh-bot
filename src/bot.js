@@ -33,6 +33,11 @@ bot.on('ready', () => {
     console.info('Logged in as '+bot.user.tag+'!');
 });
 
+function getSnapback(author) {
+    const snapbacks = errors.snapbacks;
+    return snapbacks[Math.floor(Math.random() * snapbacks.length)].replace(/user/g, author);
+}
+
 function findUnit(name, msg, callback) {
     client.query('SELECT "FIND_UNIT"($1::text)', [name])
         .then(result => {
@@ -361,6 +366,7 @@ bot.on('message', msg => {
             break;
             case 'what song do i listen to?': channel.send('Broey\'s current addiction:\n https://www.youtube.com/watch?v=86q0FZSBm68');
             break;
+            case 'fuck you floot': channel.send(getSnapback(author.username));
         }
     }
     if (message.substring(0, 1) == '!') {
