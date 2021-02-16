@@ -1,16 +1,17 @@
 {
-    "name": "Sealed Falchion",
-    "type": "Sword",
-    "might": "16",
-    "range": "1",
+    "name": "Dark%20Spikes%20T",
+    "type": "Red Tome",
+    "might": "14",
+    "range": "2",
     "prereq": [
-        "Silver Sword"
+        "Bolganone",
+        "Fenrir"
     ],
-    "desc": "Effective against dragon foes.\nAt start of combat, if unit's HP < 100%, grants Atk/Spd/Def/Res+5 during combat.\n",
-    "refine": "Effective against dragon foes.\n At start of combat, if unit's HP < 100% or if\u3010Bonus\u3011is active on unit, grants Atk/Spd/Def/Res+5 during combat. \n\u3010Bonus\u3011\nAll effects that last \"for 1 turn\" or \"that turn only.\" Includes bonuses granted by a skill like Rally or Hone and positive status effects (extra movement or effects like Dominance).\n*At start of combat, if foe's HP \u2265 75%, grants Atk/Spd/Def+5 to unit during combat and foe cannot make a follow-up attack.*",
+    "desc": "Effective against cavalry foes. Grants Spd+3. At the start of combat, if foe's HP \u2265 75%, grants Atk/Spd+6 during combat. If unit's HP < 100% and unit initiates combat, unit makes a guaranteed follow-up attack before foe can counterattack.\n",
+    "refine": "None",
     "owners": {
-        "Chrom: Knight Exalt": "5"
+        "Lysithea: Earnest Seeker": "5"
     },
     "past_max": false,
-    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/e/ed/Weapon_Sealed_Falchion.png/revision/latest/scale-to-width-down/50"
+    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/6/65/Weapon_Dark_Spikes_T.png/revision/latest/scale-to-width-down/56"
 }
