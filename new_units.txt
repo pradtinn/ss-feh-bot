@@ -1,0 +1,10 @@
+19,7,10,6,9
+43,35,38,23,33
+Firesweep Lance+
+Glacies
+NONE
+NONE
+Flier Formation 3
+Spd/Res Oath 3
+Flying
+Lance

@@ -1,60 +1,60 @@
 {
-    "Caellach:_Tiger_Eye": {
+    "D\u00edthorba:_Cutting_Knight": {
         "lvl1stats": {
             "1": [
                 "16/17/18",
-                "7/8/9",
-                "5/6/7",
                 "4/5/6",
+                "7/8/9",
+                "3/4/5",
                 "6/7/8"
             ],
             "2": [
                 "16/17/18",
-                "8/9/10",
-                "5/6/7",
                 "4/5/6",
+                "8/9/10",
+                "3/4/5",
                 "7/8/9"
             ],
             "3": [
                 "17/18/19",
-                "8/9/10",
-                "6/7/8",
                 "5/6/7",
+                "8/9/10",
+                "4/5/6",
                 "7/8/9"
             ],
             "4": [
                 "17/18/19",
-                "9/10/11",
-                "6/7/8",
                 "5/6/7",
+                "9/10/11",
+                "4/5/6",
                 "8/9/10"
             ],
             "5": [
                 "18/19/20",
-                "9/10/11",
-                "7/8/9",
                 "6/7/8",
+                "9/10/11",
+                "5/6/7",
                 "8/9/10"
             ]
         },
         "growths": [
-            "60%",
-            "70%",
-            "45%",
             "55%",
+            "65%",
+            "65%",
+            "40%",
             "55%"
         ],
-        "weapon": "Reprisal Axe+",
+        "weapon": "Firesweep Lance+",
         "assist": "",
-        "special": "Dragon Fang",
+        "special": "Glacies",
         "passives": {
             "A": [],
-            "B": "Guard 3",
-            "C": "Even Def Wave 3"
+            "B": "Flier Formation 3",
+            "C": "Spd/Res Oath 3"
         },
         "alias": [],
-        "moveType": "Infantry",
-        "weaponType": "Axe",
-        "releaseDate": "2020-12-08"
+        "moveType": "Flying",
+        "weaponType": "Lance",
+        "releaseDate": "2021-02-16"
     }
 }
