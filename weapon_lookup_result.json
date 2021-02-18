@@ -1,17 +1,16 @@
 {
-    "name": "Dark%20Spikes%20T",
-    "type": "Red Tome",
+    "name": "Blood Tome",
+    "type": "Green Tome",
     "might": "14",
     "range": "2",
     "prereq": [
-        "Bolganone",
-        "Fenrir"
+        "Rexcalibur"
     ],
-    "desc": "Effective against cavalry foes. Grants Spd+3. At the start of combat, if foe's HP \u2265 75%, grants Atk/Spd+6 during combat. If unit's HP < 100% and unit initiates combat, unit makes a guaranteed follow-up attack before foe can counterattack.\n",
+    "desc": "Grants Atk+3. If foe uses bow, dagger, magic, or staff, reduces damage from area-of-effect Specials by 80% (excluding R\u00f8kkr area-of-effect Specials) and reduces damage from foe's attacks by 50%, and if foe is also colorless, grants weapon-triangle advantage to unit and inflicts weapon-triangle disadvantage on foe.\n",
     "refine": "None",
     "owners": {
-        "Lysithea: Earnest Seeker": "5"
+        "Lyon: Demon King": "5"
     },
     "past_max": false,
-    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/6/65/Weapon_Dark_Spikes_T.png/revision/latest/scale-to-width-down/56"
+    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/e/e4/Weapon_Blood_Tome.png/revision/latest/scale-to-width-down/56"
 }

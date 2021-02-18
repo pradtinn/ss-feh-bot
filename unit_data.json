@@ -25952,7 +25952,7 @@
         ],
         "weapon": "Golden Dagger",
         "assist": "",
-        "special": "Aegis",
+        "SPECIAL": "Aegis",
         "passives": {
             "A": "HP/Spd 2",
             "B": "Shield Pulse 3",
@@ -37489,7 +37489,7 @@
         "weaponType": "Sword",
         "releaseDate": "2021-02-16"
     },
-    "Azel:_Youthful_Flame": {
+    "Azelle:_Youthful_Flame": {
         "lvl1stats": {
             "1": [
                 "16/17/18",
