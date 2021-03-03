@@ -1,16 +1,16 @@
 {
-    "name": "Blood Tome",
-    "type": "Green Tome",
-    "might": "14",
-    "range": "2",
+    "name": "Tiger-Roar%20Axe",
+    "type": "Axe",
+    "might": "16",
+    "range": "1",
     "prereq": [
-        "Rexcalibur"
+        "Silver Axe"
     ],
-    "desc": "Grants Atk+3. If foe uses bow, dagger, magic, or staff, reduces damage from area-of-effect Specials by 80% (excluding R\u00f8kkr area-of-effect Specials) and reduces damage from foe's attacks by 50%, and if foe is also colorless, grants weapon-triangle advantage to unit and inflicts weapon-triangle disadvantage on foe.\n",
+    "desc": "Accelerates Special trigger (cooldown count-1). If unit initiates combat or if unit is within 2 spaces of an ally, grants Atk/Spd/Def/Res+5 during combat, and also, at start of combat, if foe's HP = 100%, unit makes a guaranteed follow-up attack.\n",
     "refine": "None",
     "owners": {
-        "Lyon: Demon King": "5"
+        "Dieck: Wounded Tiger": "5"
     },
     "past_max": false,
-    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/e/e4/Weapon_Blood_Tome.png/revision/latest/scale-to-width-down/56"
+    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/a/a7/Wep_ax078.webp/revision/latest/scale-to-width-down/90"
 }

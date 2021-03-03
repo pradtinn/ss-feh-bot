@@ -1,19 +1,27 @@
 {
-    "name": "Atk/Def Solo 4",
-    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/7/73/Atk_Def_Solo_4.png/revision/latest/scale-to-width-down/30?cb=20200806143805",
-    "desc": "If unit is not adjacent to an ally, grants Atk/Def+7 during combat.\n",
+    "name": "Close Guard",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/e/e4/Close_Guard_3.png/revision/latest/scale-to-width-down/30?cb=20180821061320",
+    "desc": "Allies within 2 spaces gain: \"If foe uses sword, lance, axe, dragonstone, or beast damage, grants Def/Res+4 during combat.\"\n",
     "inherit": "No restrictions.\n",
     "owners": [
         [
-            "Melady: Crimson Rider",
+            "Death Knight: The Reaper",
+            "4"
+        ],
+        [
+            "Felicia: Off the Menu",
             "5"
         ],
         [
-            "Shinon: Scathing Archer",
+            "Hinata: Samurai Groom",
             "5"
         ],
         [
-            "Veronica: Harmonic Pirates",
+            "Natasha: Sacred Healer",
+            "5"
+        ],
+        [
+            "Veronica: Brave Princess",
             "5"
         ]
     ]
