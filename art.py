@@ -47,13 +47,14 @@ else:
             image_pids.append(img_link[img_link.index('?')+1:])
     # print(image_pids)
     cache[character] = image_pids
-    with open('art_cache.json', 'w') as file:
-        json.dump(cache, file, indent=4)
     print('New pids in cache now.')
 img_index = random.randint(0, len(image_pids)-1)
 print('Going to preview link for image sample link...')
 selected_img_link = 'https://safebooru.org/index.php?page=post&s=view&id='+image_pids[img_index]
 cache[character].remove(image_pids[img_index])
+with open('art_cache.json', 'w') as file:
+        json.dump(cache, file, indent=4)
+print('Updated cache file.')
 i_page = requests.get(selected_img_link)
 i_parser = BeautifulSoup(i_page.content, 'html.parser')
 sample_link = i_parser.find('img', id='image')['src']
