@@ -1,16 +1,16 @@
 {
-    "name": "Tiger-Roar%20Axe",
-    "type": "Axe",
-    "might": "16",
-    "range": "1",
+    "name": "Tome of Storms",
+    "type": "Blue Tome",
+    "might": "14",
+    "range": "2",
     "prereq": [
-        "Silver Axe"
+        "Thoron"
     ],
-    "desc": "Accelerates Special trigger (cooldown count-1). If unit initiates combat or if unit is within 2 spaces of an ally, grants Atk/Spd/Def/Res+5 during combat, and also, at start of combat, if foe's HP = 100%, unit makes a guaranteed follow-up attack.\n",
+    "desc": "Grants Spd+3. At start of combat, if foe's HP \u2265 75%, grants Atk/Spd+5 to unit during combat and neutralizes effects that guarantee foe's follow-up attacks and effects that prevent unit's follow-up attacks during combat.\n",
     "refine": "None",
     "owners": {
-        "Dieck: Wounded Tiger": "5"
+        "Selena: Fluorspar": "5"
     },
     "past_max": false,
-    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/a/a7/Wep_ax078.webp/revision/latest/scale-to-width-down/90"
+    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/e/e5/Weapon_Tome_of_Storms.png/revision/latest/scale-to-width-down/56"
 }

@@ -1,27 +1,23 @@
 {
-    "name": "Close Guard",
-    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/e/e4/Close_Guard_3.png/revision/latest/scale-to-width-down/30?cb=20180821061320",
-    "desc": "Allies within 2 spaces gain: \"If foe uses sword, lance, axe, dragonstone, or beast damage, grants Def/Res+4 during combat.\"\n",
-    "inherit": "No restrictions.\n",
+    "name": "Windsweep 3",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/c/ca/Windsweep_3.png/revision/latest/scale-to-width-down/30?cb=20180810072713",
+    "desc": "If unit initiates combat, unit cannot make a follow-up attack. If unit\u2019s Spd > foe\u2019s Spd and foe uses sword, lance, axe, bow, dagger, or beast damage, foe cannot counterattack.\n",
+    "inherit": "Cannot use: Colorless Staff\n",
     "owners": [
         [
-            "Death Knight: The Reaper",
+            "Joshua: Tempest King",
             "4"
         ],
         [
-            "Felicia: Off the Menu",
+            "Alm: Hero of Prophecy",
             "5"
         ],
         [
-            "Hinata: Samurai Groom",
+            "Merric: Changing Winds",
             "5"
         ],
         [
-            "Natasha: Sacred Healer",
-            "5"
-        ],
-        [
-            "Veronica: Brave Princess",
+            "Ethlyn: Glimmering Lady",
             "5"
         ]
     ]
