@@ -13,12 +13,14 @@ import signal
 # exit(i_parser.find('img', id='image')['src'])
 character = sys.argv[1].replace(' ', '_').lower()
 
+print('Hello?')
+
 with open('art_cache.json', 'r') as file:
     cache = json.load(file)
 
 image_pids = []
 
-if character in cache:
+if character in cache and len(cache[character]) > 0:
     print('Loaded pids from cache...')
     image_pids = cache[character]
 else:
@@ -51,6 +53,7 @@ else:
 img_index = random.randint(0, len(image_pids)-1)
 print('Going to preview link for image sample link...')
 selected_img_link = 'https://safebooru.org/index.php?page=post&s=view&id='+image_pids[img_index]
+cache[character].remove(image_pids[img_index])
 i_page = requests.get(selected_img_link)
 i_parser = BeautifulSoup(i_page.content, 'html.parser')
 sample_link = i_parser.find('img', id='image')['src']
