@@ -556,10 +556,10 @@ bot.on('message', msg => {
                 }
                 break;
                 case 'calendar': {
-                    let attachment = new Discord.MessageAttachment('./Calendar_EST.png');
-                    if (i.getInputString().toLowerCase() == 'pst') {
-                        attachment = new Discord.MessageAttachment('./Calendar_PST.png');
-                    }
+                    // let attachment = new Discord.MessageAttachment('./Calendar_EST.png');
+                    // if (i.getInputString().toLowerCase() == 'pst') {
+                    attachment = new Discord.MessageAttachment('./Calendar_PST.png');
+                    // }
                     channel.send(attachment);
                 }
                 break;
