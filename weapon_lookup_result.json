@@ -1,16 +1,16 @@
 {
-    "name": "Tome of Storms",
-    "type": "Blue Tome",
-    "might": "14",
-    "range": "2",
+    "name": "Urvan",
+    "type": "Axe",
+    "might": "16",
+    "range": "1",
     "prereq": [
-        "Thoron"
+        "Silver Axe"
     ],
-    "desc": "Grants Spd+3. At start of combat, if foe's HP \u2265 75%, grants Atk/Spd+5 to unit during combat and neutralizes effects that guarantee foe's follow-up attacks and effects that prevent unit's follow-up attacks during combat.\n",
-    "refine": "None",
+    "desc": "Accelerates Special trigger (cooldown count-1). If unit receives consecutive attacks, reduces damage from foe's second attack onward by 80%.\n",
+    "refine": "*Reduces damage from foe's first attack by 40%. If foe initiates combat, foe can make a follow-up attack before unit can counterattack.*",
     "owners": {
-        "Selena: Fluorspar": "5"
+        "Ike: Brave Mercenary": "5"
     },
     "past_max": false,
-    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/e/e5/Weapon_Tome_of_Storms.png/revision/latest/scale-to-width-down/56"
+    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/1/1e/Weapon_Urvan.png/revision/latest/scale-to-width-down/88"
 }

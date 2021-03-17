@@ -1,23 +1,11 @@
 {
-    "name": "Windsweep 3",
-    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/c/ca/Windsweep_3.png/revision/latest/scale-to-width-down/30?cb=20180810072713",
-    "desc": "If unit initiates combat, unit cannot make a follow-up attack. If unit\u2019s Spd > foe\u2019s Spd and foe uses sword, lance, axe, bow, dagger, or beast damage, foe cannot counterattack.\n",
+    "name": "Fatal Smoke 3",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/5/58/Fatal_Smoke_3.png/revision/latest/scale-to-width-down/30?cb=20210204025539",
+    "desc": "Foe cannot recover HP during or after combat, and after combat, inflicts\u3010Deep Wounds\u3011on target and foes within 2 spaces of target.\u3010Deep Wounds\u3011Unit's HP cannot be healed through its next action.\n",
     "inherit": "Cannot use: Colorless Staff\n",
     "owners": [
         [
-            "Joshua: Tempest King",
-            "4"
-        ],
-        [
-            "Alm: Hero of Prophecy",
-            "5"
-        ],
-        [
-            "Merric: Changing Winds",
-            "5"
-        ],
-        [
-            "Ethlyn: Glimmering Lady",
+            "L\u00edf: Undying Ties Duo",
             "5"
         ]
     ]
