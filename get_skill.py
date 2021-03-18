@@ -10,7 +10,7 @@ file = open('skill_lookup_result.json', 'w')
 out = {}
 
 lowercase_words = ['and', 'of', 'for', 'to', 's']
-uppercase_words = ['AR']
+uppercase_words = ['AR', 'HP']
 
 def skill_capitalize(name):
     result = ''
