@@ -38184,5 +38184,63 @@
         "moveType": "Cavalry",
         "weaponType": "Red Tome",
         "releaseDate": "2021-02-05"
+    },
+    "Severa:_Bitter_Blossom": {
+        "lvl1stats": {
+            "1": [
+                "14/15/16",
+                "6/7/8",
+                "7/8/9",
+                "2/3/4",
+                "1/2/3"
+            ],
+            "2": [
+                "14/15/16",
+                "7/8/9",
+                "8/9/10",
+                "2/3/4",
+                "1/2/3"
+            ],
+            "3": [
+                "15/16/17",
+                "7/8/9",
+                "8/9/10",
+                "3/4/5",
+                "2/3/4"
+            ],
+            "4": [
+                "15/16/17",
+                "8/9/10",
+                "9/10/11",
+                "3/4/5",
+                "2/3/4"
+            ],
+            "5": [
+                "16/17/18",
+                "8/9/10",
+                "9/10/11",
+                "4/5/6",
+                "3/4/5"
+            ]
+        },
+        "growths": [
+            "50%",
+            "65%",
+            "70%",
+            "45%",
+            "30%"
+        ],
+        "weapon": "Gullinkambi Egg",
+        "assist": "",
+        "special": "Moonbow",
+        "passives": {
+            "A": "R Duel Cavalry 4",
+            "B": "Lull Spd/Res 3",
+            "C": "Joint Hone Atk"
+        },
+        "alias": [],
+        "moveType": "Cavalry",
+        "weaponType": "Red Tome",
+        "releaseDate": "2021-03-17"
     }
 }
