@@ -541,18 +541,19 @@ bot.on('message', msg => {
                 }
                 break;
                 case 'update': {
-                    if (/*msg.author.id == "611005635223617577" || */author.id == "305397153910751242") {
-                        var child = addNewUnit(i.getName());
-                        child.stdout.on('data', (data) => {
-                            console.log(`stdout: ${data}`);
-                        });
-                        child.stderr.on('data', (data) => {
-                            console.log(`stderr: ${data}`)
-                        });
-                    } else {
-                        handleError(msg);
-                    }
+                    var child = addNewUnit(i.getName());
+                    child.stdout.on('data', (data) => {
+                        console.log(`stdout: ${data}`);
+                    });
+                    child.stderr.on('data', (data) => {
+                        console.log(`stderr: ${data}`)
+                    });
                     dataHandler.refresh();
+                    client.query('INSERT INTO aliases VALUES ($1::text, $2::text);', [i.getName(), i.getAlias()])
+                        .catch(error => {
+                            console.log(error);
+                            handleError(msg);
+                        });
                 }
                 break;
                 case 'calendar': {
