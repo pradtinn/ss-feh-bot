@@ -548,10 +548,10 @@ bot.on('message', msg => {
                     child.stderr.on('data', (data) => {
                         console.log(`stderr: ${data}`)
                     });
+                    child.on('exit', (code) => {
+                        dataHandler.refresh();
+                    });
                     client.query('INSERT INTO aliases VALUES ($1::text, $2::text);', [i.getName(), i.getAlias()])
-                        .then(() => {
-                            dataHandler.refresh();
-                        })
                         .catch(error => {
                             console.log(error);
                             handleError(msg);
