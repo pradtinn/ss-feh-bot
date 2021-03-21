@@ -548,12 +548,14 @@ bot.on('message', msg => {
                     child.stderr.on('data', (data) => {
                         console.log(`stderr: ${data}`)
                     });
-                    dataHandler.refresh();
-                    client.query('INSERT INTO aliases VALUES ($1::text, $2::text);', [i.getName(), i.getAlias()])
-                        .catch(error => {
-                            console.log(error);
-                            handleError(msg);
-                        });
+                    dataHandler.refresh()
+                        .then(
+                            client.query('INSERT INTO aliases VALUES ($1::text, $2::text);', [i.getName(), i.getAlias()])
+                                .catch(error => {
+                                    console.log(error);
+                                    handleError(msg);
+                                })
+                        );
                 }
                 break;
                 case 'calendar': {

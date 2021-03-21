@@ -37,6 +37,7 @@ module.exports = {
     refresh() {
         rawData = fs.readFileSync('unit_data.json');
         data = JSON.parse(rawData);
+        console.log('Refreshed!');
     },
     getName(alias) {
         if (data.hasOwnProperty(alias)) {
