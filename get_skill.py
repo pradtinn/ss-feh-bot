@@ -79,6 +79,7 @@ inherit_restr = skill_table.find_all('tr')[-1].td
 out['inherit'] = ''
 for restr in inherit_restr.contents:
     if restr.name == 'a':
+        print(restr['title'])
         title = restr['title'].replace('bow', 'Bow').replace('Staff', 'Colorless Staff')
         out['inherit'] += title
     else:
