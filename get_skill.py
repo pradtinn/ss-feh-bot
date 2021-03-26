@@ -70,13 +70,17 @@ if skill_image != None:
     out['image'] = skill_image['src']
     passive = True
 
+if passive and skill_table.find('tr').find_all('th')[-1].get_text() == 'Cannot use':
+    cannot_use_mod = 1
+cannot_use_mod = 0
+
 if passive:
-    out['desc'] = skill_row.find_all('td')[-1].get_text()
+    out['desc'] = skill_row.find_all('td')[-1 - cannot_use_mod].get_text()
 else:
     out['desc'] = skill_row.find_all('td')[2].get_text()
 
 if level != '':
-    inherit_restr = skill_table.find_all('tr')[int(level)-1].find_all('td')[-1]
+    inherit_restr = skill_table.find_all('tr')[int(level)].find_all('td')[-1 - cannot_use_mod]
 else:
     inherit_restr = skill_table.find_all('tr')[-1].find_all('td')[-1]
 out['inherit'] = ''
