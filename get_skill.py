@@ -75,12 +75,13 @@ if passive and skill_table.find('tr').find_all('th')[-1].get_text() == 'Cannot u
 cannot_use_mod = 0
 
 if passive:
+    print(cannot_use_mod)
     out['desc'] = skill_row.find_all('td')[-1 - cannot_use_mod].get_text()
 else:
     out['desc'] = skill_row.find_all('td')[2].get_text()
 
-if level != '':
-    inherit_restr = skill_table.find_all('tr')[int(level)].find_all('td')[-1 - cannot_use_mod]
+if level != '' and cannot_use_mod > 0:
+    inherit_restr = skill_table.find_all('tr')[int(level)].find_all('td')[-1]
 else:
     inherit_restr = skill_table.find_all('tr')[-1].find_all('td')[-1]
 out['inherit'] = ''
