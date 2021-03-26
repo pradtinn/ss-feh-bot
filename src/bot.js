@@ -260,6 +260,7 @@ function sendSkillData(msg) {
     });
     owners_string += '```\n';
     let inherit_string = replaceWithEmote(skill_data['inherit']);
+    console.log(skill_data);
     const skill_embed = new Discord.MessageEmbed()
         .setColor('#04c2ac')
         .setTitle(skill_data['name'])
