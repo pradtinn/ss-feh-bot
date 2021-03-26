@@ -75,11 +75,10 @@ if passive:
 else:
     out['desc'] = skill_row.find_all('td')[2].get_text()
 
-inherit_restr = skill_table.find_all('tr')[-1].td
+inherit_restr = skill_table.find_all('tr')[level-1].find_all('td')[-1]
 out['inherit'] = ''
 for restr in inherit_restr.contents:
     if restr.name == 'a':
-        print(restr['title'])
         title = restr['title'].replace('bow', 'Bow').replace('Staff', 'Colorless Staff')
         out['inherit'] += title
     else:
