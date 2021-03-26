@@ -70,7 +70,8 @@ if skill_image != None:
     out['image'] = skill_image['src']
     passive = True
 
-if passive and skill_table.find('tr').find_all('th')[-1].get_text() == 'Cannot use':
+print('\''+skill_table.find('tr').find_all('th')[-1].get_text()+'\'')
+if passive and skill_table.find('tr').find_all('th')[-1].get_text() == 'Cannot use\n':
     cannot_use_mod = 1
 cannot_use_mod = 0
 
@@ -85,6 +86,8 @@ if level != '' and cannot_use_mod > 0:
 else:
     inherit_restr = skill_table.find_all('tr')[-1].find_all('td')[-1]
 out['inherit'] = ''
+if cannot_use_mod > 0:
+    out['inherit'] += 'Cannot use: '
 for restr in inherit_restr.contents:
     if restr.name == 'a':
         title = restr['title'].replace('bow', 'Bow').replace('Staff', 'Colorless Staff')
