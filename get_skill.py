@@ -70,10 +70,9 @@ if skill_image != None:
     out['image'] = skill_image['src']
     passive = True
 
-print('\''+skill_table.find('tr').find_all('th')[-1].get_text()+'\'')
-if passive and skill_table.find('tr').find_all('th')[-1].get_text() == 'Cannot use\n':
-    cannot_use_mod = 1
 cannot_use_mod = 0
+if passive and 'Cannot use' in skill_table.find('tr').find_all('th')[-1].get_text():
+    cannot_use_mod = 1
 
 if passive:
     print(cannot_use_mod)
