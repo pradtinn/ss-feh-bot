@@ -1,16 +1,16 @@
 {
-    "name": "Ouch%20Pouch+",
-    "type": "All Daggers",
-    "might": "12",
-    "range": "2",
+    "name": "Gilt Fork+",
+    "type": "Lance",
+    "might": "14",
+    "range": "1",
     "prereq": [
-        "Ouch Pouch"
+        "Gilt Fork"
     ],
-    "desc": "At the start of turn 1, grants Special cooldown count-2. After combat, if unit attacked, inflicts Def/Res-7 on foes within 2 spaces of target through their next actions.\n",
+    "desc": "If unit is within 2 spaces of an ally, grants Atk/Def+5 to unit and neutralizes unit's penalties to Atk/Def during combat.\n",
     "refine": "None",
     "owners": {
-        "Camilla: Steamy Secrets": "5"
+        "Narcian: Vernal General": "5"
     },
     "past_max": false,
-    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/2/23/Weapon_Ouch_Pouch.png/revision/latest/scale-to-width-down/50"
+    "image-link": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/b/b0/Wep_lc071.webp/revision/latest/scale-to-width-down/64"
 }

@@ -1,0 +1,12 @@
+{
+    "name": "Human Virtue",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/9/9f/Human_Virtue.png/revision/latest/scale-to-width-down/30?cb=20190227053537",
+    "desc": "At start of turn, if unit is adjacent to any allies that are not beast or dragon allies, grants Atk/Spd+6 to unit and those allies for 1 turn.\n",
+    "inherit": "This skill can only be equipped by its original unit.\n",
+    "owners": [
+        [
+            "Roy: Blazing Lion",
+            "5"
+        ]
+    ]
+}
