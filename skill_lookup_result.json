@@ -1,11 +1,11 @@
 {
-    "name": "Human Virtue",
-    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/9/9f/Human_Virtue.png/revision/latest/scale-to-width-down/30?cb=20190227053537",
-    "desc": "At start of turn, if unit is adjacent to any allies that are not beast or dragon allies, grants Atk/Spd+6 to unit and those allies for 1 turn.\n",
-    "inherit": "This skill can only be equipped by its original unit.\n",
+    "name": "Swift Stance 3",
+    "image": "https://static.wikia.nocookie.net/feheroes_gamepedia_en/images/e/ee/Swift_Stance_3.png/revision/latest/scale-to-width-down/30?cb=20210107010136",
+    "desc": "If foe initiates combat, grants Spd/Res+6 to unit during combat and inflicts Special cooldown charge -1 on foe per attack. (Only highest value applied. Does not stack.)\n",
+    "inherit": "Cannot use: Colorless Staff\n",
     "owners": [
         [
-            "Roy: Blazing Lion",
+            "Ronan: Villager of Iz",
             "5"
         ]
     ]
