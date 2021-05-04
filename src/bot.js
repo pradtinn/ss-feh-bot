@@ -373,7 +373,7 @@ bot.on('message', msg => {
     if (message.substring(0, 1) == '!') {
         if (message.substring(1) == 'heelp') {
             msg.member.createDM().then((dmchannel) => {
-                dmchannel.send('`!h <rarity> <unit name> +<merges> /<boon initial><bane initial> |<dragonflowers> <resplendent (~)>` to search for a hero\'s statline\n'+
+                dmchannel.send('`!h <rarity> <unit name> +<merges> /<boon initial><bane initial> |<dragonflowers> <resplendent (=)>` to search for a hero\'s statline\n'+
                 'Only unit name is required, the other parameters are optional\n'+
                 '`!a <unit name>$<alias>` adds alias for hero\n'+
                 '`!a <unit name>` for hero\'s aliases\n'+

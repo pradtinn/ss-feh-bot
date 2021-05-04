@@ -67,7 +67,7 @@ class Input {
     //inserts spaces in the input to normalize it
     insertSpaces() {
         var i;
-        var mergeIVDF = '+/|~';
+        var mergeIVDF = '+/|=';
         this.inputString = this.inputString.replace(/!/g, ' ');
         for (i = 0; i < this.inputString.length; i++) {
             if (mergeIVDF.indexOf(this.inputString[i]) != -1 && this.inputString[i-1] != ' ')
@@ -99,7 +99,7 @@ class Input {
                 this.rarity = parseInt(sections[i].replace('*', ''), 10);
                 found[3] = true;
             }
-            if (sections[i].indexOf('~') != -1 && !found[4]) {
+            if (sections[i].indexOf('=') != -1 && !found[4]) {
                 this.resplendent = true;
                 found[4] = true;
             }
