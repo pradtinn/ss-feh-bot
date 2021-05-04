@@ -30,7 +30,6 @@ class Input {
             break;
             case 'a': {
                 var numSections = this.determineA();
-                this.name = this.name.replace(/!/g, ' ');
                 if (numSections == 2) {
                     if (this.name.indexOf('$') != -1 || !aliasHandler.filterAlias(this.alias)) {
                         this.name = 'ERROR';
