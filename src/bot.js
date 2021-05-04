@@ -51,7 +51,7 @@ function findUnit(name, msg, callback) {
 
 var getUnitData = async(input, pfp, callback) => {
     var unitData = await dataHandler.getUnit(input.getName(), input.getRarity(), input.getBoon(), input.getBane(),
-        input.getMerges(), input.getDragonflowers());
+        input.getMerges(), input.getDragonflowers(), input.getResplendent());
     var imagePath = 'Art/'+unitData.getImageFolder()+'/Face_FC.png';
     var rarityString = '';
     for (var i = 0; i < unitData.getRarity(); i++) { 
@@ -107,7 +107,7 @@ var getUnitsData = async(inputs, callback) => {
     for (var i = 0; i < inputs.length; i++) {
         var website = 'https://feheroes.gamepedia.com/'+inputs[i].getName();
         unitsData[i] = await dataHandler.getUnit(inputs[i].getName(), inputs[i].getRarity(), inputs[i].getBoon(), inputs[i].getBane(),
-        inputs[i].getMerges(), inputs[i].getDragonflowers());
+        inputs[i].getMerges(), inputs[i].getDragonflowers(), inputs[i].getResplendent());
     }
     if (unitsData[0].getNameTitle() == unitsData[1].getNameTitle()) {
         embed
@@ -373,7 +373,7 @@ bot.on('message', msg => {
     if (message.substring(0, 1) == '!') {
         if (message.substring(1) == 'heelp') {
             msg.member.createDM().then((dmchannel) => {
-                dmchannel.send('`!h <rarity> <unit name> +<merges> /<boon initial><bane initial> |<dragonflowers>` to search for a hero\'s statline\n'+
+                dmchannel.send('`!h <rarity> <unit name> +<merges> /<boon initial><bane initial> |<dragonflowers> <resplendent (~)>` to search for a hero\'s statline\n'+
                 'Only unit name is required, the other parameters are optional\n'+
                 '`!a <unit name>$<alias>` adds alias for hero\n'+
                 '`!a <unit name>` for hero\'s aliases\n'+

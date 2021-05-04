@@ -9,7 +9,7 @@ var Skill = skill.Skill;
 
 class Unit {
     //constructor for unit
-    constructor(name, rarity, boon, bane, merges, dragonflowers) {
+    constructor(name, rarity, boon, bane, merges, dragonflowers, resplendent) {
         name = name.split('_').join(' ');
         var nameTitle = name.split(':');
         this.name = nameTitle[0];
@@ -19,6 +19,7 @@ class Unit {
         this.bane = bane.toUpperCase();
         this.merges = parseInt(merges, 10);
         this.dragonflowers = parseInt(dragonflowers, 10);
+        this.resplendent = resplendent;
         var names = ['HP', 'ATK', 'SPD', 'DEF', 'RES', 'Total'];
         this.lvl1Stats = stat.initStatArray(names);
         this.growths = stat.initStatArray(names);
@@ -97,7 +98,7 @@ class Unit {
     print() {
         var out = '```diff\n Lvl   1 |  40\n     --- | ---\n'+
             stat.statArrsToString(this.lvl1Stats, this.lvl40Stats, this.growths, this.boon, this.bane, this.merges)+
-            '\n```Total: '+this.getTotal()+', '+emotes.dragonflowerEmotes[this.moveType]+': '+this.dragonflowers;
+            '\n```Total: '+this.getTotal()+', '+emotes.dragonflowerEmotes[this.moveType]+': '+this.dragonflowers+', '+'Respl: '+this.resplendent;
         return out;
     }
     //data manipulation
@@ -154,13 +155,17 @@ class Unit {
         }
         if (this.merges > 0)
             this.lvl1Stats[5].changeStat(1);
-        console.log('First set stat breakpoint: '+stat.statArrToString(this.lvl1Stats));
         this.applyMerges();
-        console.log('Merge breakpoint: '+stat.statArrToString(this.lvl1Stats));
         this.verifyDragonflowers();
-        console.log('DF check breakpoint: '+stat.statArrToString(this.lvl1Stats));
         this.applyDragonFlowers();
-        console.log('DF breakpoint: '+stat.statArrToString(this.lvl1Stats));
+        if (this.resplendent) {
+            for (i = 0; i < this.lvl1Stats.length; i++) {
+                if (i == 5) 
+                    this.lvl1Stats[i].changeStat(10);
+                else
+                    this.lvl1Stats[i].changeStat(2);
+            }
+        }
     }
     setGrowths(growthSpread) {
         var i;

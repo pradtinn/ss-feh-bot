@@ -52,8 +52,8 @@ module.exports = {
     addAlias(name, alias) {
         return name;
     },
-    async getUnit(name, rarity, boon, bane, merges, dragonflowers) {
-        var unit = new Unit(name, rarity, boon, bane, merges, dragonflowers);
+    async getUnit(name, rarity, boon, bane, merges, dragonflowers, resplendent) {
+        var unit = new Unit(name, rarity, boon, bane, merges, dragonflowers, resplendent);
         unit.setMoveType(data[name]['moveType']);
         unit.setWeaponType(data[name]['weaponType']);
         unit.setReleaseDate(data[name]['releaseDate']);

@@ -19,6 +19,7 @@ class Input {
         this.boon = '';
         this.bane = '';
         this.dragonflowers = 0;
+        this.resplendent = false;
         switch(this.cmd) {
             case 'h': {
                 this.insertSpaces();
@@ -66,7 +67,7 @@ class Input {
     //inserts spaces in the input to normalize it
     insertSpaces() {
         var i;
-        var mergeIVDF = '+/|';
+        var mergeIVDF = '+/|~';
         this.inputString = this.inputString.replace(/!/g, ' ');
         for (i = 0; i < this.inputString.length; i++) {
             if (mergeIVDF.indexOf(this.inputString[i]) != -1 && this.inputString[i-1] != ' ')
@@ -80,7 +81,7 @@ class Input {
         var sections = this.inputString.split(' ');
 
         var i;
-        var found = [false, false, false, false];
+        var found = [false, false, false, false, false];
         for (i = 0; i < sections.length; i++) {
             if (sections[i].indexOf('|') != -1 && !found[0]) {
                 this.dragonflowers = parseInt(sections[i].replace('|', ''), 10);
@@ -97,6 +98,10 @@ class Input {
             if (sections[i].indexOf('*') != -1 && !found[3]) {
                 this.rarity = parseInt(sections[i].replace('*', ''), 10);
                 found[3] = true;
+            }
+            if (sections[i].indexOf('~') != -1 && !found[4]) {
+                this.resplendent = true;
+                found[4] = true;
             }
             if (/^[A-Z:\\!\)\(]$/i.test(sections[i].charAt(0))) {
                 if (this.name.length > 0)
@@ -216,6 +221,9 @@ class Input {
     }
     getDragonflowers() {
         return this.dragonflowers;
+    }
+    getResplendent() {
+        return this.resplendent;
     }
 }
 
