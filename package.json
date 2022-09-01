@@ -1,27 +1,16 @@
 {
-    "name": "ss-feh-bot",
-    "version": "1.0.0",
-    "description": "Not the bot the server needs, but the bot the server deserves",
-    "main": "src/bot.js",
-    "author": "Broey",
-    "dependencies": {
-        "axios": "^0.19.2",
-        "cheerio": "^1.0.0-rc.5",
-        "child_process": "^1.0.2",
-        "discord.js": "^12.5.1",
-        "dotenv": "^8.2.0",
-        "fs": "0.0.1-security",
-        "mysql": "^2.18.1",
-        "pg": "^8.5.1",
-        "pm2": "^4.5.1",
-        "promise": "^8.1.0",
-        "winston": "^3.3.3"
-    },
-    "engines": {
-        "node": "12.16.2",
-        "npm": "*"
-    },
-    "scripts": {
-        "start": "node src/bot.js"
-    }
+  "name": "ss-feh-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.3.0",
+    "dotenv": "^16.0.2"
+  }
 }
